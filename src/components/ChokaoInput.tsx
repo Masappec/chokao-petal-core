@@ -19,7 +19,7 @@ const ChokaoInput = forwardRef<HTMLInputElement, ChokaoInputProps>(
           className={`
             relative flex items-center gap-3 h-[56px] rounded-2xl px-4
             bg-chokao-surface border transition-colors duration-200
-            ${error ? "border-chokao-red" : "border-chokao-border focus-within:border-chokao-yellow"}
+            ${error ? "border-chokao-red" : "border-chokao-border focus-within:border-chokao-cream/30"}
           `}
         >
           {icon && (
@@ -41,7 +41,7 @@ const ChokaoInput = forwardRef<HTMLInputElement, ChokaoInputProps>(
               className="
                 absolute left-0 top-1/2 -translate-y-1/2 text-chokao-cream/50 text-[14px]
                 font-body pointer-events-none transition-all duration-200
-                peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-chokao-yellow
+                peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-chokao-cream/60
                 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[11px]
               "
             >
