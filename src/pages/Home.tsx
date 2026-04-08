@@ -93,8 +93,6 @@ const Home = () => {
               Crear cuenta
             </button>
           </div>
-            </button>
-          </div>
         </div>
       )}
 
