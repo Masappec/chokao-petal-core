@@ -13,12 +13,12 @@ const days = [
 ];
 
 const categories = [
-  { label: "Todos", color: "cream" as const },
-  { label: "Congreso", color: "green" as const },
-  { label: "Talleres", color: "green" as const },
-  { label: "Seminarios", color: "cream" as const },
-  { label: "Rueda de Negocios", color: "cream" as const },
-  { label: "Premiaciones", color: "yellow" as const },
+  { label: "Todos" },
+  { label: "Congreso" },
+  { label: "Talleres" },
+  { label: "Seminarios" },
+  { label: "Rueda de Negocios" },
+  { label: "Premiaciones" },
 ];
 
 const Agenda = () => {
@@ -49,12 +49,12 @@ const Agenda = () => {
       </div>
 
       {/* Category chips */}
-      <div className="flex gap-2 px-5 py-3 overflow-x-auto scrollbar-hide">
+      <div className="flex gap-2 px-5 py-3 overflow-x-auto no-scrollbar">
         {categories.map((cat) => (
           <CategoryChip
             key={cat.label}
             label={cat.label}
-            color={cat.color}
+            color="green"
             active={activeCategory === cat.label}
             onClick={() => setActiveCategory(cat.label)}
           />
@@ -63,8 +63,6 @@ const Agenda = () => {
 
       {/* Activities */}
       <div className="px-5 space-y-3">
-        <p className="text-chokao-cream/40 text-[11px] uppercase tracking-widest font-medium mt-2">Mañana</p>
-
         <ActivityCard
           title="Maridaje de Chocolate y Café de Especialidad"
           time="9:00 AM"
@@ -85,15 +83,11 @@ const Agenda = () => {
           onClick={() => navigate("/activity")}
         />
 
-        <ChokaoSeparator />
-
-        <p className="text-chokao-cream/40 text-[11px] uppercase tracking-widest font-medium">Tarde</p>
-
         <ActivityCard
           title="Rueda de Negocios Internacional"
           time="2:00 PM"
           category="Negocios"
-          categoryColor="cream"
+          categoryColor="green"
           urgent
           onClick={() => navigate("/activity")}
         />
@@ -102,7 +96,7 @@ const Agenda = () => {
           title="Ceremonia de Premiación al Mejor Cacao"
           time="5:00 PM"
           category="Premiación"
-          categoryColor="yellow"
+          categoryColor="green"
           onClick={() => navigate("/activity")}
         />
       </div>
