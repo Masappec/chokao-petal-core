@@ -5,6 +5,7 @@ import ChokaoButton from "@/components/ChokaoButton";
 import ChokaoSeparator from "@/components/ChokaoSeparator";
 import { Clock, MapPin, Users } from "lucide-react";
 import tallerImg from "@/assets/taller-temperado.png";
+import talleresLogo from "@/assets/talleres-logo.png";
 
 const ActivityDetail = () => {
   const navigate = useNavigate();
