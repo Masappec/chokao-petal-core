@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Splash from "./pages/Splash.tsx";
 import Home from "./pages/Home.tsx";
+import Dashboard from "./pages/Dashboard.tsx";
 import Agenda from "./pages/Agenda.tsx";
 import ActivityDetail from "./pages/ActivityDetail.tsx";
 import Register from "./pages/Register.tsx";
@@ -27,6 +28,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Splash />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
           <Route path="/register/verify" element={<VerifyOTP />} />
           <Route path="/register/profile" element={<RegisterProfile />} />

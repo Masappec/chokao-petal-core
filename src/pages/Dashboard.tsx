@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bell, Store, Star, Map, MessageCircle, Users, LogIn, UserPlus } from "lucide-react";
+import { Bell, Store, Star, Map, MessageCircle, Users } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
 import NewsFeed from "@/components/NewsFeed";
 
-const Home = () => {
+const Dashboard = () => {
   const navigate = useNavigate();
   const [moreOpen, setMoreOpen] = useState(false);
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
-  const [isLoggedIn] = useState(false);
 
   useEffect(() => {
     const target = new Date("2026-06-14T00:00:00").getTime();
@@ -50,53 +49,22 @@ const Home = () => {
         <ChokaoIcon size={28} />
         <span className="ml-2 font-display font-bold text-[18px] text-white tracking-tight">CHOKAO</span>
         <div className="ml-auto flex items-center gap-3">
-          {isLoggedIn && (
-            <>
-              <button className="relative" style={{ color: "rgba(240,236,217,0.7)" }}>
-                <Bell size={24} strokeWidth={1.5} />
-                <span className="absolute -top-1 -right-1 w-[18px] h-[18px] rounded-full text-[10px] font-bold flex items-center justify-center text-white" style={{ backgroundColor: "#e73e40" }}>3</span>
-              </button>
-              <div className="w-9 h-9 rounded-full flex items-center justify-center text-[12px] font-bold"
-                style={{ border: "2px solid #fbba30", backgroundColor: "#1a2f42", color: "#f0ecd9" }}>
-                MR
-              </div>
-            </>
-          )}
+          <button className="relative" style={{ color: "rgba(240,236,217,0.7)" }}>
+            <Bell size={24} strokeWidth={1.5} />
+            <span className="absolute -top-1 -right-1 w-[18px] h-[18px] rounded-full text-[10px] font-bold flex items-center justify-center text-white" style={{ backgroundColor: "#e73e40" }}>3</span>
+          </button>
+          <div className="w-9 h-9 rounded-full flex items-center justify-center text-[12px] font-bold"
+            style={{ border: "2px solid #fbba30", backgroundColor: "#1a2f42", color: "#f0ecd9" }}>
+            MR
+          </div>
         </div>
       </header>
 
-      {/* Greeting / Auth */}
-      {isLoggedIn ? (
-        <div className="px-5 pt-6 pb-2">
-          <p className="text-[13px]" style={{ color: "rgba(240,236,217,0.6)" }}>Bienvenido de vuelta</p>
-          <h1 className="font-display font-bold text-[24px] text-white mt-1">Hola, María 👋</h1>
-        </div>
-      ) : (
-        <div className="px-5 pt-6 pb-2">
-          <h1 className="font-display font-bold text-[22px] text-white">Bienvenido a CHOKAO</h1>
-          <p className="text-[13px] mt-1 mb-5" style={{ color: "rgba(240,236,217,0.6)" }}>
-            Inicia sesión o crea tu cuenta para acceder a todo el evento
-          </p>
-          <div className="flex gap-3">
-            <button
-              onClick={() => navigate("/login")}
-              className="flex-1 flex items-center justify-center gap-2 h-[44px] rounded-xl text-[14px] font-semibold transition-transform active:scale-[0.97]"
-              style={{ backgroundColor: "#1a2f42", border: "1px solid #2a4a62", color: "#f0ecd9" }}
-            >
-              <LogIn size={18} />
-              Iniciar sesión
-            </button>
-            <button
-              onClick={() => navigate("/register")}
-              className="flex-1 flex items-center justify-center gap-2 h-[44px] rounded-xl text-[14px] font-bold transition-transform active:scale-[0.97]"
-              style={{ backgroundColor: "#fbba30", color: "#102132" }}
-            >
-              <UserPlus size={18} />
-              Crear cuenta
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Greeting */}
+      <div className="px-5 pt-6 pb-2">
+        <p className="text-[13px]" style={{ color: "rgba(240,236,217,0.6)" }}>Bienvenido de vuelta</p>
+        <h1 className="font-display font-bold text-[24px] text-white mt-1">Hola, María 👋</h1>
+      </div>
 
       {/* Countdown Banner */}
       <div className="mx-5 mt-4 rounded-[20px] overflow-hidden relative"
@@ -149,4 +117,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;
