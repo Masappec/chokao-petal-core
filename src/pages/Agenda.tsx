@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MoreDrawer from "@/components/MoreDrawer";
 import AppHeader from "@/components/AppHeader";
 import BottomNav from "@/components/BottomNav";
 import CategoryChip from "@/components/CategoryChip";
@@ -25,6 +26,7 @@ const Agenda = () => {
   const [activeDay, setActiveDay] = useState(1);
   const [activeCategory, setActiveCategory] = useState("Todos");
   const navigate = useNavigate();
+  const [moreOpen, setMoreOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-24">
@@ -102,8 +104,10 @@ const Agenda = () => {
       </div>
 
       <BottomNav activeTab="agenda" onTabChange={(tab) => {
-        if (tab === "home") navigate("/");
+        if (tab === "home") navigate("/home");
+        if (tab === "mas") setMoreOpen(true);
       }} />
+      <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />
     </div>
   );
 };
