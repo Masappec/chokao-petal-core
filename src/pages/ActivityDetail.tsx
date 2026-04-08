@@ -24,15 +24,13 @@ const ActivityDetail = () => {
         <div className="flex items-center gap-3 mb-3">
           <CategoryChip label="Taller" color="green" />
           <span className="text-chokao-cream/50 text-[12px]">90 min</span>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <div className="flex-1">
-            <h1 className="font-display font-bold text-[24px] text-foreground leading-tight">
-              Taller: Temperado de Chocolate Artesanal
-            </h1>
+          <div className="ml-auto w-[48px] h-[48px] rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#f0ecd9" }}>
+            <img src={talleresLogo} alt="Talleres Especializados" className="w-[34px] h-auto" />
           </div>
-          <img src={talleresLogo} alt="Talleres Especializados" className="w-[72px] h-auto flex-shrink-0 -mt-1" />
+        </div>
+        <h1 className="font-display font-bold text-[24px] text-foreground leading-tight">
+          Taller: Temperado de Chocolate Artesanal
+        </h1>
         </div>
       </div>
 
