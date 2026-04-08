@@ -76,13 +76,15 @@ const RegisterProfile = () => {
             label="Nombre"
             icon={<User size={20} />}
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => { setFirstName(e.target.value); setErrors(prev => ({ ...prev, firstName: "" })); }}
+            error={errors.firstName}
           />
           <ChokaoInput
             label="Apellido"
             icon={<User size={20} />}
             value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => { setLastName(e.target.value); setErrors(prev => ({ ...prev, lastName: "" })); }}
+            error={errors.lastName}
           />
 
           {/* Celular con código de país */}
