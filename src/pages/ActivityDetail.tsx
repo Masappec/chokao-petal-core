@@ -47,7 +47,7 @@ const ActivityDetail = () => {
       </div>
 
       <div className="px-5">
-        <ChokaoSeparator />
+        <div className="h-px bg-chokao-border/30 my-1" />
       </div>
 
       {/* Speaker */}
