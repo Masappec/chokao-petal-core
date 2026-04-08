@@ -11,7 +11,7 @@ interface BottomNavProps {
 const tabs = [
   { id: "home" as const, label: "Home", icon: Home },
   { id: "agenda" as const, label: "Agenda", icon: CalendarDays },
-  { id: "entradas" as const, label: "Mis Entradas", icon: BadgeCheck },
+  { id: "entradas" as const, label: "Mis Entradas", icon: TicketCheck },
   { id: "mas" as const, label: "Más", icon: GripHorizontal },
 ];
 
