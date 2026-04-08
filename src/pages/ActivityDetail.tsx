@@ -15,7 +15,7 @@ const ActivityDetail = () => {
       <AppHeader variant="back" title="" onBack={() => navigate(-1)} />
 
       {/* Category logo */}
-      <div className="flex flex-col items-center pt-4 pb-2">
+      <div className="flex flex-col items-center pt-1 pb-2">
         <div className="w-[100px] h-[100px] rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#f0ecd9" }}>
           <img src={talleresLogo} alt="Talleres Especializados" className="w-[72px] h-auto" />
         </div>
