@@ -12,7 +12,7 @@ const Home = () => {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
 
   useEffect(() => {
-    const target = new Date("2025-06-14T00:00:00").getTime();
+    const target = new Date("2026-06-14T00:00:00").getTime();
     const tick = () => {
       const diff = Math.max(0, target - Date.now());
       setCountdown({
