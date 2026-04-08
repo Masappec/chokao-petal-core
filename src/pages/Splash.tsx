@@ -47,8 +47,11 @@ const Splash = () => {
 
       {/* Buttons */}
       <div className="relative z-10 w-full px-10 mt-12 flex flex-col gap-3">
-        <ChokaoButton fullWidth onClick={() => navigate("/agenda")}>
+        <ChokaoButton fullWidth onClick={() => navigate("/register")}>
           Registrarse
+        </ChokaoButton>
+        <ChokaoButton variant="ghost" fullWidth onClick={() => navigate("/login")}>
+          Iniciar sesión
         </ChokaoButton>
         <ChokaoButton variant="ghost" fullWidth onClick={() => navigate("/agenda")}>
           Continuar como invitado
