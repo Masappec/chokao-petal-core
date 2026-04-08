@@ -112,6 +112,10 @@ const RegisterProfile = () => {
                 onChange={(e) => { setPhone(e.target.value); setErrors(prev => ({ ...prev, phone: "" })); }}
                 error={errors.phone}
               />
+            </div>
+          </div>
+
+          <ChokaoInput
             label="Empresa / Organización (Opcional)"
             icon={<Building2 size={20} />}
             value={company}
