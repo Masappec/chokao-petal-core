@@ -77,7 +77,7 @@ const Register = () => {
         <div className="flex items-start gap-2.5 bg-chokao-yellow/8 rounded-xl px-3.5 py-3 mt-4 border border-chokao-yellow/20">
           <Lightbulb size={16} className="text-chokao-yellow mt-0.5 shrink-0" />
           <p className="text-chokao-cream/70 text-[12px] font-body leading-relaxed">
-            <span className="text-chokao-yellow font-semibold">Tip:</span> La contraseña debe tener mínimo 8 caracteres, una mayúscula y un número
+            La contraseña debe tener mínimo 8 caracteres, una mayúscula y un número
           </p>
         </div>
 
