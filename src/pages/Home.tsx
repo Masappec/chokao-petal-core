@@ -43,7 +43,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-[100px] overflow-hidden">
+    <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-[100px] overflow-x-hidden">
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center h-[64px] px-5" style={{ backgroundColor: "#102132" }}>
         <ChokaoIcon size={28} />
