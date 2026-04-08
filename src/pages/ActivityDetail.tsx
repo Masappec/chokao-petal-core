@@ -21,11 +21,13 @@ const ActivityDetail = () => {
 
       {/* Title area */}
       <div className="px-5 pt-5 pb-4">
-        <div className="flex items-center gap-3 mb-3">
-          <CategoryChip label="Taller" color="green" />
-          <span className="text-chokao-cream/50 text-[12px]">90 min</span>
-          <div className="ml-auto w-[48px] h-[48px] rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#f0ecd9" }}>
-            <img src={talleresLogo} alt="Talleres Especializados" className="w-[34px] h-auto" />
+        <div className="flex flex-col items-center mb-4">
+          <div className="w-[64px] h-[64px] rounded-full flex items-center justify-center flex-shrink-0 mb-3" style={{ backgroundColor: "#f0ecd9" }}>
+            <img src={talleresLogo} alt="Talleres Especializados" className="w-[46px] h-auto" />
+          </div>
+          <div className="flex items-center gap-3">
+            <CategoryChip label="Taller" color="green" />
+            <span className="text-chokao-cream/50 text-[12px]">90 min</span>
           </div>
         </div>
         <h1 className="font-display font-bold text-[24px] text-foreground leading-tight">
