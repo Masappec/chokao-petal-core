@@ -26,9 +26,14 @@ const ActivityDetail = () => {
           <span className="text-chokao-cream/50 text-[12px]">90 min</span>
         </div>
 
-        <h1 className="font-display font-bold text-[24px] text-foreground leading-tight">
-          Taller: Temperado de Chocolate Artesanal
-        </h1>
+        <div className="flex items-start gap-4">
+          <div className="flex-1">
+            <h1 className="font-display font-bold text-[24px] text-foreground leading-tight">
+              Taller: Temperado de Chocolate Artesanal
+            </h1>
+          </div>
+          <img src={talleresLogo} alt="Talleres Especializados" className="w-[72px] h-auto flex-shrink-0 -mt-1" />
+        </div>
       </div>
 
       {/* Metadata */}
