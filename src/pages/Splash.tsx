@@ -1,11 +1,9 @@
-import { useState } from "react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
 import { useNavigate } from "react-router-dom";
 import mascotImg from "@/assets/chokao-mascot.png";
 
 const Splash = () => {
-  const [lang, setLang] = useState<"ES" | "EN">("ES");
   const navigate = useNavigate();
 
   return (
@@ -19,28 +17,6 @@ const Splash = () => {
       </div>
       <div className="absolute top-1/3 right-[-100px] pointer-events-none">
         <ChokaoIcon size={280} opacity={0.06} className="rotate-[45deg]" />
-      </div>
-
-      {/* Language toggle */}
-      <div className="absolute top-4 right-5 z-10">
-        <div className="flex bg-chokao-surface rounded-full p-0.5 border border-chokao-border">
-          <button
-            onClick={() => setLang("ES")}
-            className={`text-[11px] font-medium px-3 py-1 rounded-full transition-all ${
-              lang === "ES" ? "bg-chokao-yellow text-chokao-primary" : "text-chokao-cream/60"
-            }`}
-          >
-            ES
-          </button>
-          <button
-            onClick={() => setLang("EN")}
-            className={`text-[11px] font-medium px-3 py-1 rounded-full transition-all ${
-              lang === "EN" ? "bg-chokao-yellow text-chokao-primary" : "text-chokao-cream/60"
-            }`}
-          >
-            EN
-          </button>
-        </div>
       </div>
 
       {/* Mascot with wave animation */}
