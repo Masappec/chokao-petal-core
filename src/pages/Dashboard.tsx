@@ -67,8 +67,8 @@ const Dashboard = () => {
       </div>
 
       {/* Countdown Banner */}
-      <div className="mx-5 mt-4 rounded-[20px] overflow-hidden relative"
-        style={{ background: "linear-gradient(135deg, #1a2f42, #102132)" }}>
+      <div className="mx-5 mt-4 rounded-[20px] overflow-hidden relative border border-chokao-border/30"
+        style={{ background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)", boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(251,186,48,0.05) inset" }}>
         <div className="relative p-5">
           <p className="text-[11px] uppercase text-center mb-3" style={{ color: "rgba(240,236,217,0.5)" }}>
             El evento comienza en
@@ -98,8 +98,8 @@ const Dashboard = () => {
         <div className="grid grid-cols-3 gap-3">
           {quickAccess.map((item) => (
             <button key={item.label}
-              className="flex flex-col items-center justify-center aspect-square rounded-2xl p-4 transition-transform active:scale-[0.97]"
-              style={{ backgroundColor: "#1a2f42", boxShadow: "0 4px 20px rgba(0,0,0,0.3)" }}>
+              className="flex flex-col items-center justify-center aspect-square rounded-2xl p-4 transition-all active:scale-[0.97] border border-chokao-border/30 hover:border-chokao-yellow/30"
+              style={{ background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)", boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(251,186,48,0.05) inset" }}>
               <item.icon size={32} strokeWidth={1.5} style={{ color: item.color }} />
               <span className="text-white font-semibold text-[13px] mt-2.5">{item.label}</span>
               <span className="text-[11px] mt-0.5" style={{ color: "rgba(240,236,217,0.5)" }}>{item.sub}</span>

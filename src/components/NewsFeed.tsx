@@ -34,8 +34,8 @@ const NewsFeed = () => {
         {posts.map((post, i) => (
           <div
             key={i}
-            className="rounded-2xl p-4"
-            style={{ backgroundColor: "#1a2f42" }}
+            className="rounded-2xl p-4 border border-chokao-border/30"
+            style={{ background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)", boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(251,186,48,0.05) inset" }}
           >
             {/* Author row */}
             <div className="flex items-center gap-3 mb-3">
