@@ -147,6 +147,7 @@ const Home = () => {
       {/* News Feed */}
       <NewsFeed />
 
+      </div>
       <BottomNav activeTab="home" onTabChange={handleTab} />
       <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />
     </div>
