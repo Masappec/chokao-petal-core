@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bell, Store, Star, Map, MessageCircle, Users, LogIn, UserPlus } from "lucide-react";
+import { Bell, Store, Star, Map, MessageCircle, Users } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
