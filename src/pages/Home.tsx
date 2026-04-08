@@ -12,7 +12,7 @@ const Home = () => {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
 
   useEffect(() => {
-    const target = new Date("2025-06-14T00:00:00").getTime();
+    const target = new Date("2026-06-14T00:00:00").getTime();
     const tick = () => {
       const diff = Math.max(0, target - Date.now());
       setCountdown({
@@ -69,9 +69,6 @@ const Home = () => {
       {/* Countdown Banner */}
       <div className="mx-5 mt-4 rounded-[20px] overflow-hidden relative"
         style={{ background: "linear-gradient(135deg, #1a2f42, #102132)" }}>
-        <div className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-[0.07]">
-          <ChokaoIcon size={180} />
-        </div>
         <div className="relative p-5">
           <p className="text-[11px] uppercase text-center mb-3" style={{ color: "rgba(240,236,217,0.5)" }}>
             El evento comienza en
