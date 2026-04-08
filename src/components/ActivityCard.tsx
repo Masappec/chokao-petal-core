@@ -36,10 +36,6 @@ const ActivityCard = ({
         boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(251,186,48,0.05) inset, 0 -1px 0 rgba(0,0,0,0.2) inset",
       }}
     >
-      {/* Watermark */}
-      <div className="absolute bottom-2 right-2">
-        <ChokaoIcon size={12} opacity={0.1} />
-      </div>
 
       {/* Top row */}
       <div className="flex items-center justify-between mb-2">
