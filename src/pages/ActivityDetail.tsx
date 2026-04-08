@@ -22,12 +22,8 @@ const ActivityDetail = () => {
       {/* Title area */}
       <div className="px-5 pt-5 pb-4">
         <div className="flex flex-col items-center mb-4">
-          <div className="w-[64px] h-[64px] rounded-full flex items-center justify-center flex-shrink-0 mb-3" style={{ backgroundColor: "#f0ecd9" }}>
-            <img src={talleresLogo} alt="Talleres Especializados" className="w-[46px] h-auto" />
-          </div>
-          <div className="flex items-center gap-3">
-            <CategoryChip label="Taller" color="green" />
-            <span className="text-chokao-cream/50 text-[12px]">90 min</span>
+          <div className="w-[88px] h-[88px] rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#f0ecd9" }}>
+            <img src={talleresLogo} alt="Talleres Especializados" className="w-[62px] h-auto" />
           </div>
         </div>
         <h1 className="font-display font-bold text-[24px] text-foreground leading-tight">
@@ -39,7 +35,7 @@ const ActivityDetail = () => {
       <div className="px-5 py-5 space-y-3">
         <div className="flex items-center gap-3 text-chokao-cream/80 text-[14px]">
           <Clock size={18} strokeWidth={1.5} className="text-chokao-yellow/70 shrink-0" />
-          <span>Sábado 15 Jun · 11:00 AM</span>
+          <span>Sábado 15 Jun · 11:00 AM · 90 min</span>
         </div>
         <div className="flex items-center gap-3 text-chokao-cream/80 text-[14px]">
           <MapPin size={18} strokeWidth={1.5} className="text-chokao-yellow/70 shrink-0" />
