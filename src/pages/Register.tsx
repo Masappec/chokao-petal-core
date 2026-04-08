@@ -82,12 +82,6 @@ const Register = () => {
           <ChokaoButton fullWidth onClick={handleContinue}>
             Continuar
           </ChokaoButton>
-          <p className="text-center text-chokao-cream/60 text-[14px] font-body mt-4">
-            ¿Ya tienes cuenta?{" "}
-            <button onClick={() => navigate("/login")} className="text-chokao-yellow font-semibold">
-              Iniciar sesión
-            </button>
-          </p>
           <button
             onClick={() => navigate("/")}
             className="w-full mt-3 h-[52px] rounded-2xl border border-chokao-border text-chokao-cream/70 font-body text-[15px] font-semibold hover:bg-chokao-surface transition-colors"
