@@ -14,18 +14,20 @@ const ActivityDetail = () => {
     <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-28">
       <AppHeader variant="back" title="" onBack={() => navigate(-1)} />
 
+      {/* Category logo */}
+      <div className="flex flex-col items-center pt-4 pb-2">
+        <div className="w-[100px] h-[100px] rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#f0ecd9" }}>
+          <img src={talleresLogo} alt="Talleres Especializados" className="w-[72px] h-auto" />
+        </div>
+      </div>
+
       {/* Hero image */}
-      <div className="w-full h-[200px] overflow-hidden">
+      <div className="w-full h-[200px] overflow-hidden mx-5 rounded-2xl mt-2" style={{ width: "calc(100% - 40px)" }}>
         <img src={tallerImg} alt="Taller de Temperado de Chocolate" className="w-full h-full object-cover" />
       </div>
 
       {/* Title area */}
-      <div className="px-5 pt-5 pb-4">
-        <div className="flex flex-col items-center mb-4">
-          <div className="w-[88px] h-[88px] rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#f0ecd9" }}>
-            <img src={talleresLogo} alt="Talleres Especializados" className="w-[62px] h-auto" />
-          </div>
-        </div>
+      <div className="px-5 pt-4 pb-4">
         <h1 className="font-display font-bold text-[24px] text-foreground leading-tight">
           Taller: Temperado de Chocolate Artesanal
         </h1>
