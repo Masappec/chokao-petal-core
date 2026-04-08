@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bell, MapPin, CalendarDays, Calendar, Store, Star, Ticket, Map, MessageCircle } from "lucide-react";
+import { Bell, Calendar, Store, Star, Ticket, Map, MessageCircle } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
@@ -65,61 +65,33 @@ const Home = () => {
       <div className="px-5 pt-6 pb-2">
         <p className="text-[13px]" style={{ color: "rgba(240,236,217,0.6)" }}>Bienvenido de vuelta</p>
         <h1 className="font-display font-bold text-[24px] text-white mt-1">Hola, María 👋</h1>
-        <span className="inline-flex items-center gap-1.5 text-[13px] px-3 py-1 rounded-full mt-2"
-          style={{ backgroundColor: "rgba(170,185,62,0.15)", border: "1px solid #aab93e", color: "#aab93e" }}>
-          <Store size={14} />
-          Chocolatera / Chef
-        </span>
       </div>
 
-      {/* Hero Banner */}
+      {/* Countdown Banner */}
       <div className="mx-5 mt-4 rounded-[20px] overflow-hidden relative"
         style={{ background: "linear-gradient(135deg, #1a2f42, #102132)" }}>
         <div className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-[0.07]">
-          <ChokaoIcon size={220} />
+          <ChokaoIcon size={180} />
         </div>
         <div className="relative p-5">
-          <span className="inline-block text-[11px] font-bold uppercase px-3 py-1 rounded-full"
-            style={{ backgroundColor: "rgba(251,186,48,0.15)", border: "1px solid #fbba30", color: "#fbba30" }}>
-            5ta Edición
-          </span>
-          <h2 className="font-display font-bold text-[24px] text-white mt-2.5">CHOKAO 2025</h2>
-          <p className="text-[14px] mt-1" style={{ color: "rgba(240,236,217,0.7)" }}>Feria del Cacao & Chocolate</p>
-
-          <div className="h-px my-3.5" style={{ backgroundColor: "#2a4a62" }} />
-
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1.5">
-              <MapPin size={16} style={{ color: "rgba(240,236,217,0.6)" }} />
-              <span className="text-[13px]" style={{ color: "rgba(240,236,217,0.8)" }}>Guayaquil, Ecuador</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <CalendarDays size={16} style={{ color: "rgba(240,236,217,0.6)" }} />
-              <span className="text-[13px]" style={{ color: "rgba(240,236,217,0.8)" }}>14 · 15 · 16 Junio 2025</span>
-            </div>
-          </div>
-
-          {/* Countdown */}
-          <div className="mt-4 rounded-xl p-3.5" style={{ backgroundColor: "#102132" }}>
-            <p className="text-[11px] uppercase text-center mb-3" style={{ color: "rgba(240,236,217,0.5)" }}>
-              El evento comienza en
-            </p>
-            <div className="flex items-center justify-center gap-2">
-              {[
-                { val: countdown.days, label: "días" },
-                { val: countdown.hours, label: "horas" },
-                { val: countdown.mins, label: "min" },
-                { val: countdown.secs, label: "seg" },
-              ].map((b, i) => (
-                <div key={b.label} className="flex items-center gap-2">
-                  <div className="text-center">
-                    <span className="font-display font-bold text-[22px]" style={{ color: "#fbba30" }}>{pad(b.val)}</span>
-                    <p className="text-[10px] uppercase" style={{ color: "rgba(240,236,217,0.5)" }}>{b.label}</p>
-                  </div>
-                  {i < 3 && <span className="font-bold text-[18px] -mt-4" style={{ color: "#fbba30" }}>:</span>}
+          <p className="text-[11px] uppercase text-center mb-3" style={{ color: "rgba(240,236,217,0.5)" }}>
+            El evento comienza en
+          </p>
+          <div className="flex items-center justify-center gap-2">
+            {[
+              { val: countdown.days, label: "días" },
+              { val: countdown.hours, label: "horas" },
+              { val: countdown.mins, label: "min" },
+              { val: countdown.secs, label: "seg" },
+            ].map((b, i) => (
+              <div key={b.label} className="flex items-center gap-2">
+                <div className="text-center">
+                  <span className="font-display font-bold text-[22px]" style={{ color: "#fbba30" }}>{pad(b.val)}</span>
+                  <p className="text-[10px] uppercase" style={{ color: "rgba(240,236,217,0.5)" }}>{b.label}</p>
                 </div>
-              ))}
-            </div>
+                {i < 3 && <span className="font-bold text-[18px] -mt-4" style={{ color: "#fbba30" }}>:</span>}
+              </div>
+            ))}
           </div>
         </div>
       </div>
