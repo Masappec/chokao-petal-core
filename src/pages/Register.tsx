@@ -5,7 +5,7 @@ import ProgressIndicator from "@/components/ProgressIndicator";
 import ChokaoInput from "@/components/ChokaoInput";
 import ChokaoButton from "@/components/ChokaoButton";
 import PasswordStrength from "@/components/PasswordStrength";
-import { Mail, Lock } from "lucide-react";
+import { Mail, Lock, Lightbulb } from "lucide-react";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -44,10 +44,40 @@ const Register = () => {
           Te enviaremos un código de verificación
         </p>
 
-        <div className="flex items-start gap-2 bg-chokao-surface/60 rounded-xl px-3.5 py-2.5 mb-5 border border-chokao-border/50">
-          <Lock size={14} className="text-chokao-cream/40 mt-0.5 shrink-0" />
-          <p className="text-chokao-cream/50 text-[12px] font-body leading-relaxed">
-            La contraseña debe tener mínimo 8 caracteres, una mayúscula y un número
+        <div className="space-y-4">
+          <ChokaoInput
+            label="Correo electrónico"
+            icon={<Mail size={20} />}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={errors.email}
+          />
+          <div>
+            <ChokaoInput
+              label="Contraseña"
+              icon={<Lock size={20} />}
+              isPassword
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={errors.password}
+            />
+            <PasswordStrength password={password} />
+          </div>
+          <ChokaoInput
+            label="Confirmar contraseña"
+            icon={<Lock size={20} />}
+            isPassword
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            error={errors.confirm}
+          />
+        </div>
+
+        <div className="flex items-start gap-2.5 bg-chokao-yellow/8 rounded-xl px-3.5 py-3 mt-4 border border-chokao-yellow/20">
+          <Lightbulb size={16} className="text-chokao-yellow mt-0.5 shrink-0" />
+          <p className="text-chokao-cream/70 text-[12px] font-body leading-relaxed">
+            <span className="text-chokao-yellow font-semibold">Tip:</span> La contraseña debe tener mínimo 8 caracteres, una mayúscula y un número
           </p>
         </div>
 
