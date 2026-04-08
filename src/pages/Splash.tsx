@@ -55,13 +55,17 @@ const Splash = () => {
           />
         </div>
 
-        <h1 className="font-display font-bold text-[36px] text-foreground mt-4 tracking-tight">
-          Bienvenido a CHOKAO
-        </h1>
-        <p className="text-chokao-cream text-[15px] mt-1 text-center">
-          El evento del mejor cacao del mundo
+        <p className="text-chokao-cream/70 text-[14px] font-body tracking-[0.15em] uppercase mt-4">
+          ¡Bienvenido a
         </p>
-        <p className="text-chokao-cream/50 text-[12px] mt-1">
+        <h1 className="font-display font-bold text-[44px] text-transparent bg-clip-text bg-gradient-to-r from-chokao-yellow via-chokao-cream to-chokao-yellow leading-tight tracking-tight">
+          CHOKAO
+        </h1>
+        <p className="text-chokao-cream text-[16px] mt-1 text-center font-body font-medium leading-snug">
+          El evento del mejor<br />
+          <span className="text-chokao-yellow font-display font-semibold text-[18px]">cacao del mundo</span>
+        </p>
+        <p className="text-chokao-cream/40 text-[12px] mt-3 tracking-widest uppercase font-body">
           5ta Edición • Guayaquil, Ecuador
         </p>
       </div>
