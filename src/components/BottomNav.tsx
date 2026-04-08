@@ -11,7 +11,7 @@ interface BottomNavProps {
 const tabs = [
   { id: "home" as const, label: "Home", icon: Home },
   { id: "agenda" as const, label: "Agenda", icon: CalendarDays },
-  { id: "entradas" as const, label: "Entradas", icon: Ticket },
+  { id: "entradas" as const, label: "Mis Entradas", icon: Ticket },
   { id: "perfil" as const, label: "Perfil", icon: User },
   { id: "mas" as const, label: "Más", icon: GripHorizontal },
 ];
@@ -34,7 +34,7 @@ const BottomNav = ({ activeTab, onTabChange }: BottomNavProps) => {
   return (
     <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] z-50"
       style={{ backgroundColor: "#102132", borderTop: "1px solid #1e3448" }}>
-      <div className="flex items-center justify-around h-[64px] px-2" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      <div className="flex items-center justify-around h-[76px] px-2" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
           const isAnimating = animatingTab === tab.id;
