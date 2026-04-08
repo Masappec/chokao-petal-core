@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bell, Store, Star, Map, MessageCircle, Users } from "lucide-react";
+import { Bell, Store, Star, Map, MessageCircle, Users, LogIn, UserPlus } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
@@ -80,16 +80,18 @@ const Home = () => {
           <div className="flex gap-3">
             <button
               onClick={() => navigate("/login")}
-              className="flex-1 h-[40px] rounded-lg text-[13px] font-medium transition-transform active:scale-[0.97]"
-              style={{ color: "rgba(240,236,217,0.7)" }}
+              className="flex-1 flex items-center justify-center gap-2 h-[44px] rounded-xl text-[14px] font-semibold transition-transform active:scale-[0.97]"
+              style={{ backgroundColor: "#1a2f42", border: "1px solid #2a4a62", color: "#f0ecd9" }}
             >
+              <LogIn size={18} />
               Iniciar sesión
             </button>
             <button
               onClick={() => navigate("/register")}
-              className="flex-1 h-[40px] rounded-lg text-[13px] font-semibold transition-transform active:scale-[0.97]"
+              className="flex-1 flex items-center justify-center gap-2 h-[44px] rounded-xl text-[14px] font-bold transition-transform active:scale-[0.97]"
               style={{ backgroundColor: "#fbba30", color: "#102132" }}
             >
+              <UserPlus size={18} />
               Crear cuenta
             </button>
           </div>
