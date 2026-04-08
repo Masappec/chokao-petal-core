@@ -31,7 +31,6 @@ const ActivityDetail = () => {
         <h1 className="font-display font-bold text-[24px] text-foreground leading-tight">
           Taller: Temperado de Chocolate Artesanal
         </h1>
-        </div>
       </div>
 
       {/* Metadata */}
