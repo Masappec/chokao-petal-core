@@ -53,7 +53,7 @@ const Splash = () => {
         <ChokaoButton variant="ghost" fullWidth onClick={() => navigate("/login")}>
           Iniciar sesión
         </ChokaoButton>
-        <ChokaoButton variant="ghost" fullWidth onClick={() => navigate("/agenda")}>
+        <ChokaoButton variant="ghost" fullWidth onClick={() => navigate("/home")}>
           Continuar como invitado
         </ChokaoButton>
       </div>
