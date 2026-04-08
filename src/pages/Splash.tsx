@@ -56,10 +56,10 @@ const Splash = () => {
         </div>
 
         <h1 className="font-display font-bold text-[36px] text-foreground mt-4 tracking-tight">
-          CHOKAO
+          Bienvenido a CHOKAO
         </h1>
-        <p className="text-chokao-cream text-[15px] mt-1">
-          Feria del Cacao & Chocolate
+        <p className="text-chokao-cream text-[15px] mt-1 text-center">
+          El evento del mejor cacao del mundo
         </p>
         <p className="text-chokao-cream/50 text-[12px] mt-1">
           5ta Edición • Guayaquil, Ecuador
