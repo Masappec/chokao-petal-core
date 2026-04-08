@@ -47,7 +47,8 @@ const Home = () => {
   return (
     <div className="min-h-screen max-w-[390px] mx-auto pb-[100px] overflow-x-hidden relative"
       style={{ backgroundColor: "#102132", backgroundImage: `url(${cacaoPattern})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div className="absolute inset-0 bg-chokao-primary/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-chokao-primary/70 pointer-events-none z-0" />
+      <div className="relative z-10 flex flex-col min-h-screen">
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center h-[64px] px-5" style={{ backgroundColor: "#102132" }}>
         <ChokaoIcon size={28} />
