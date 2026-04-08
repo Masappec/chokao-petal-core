@@ -26,6 +26,7 @@ const Agenda = () => {
   const [activeDay, setActiveDay] = useState(1);
   const [activeCategory, setActiveCategory] = useState("Todos");
   const navigate = useNavigate();
+  const [moreOpen, setMoreOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-24">
