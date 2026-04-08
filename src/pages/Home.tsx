@@ -95,12 +95,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Quick Access */}
       <div className="px-5 mt-7">
