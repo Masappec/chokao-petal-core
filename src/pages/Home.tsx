@@ -4,7 +4,7 @@ import { Bell, Store, Star, Map, MessageCircle, Users } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
-import ActivityCard from "@/components/ActivityCard";
+import NewsFeed from "@/components/NewsFeed";
 
 const Home = () => {
   const navigate = useNavigate();
