@@ -1,5 +1,4 @@
 import { Home, CalendarDays, Compass, User } from "lucide-react";
-import ChokaoIcon from "./ChokaoIcon";
 
 interface BottomNavProps {
   activeTab: "home" | "agenda" | "explore" | "profile";
@@ -8,7 +7,7 @@ interface BottomNavProps {
 
 const BottomNav = ({ activeTab, onTabChange }: BottomNavProps) => {
   const tabs = [
-    { id: "home" as const, label: "Home", icon: null, isChokao: true },
+    { id: "home" as const, label: "Home", icon: Home },
     { id: "agenda" as const, label: "Agenda", icon: CalendarDays },
     { id: "explore" as const, label: "Explorar", icon: Compass },
     { id: "profile" as const, label: "Perfil", icon: User },
@@ -27,11 +26,7 @@ const BottomNav = ({ activeTab, onTabChange }: BottomNavProps) => {
                 isActive ? "text-chokao-yellow" : "text-chokao-cream/45"
               }`}
             >
-              {tab.isChokao ? (
-                <ChokaoIcon size={24} opacity={isActive ? 1 : 0.45} />
-              ) : (
-                tab.icon && <tab.icon size={24} strokeWidth={1.5} />
-              )}
+              {tab.icon && <tab.icon size={24} strokeWidth={1.5} />}
               <span className="text-[11px] font-medium">{tab.label}</span>
             </button>
           );
