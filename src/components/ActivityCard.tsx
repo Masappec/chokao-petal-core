@@ -30,8 +30,11 @@ const ActivityCard = ({
   return (
     <button
       onClick={onClick}
-      className="w-full bg-chokao-surface rounded-2xl p-4 text-left relative overflow-hidden transition-transform active:scale-[0.98]"
-      style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.35)" }}
+      className="w-full rounded-2xl p-4 text-left relative overflow-hidden transition-all duration-300 active:scale-[0.97] border border-chokao-border/30 hover:border-chokao-yellow/30 group"
+      style={{
+        background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(251,186,48,0.05) inset, 0 -1px 0 rgba(0,0,0,0.2) inset",
+      }}
     >
       {/* Watermark */}
       <div className="absolute bottom-2 right-2">
