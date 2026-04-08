@@ -3,7 +3,6 @@ import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
 import { useNavigate } from "react-router-dom";
 import mascotImg from "@/assets/chokao-mascot.png";
-import chokaoLogo from "@/assets/chokao-logo-text.png";
 
 const Splash = () => {
   const [lang, setLang] = useState<"ES" | "EN">("ES");
@@ -57,16 +56,13 @@ const Splash = () => {
         </div>
 
         <p className="text-chokao-cream/70 text-[14px] font-body tracking-[0.15em] uppercase mt-4">
-          ¡Bienvenido a
+          Bienvenido a
         </p>
-        <img
-          src={chokaoLogo}
-          alt="CHOKAO"
-          className="h-[40px] mt-1"
-        />
-        <p className="text-chokao-cream text-[16px] mt-1 text-center font-body font-medium leading-snug">
-          El evento del mejor<br />
-          <span className="text-chokao-yellow font-display font-semibold text-[18px]">cacao del mundo</span>
+        <h1 className="font-display font-extrabold text-[48px] text-chokao-cream leading-none tracking-[-0.02em] mt-1" style={{ fontStretch: 'condensed' }}>
+          CHOKAO
+        </h1>
+        <p className="text-chokao-cream text-[16px] mt-2 text-center font-body font-medium leading-snug">
+          El evento del mejor<br />cacao del mundo
         </p>
       </div>
 
