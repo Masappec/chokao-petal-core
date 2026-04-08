@@ -1,11 +1,10 @@
-import { useState } from "react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
 import { useNavigate } from "react-router-dom";
 import mascotImg from "@/assets/chokao-mascot.png";
 
 const Splash = () => {
-  const [lang, setLang] = useState<"ES" | "EN">("ES");
+  const navigate = useNavigate();
   const navigate = useNavigate();
 
   return (
