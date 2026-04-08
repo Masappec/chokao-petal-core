@@ -88,6 +88,12 @@ const Register = () => {
               Iniciar sesión
             </button>
           </p>
+          <button
+            onClick={() => navigate("/")}
+            className="w-full mt-3 h-[52px] rounded-2xl border border-chokao-border text-chokao-cream/70 font-body text-[15px] font-semibold hover:bg-chokao-surface transition-colors"
+          >
+            Cancelar
+          </button>
         </div>
       </div>
     </div>
