@@ -5,6 +5,7 @@ import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
 import NewsFeed from "@/components/NewsFeed";
+import cacaoPattern from "@/assets/cacao-pattern.png";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -44,7 +45,9 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-[100px] overflow-x-hidden">
+    <div className="min-h-screen max-w-[390px] mx-auto pb-[100px] overflow-x-hidden relative"
+      style={{ backgroundColor: "#102132", backgroundImage: `url(${cacaoPattern})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="absolute inset-0 bg-chokao-primary/70 pointer-events-none" />
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center h-[64px] px-5" style={{ backgroundColor: "#102132" }}>
         <ChokaoIcon size={28} />
