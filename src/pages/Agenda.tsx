@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MoreDrawer from "@/components/MoreDrawer";
 import AppHeader from "@/components/AppHeader";
 import BottomNav from "@/components/BottomNav";
 import CategoryChip from "@/components/CategoryChip";
