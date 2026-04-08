@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import AppHeader from "@/components/AppHeader";
 import CategoryChip from "@/components/CategoryChip";
-import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
 import ChokaoSeparator from "@/components/ChokaoSeparator";
 import { Clock, MapPin, Users } from "lucide-react";
+import tallerImg from "@/assets/taller-temperado.png";
 
 const ActivityDetail = () => {
   const navigate = useNavigate();
@@ -13,16 +13,14 @@ const ActivityDetail = () => {
     <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-28">
       <AppHeader variant="back" title="" onBack={() => navigate(-1)} />
 
-      {/* Hero area */}
-      <div
-        className="relative px-5 pt-6 pb-8"
-        style={{ background: "linear-gradient(180deg, #1a2f42 0%, #102132 100%)" }}
-      >
-        <div className="absolute top-4 right-4">
-          <ChokaoIcon size={40} opacity={0.2} />
-        </div>
+      {/* Hero image */}
+      <div className="w-full h-[200px] overflow-hidden">
+        <img src={tallerImg} alt="Taller de Temperado de Chocolate" className="w-full h-full object-cover" />
+      </div>
 
-        <div className="flex items-center gap-3 mb-4">
+      {/* Title area */}
+      <div className="px-5 pt-5 pb-4">
+        <div className="flex items-center gap-3 mb-3">
           <CategoryChip label="Taller" color="green" />
           <span className="text-chokao-cream/50 text-[12px]">90 min</span>
         </div>
