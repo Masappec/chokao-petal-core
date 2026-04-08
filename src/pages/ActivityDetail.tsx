@@ -14,16 +14,12 @@ const ActivityDetail = () => {
     <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-28">
       <AppHeader variant="back" title="" onBack={() => navigate(-1)} />
 
-      {/* Category logo */}
-      <div className="flex flex-col items-center pt-1 pb-2">
-        <div className="w-[100px] h-[100px] rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#f0ecd9" }}>
-          <img src={talleresLogo} alt="Talleres Especializados" className="w-[72px] h-auto" />
-        </div>
-      </div>
-
-      {/* Hero image */}
-      <div className="w-full h-[200px] overflow-hidden mx-5 rounded-2xl mt-2" style={{ width: "calc(100% - 40px)" }}>
+      {/* Hero image with category logo overlay */}
+      <div className="relative w-full overflow-hidden mx-5 rounded-2xl mt-2 h-[220px]" style={{ width: "calc(100% - 40px)" }}>
         <img src={tallerImg} alt="Taller de Temperado de Chocolate" className="w-full h-full object-cover" />
+        <div className="absolute top-3 left-3 w-[64px] h-[64px] rounded-full flex items-center justify-center shadow-lg border-2 border-white/30" style={{ backgroundColor: "#f0ecd9", boxShadow: "0 4px 16px rgba(0,0,0,0.35)" }}>
+          <img src={talleresLogo} alt="Talleres Especializados" className="w-[44px] h-auto" />
+        </div>
       </div>
 
       {/* Title area */}
