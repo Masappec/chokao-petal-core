@@ -4,11 +4,11 @@ import AppHeader from "@/components/AppHeader";
 import ProgressIndicator from "@/components/ProgressIndicator";
 import ChokaoButton from "@/components/ChokaoButton";
 import ChokaoIcon from "@/components/ChokaoIcon";
-import { Sprout, Ship, ChefHat, UserRound, Store } from "lucide-react";
+import { TreePalm, Handshake, ChefHat, UserRound, Store } from "lucide-react";
 
 const roles = [
-  { id: "productor", label: "Productor", desc: "Cultivo y producción de cacao", icon: Sprout },
-  { id: "comprador", label: "Comprador / Exportador", desc: "Comercialización nacional e internacional", icon: Ship },
+  { id: "productor", label: "Productor", desc: "Cultivo y producción de cacao", icon: TreePalm },
+  { id: "comprador", label: "Comprador / Exportador", desc: "Comercialización nacional e internacional", icon: Handshake },
   { id: "chocolatero", label: "Chocolatero / Chef", desc: "Elaboración de chocolate y gastronomía", icon: ChefHat },
   { id: "visitante", label: "Visitante", desc: "Asistente general al evento", icon: UserRound },
   { id: "expositor", label: "Expositor", desc: "Empresa o marca participante en la feria", icon: Store },
@@ -72,9 +72,7 @@ const RegisterRole = () => {
         <h2 className="font-display font-bold text-[24px] text-white leading-tight">
           ¿Cómo participas en el evento?
         </h2>
-        <p className="text-chokao-cream/60 text-[14px] font-body mt-1 mb-5">
-          Esto nos ayuda a mostrarte contenido relevante
-        </p>
+        <div className="mb-5" />
 
         <div className="space-y-3">
           {roles.map((role) => {
