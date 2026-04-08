@@ -31,13 +31,15 @@ const Splash = () => {
           />
         </div>
 
-        <ChokaoIcon size={40} opacity={0.8} className="mt-4" />
-        <p className="text-chokao-cream/70 text-[14px] font-body tracking-[0.15em] uppercase mt-2">
+        <p className="text-chokao-cream/70 text-[14px] font-body tracking-[0.15em] uppercase mt-4">
           Bienvenido a
         </p>
-        <h1 className="font-display font-extrabold text-[48px] text-chokao-cream leading-none tracking-[-0.02em] mt-1" style={{ fontStretch: 'condensed' }}>
-          CHOKAO
-        </h1>
+        <div className="flex items-center gap-2 mt-1">
+          <ChokaoIcon size={40} opacity={0.8} />
+          <h1 className="font-display font-extrabold text-[48px] text-chokao-cream leading-none tracking-[-0.02em]" style={{ fontStretch: 'condensed' }}>
+            CHOKAO
+          </h1>
+        </div>
         <p className="text-chokao-cream text-[16px] mt-2 text-center font-body font-medium leading-snug">
           El evento del mejor<br />cacao del mundo
         </p>
