@@ -15,7 +15,7 @@ const AppHeader = ({ variant = "brand", title, onBack, showNotification = false 
         <>
           <div className="flex items-center gap-2">
             <ChokaoIcon size={28} />
-            <span className="font-display font-bold text-[20px] text-foreground tracking-tight">
+            <span className="font-display font-bold text-[20px] text-chokao-cream tracking-tight">
               CHOKAO
             </span>
           </div>
