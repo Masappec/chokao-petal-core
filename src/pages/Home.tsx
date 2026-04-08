@@ -188,57 +188,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Sponsors */}
-      <div className="px-5 mt-7">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="font-semibold text-[18px] text-white">Patrocinadores</h2>
-          <button className="text-[13px] font-medium" style={{ color: "#fbba30" }}>Ver todos →</button>
-        </div>
-
-        {/* Platinum */}
-        <div className="rounded-2xl p-5 relative"
-          style={{ backgroundColor: "#1a2f42", border: "1px solid rgba(251,186,48,0.25)" }}>
-          <span className="absolute top-4 right-4 text-[11px] font-bold uppercase px-3 py-1 rounded-full"
-            style={{ backgroundColor: "rgba(251,186,48,0.15)", color: "#fbba30" }}>
-            Platinum
-          </span>
-          <div className="flex flex-col items-center pt-4">
-            <div className="w-[80px] h-[40px] rounded flex items-center justify-center"
-              style={{ backgroundColor: "rgba(240,236,217,0.08)" }}>
-              <span className="text-[12px] font-bold" style={{ color: "rgba(240,236,217,0.3)" }}>LOGO</span>
-            </div>
-            <p className="text-white font-semibold text-[15px] mt-3">Empresa Nacional</p>
-            <p className="text-[12px] mt-1" style={{ color: "rgba(240,236,217,0.5)" }}>Líder en cacao fino de aroma</p>
-          </div>
-        </div>
-
-        {/* Gold */}
-        <div className="flex gap-3 overflow-x-auto no-scrollbar mt-3">
-          {["Cacao Premium", "ChocoAndino"].map((name) => (
-            <div key={name} className="min-w-[150px] flex-shrink-0 rounded-[14px] p-4"
-              style={{ backgroundColor: "#1a2f42" }}>
-              <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded-full"
-                style={{ backgroundColor: "rgba(251,186,48,0.15)", color: "#fbba30" }}>
-                Gold
-              </span>
-              <div className="flex items-center justify-center mt-3">
-                <div className="w-[50px] h-[25px] rounded flex items-center justify-center"
-                  style={{ backgroundColor: "rgba(240,236,217,0.08)" }}>
-                  <span className="text-[10px] font-bold" style={{ color: "rgba(240,236,217,0.3)" }}>LOGO</span>
-                </div>
-              </div>
-              <p className="text-white font-semibold text-[13px] mt-2 text-center">{name}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="mt-8 flex flex-col items-center">
-        <ChokaoIcon size={28} opacity={0.3} />
-        <p className="text-[11px] uppercase mt-2" style={{ color: "rgba(240,236,217,0.25)" }}>CHOKAO 2025</p>
-      </div>
-
       <BottomNav activeTab="home" onTabChange={handleTab} />
       <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />
     </div>
