@@ -49,8 +49,8 @@ const Splash = () => {
           <img
             src={mascotImg}
             alt="Mascota CHOKAO"
-            width={220}
-            height={280}
+            width={280}
+            height={340}
             className="animate-mascot-wave drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
           />
         </div>
