@@ -81,35 +81,8 @@ const Register = () => {
           </p>
         </div>
 
-        <div className="space-y-4">
-          <ChokaoInput
-            label="Correo electrónico"
-            icon={<Mail size={20} />}
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            error={errors.email}
-          />
-          <div>
-            <ChokaoInput
-              label="Contraseña"
-              icon={<Lock size={20} />}
-              isPassword
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              error={errors.password}
-            />
-            <PasswordStrength password={password} />
-          </div>
-          <ChokaoInput
-            label="Confirmar contraseña"
-            icon={<Lock size={20} />}
-            isPassword
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            error={errors.confirm}
-          />
-        </div>
+
+
 
         <div className="mt-auto pb-8 pt-6">
           <ChokaoButton fullWidth onClick={handleContinue}>
