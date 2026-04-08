@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bell, MapPin, CalendarDays, Calendar, Store, Star, Ticket, Map, MessageCircle } from "lucide-react";
+import { Bell, Calendar, Store, Star, Ticket, Map, MessageCircle } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
