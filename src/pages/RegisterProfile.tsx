@@ -4,7 +4,23 @@ import AppHeader from "@/components/AppHeader";
 import ProgressIndicator from "@/components/ProgressIndicator";
 import ChokaoInput from "@/components/ChokaoInput";
 import ChokaoButton from "@/components/ChokaoButton";
-import { User, Phone, Globe, Building2, Camera } from "lucide-react";
+import { User, UserCheck, Smartphone, Globe, Building2, Camera, ChevronDown } from "lucide-react";
+
+const COUNTRIES = [
+  { code: "+593", name: "Ecuador", flag: "🇪🇨" },
+  { code: "+57", name: "Colombia", flag: "🇨🇴" },
+  { code: "+51", name: "Perú", flag: "🇵🇪" },
+  { code: "+56", name: "Chile", flag: "🇨🇱" },
+  { code: "+54", name: "Argentina", flag: "🇦🇷" },
+  { code: "+52", name: "México", flag: "🇲🇽" },
+  { code: "+1", name: "Estados Unidos", flag: "🇺🇸" },
+  { code: "+34", name: "España", flag: "🇪🇸" },
+  { code: "+55", name: "Brasil", flag: "🇧🇷" },
+  { code: "+58", name: "Venezuela", flag: "🇻🇪" },
+  { code: "+591", name: "Bolivia", flag: "🇧🇴" },
+  { code: "+595", name: "Paraguay", flag: "🇵🇾" },
+  { code: "+598", name: "Uruguay", flag: "🇺🇾" },
+];
 
 const RegisterProfile = () => {
   const navigate = useNavigate();
@@ -14,6 +30,7 @@ const RegisterProfile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneCode, setPhoneCode] = useState("+593");
   const [country, setCountry] = useState("");
   const [company, setCompany] = useState("");
 
@@ -54,25 +71,63 @@ const RegisterProfile = () => {
           />
           <ChokaoInput
             label="Apellido"
-            icon={<User size={20} />}
+            icon={<UserCheck size={20} />}
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
-          <div className="relative">
-            <ChokaoInput
-              label="Teléfono / WhatsApp"
-              icon={<Phone size={20} />}
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
+
+          {/* País select */}
+          <div className="relative flex items-center gap-3 h-[56px] rounded-2xl px-4 bg-chokao-surface border border-chokao-border transition-colors duration-200 focus-within:border-chokao-cream/30">
+            <Globe size={20} className="text-chokao-cream/40 shrink-0" />
+            <div className="flex-1 relative">
+              <select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                className="peer w-full bg-transparent text-white text-[15px] font-body outline-none pt-3 appearance-none cursor-pointer"
+              >
+                <option value="" disabled hidden></option>
+                {COUNTRIES.map((c) => (
+                  <option key={c.code} value={c.name} className="bg-chokao-primary text-white">
+                    {c.flag} {c.name}
+                  </option>
+                ))}
+              </select>
+              <label className="absolute left-0 top-1/2 -translate-y-1/2 text-chokao-cream/50 text-[14px] font-body pointer-events-none transition-all duration-200 peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-chokao-cream/60 peer-[:not([value=''])]:top-2 peer-[:not([value=''])]:text-[11px]"
+                style={country ? { top: '8px', fontSize: '11px' } : {}}
+              >
+                País de origen
+              </label>
+            </div>
+            <ChevronDown size={16} className="text-chokao-cream/40 shrink-0" />
           </div>
-          <ChokaoInput
-            label="País de origen"
-            icon={<Globe size={20} />}
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-          />
+
+          {/* Celular con código de país */}
+          <div className="flex gap-2">
+            <div className="relative flex items-center h-[56px] rounded-2xl px-3 bg-chokao-surface border border-chokao-border w-[100px] shrink-0">
+              <select
+                value={phoneCode}
+                onChange={(e) => setPhoneCode(e.target.value)}
+                className="w-full bg-transparent text-white text-[14px] font-body outline-none appearance-none cursor-pointer"
+              >
+                {COUNTRIES.map((c) => (
+                  <option key={c.code} value={c.code} className="bg-chokao-primary text-white">
+                    {c.flag} {c.code}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={14} className="text-chokao-cream/40 shrink-0 ml-1" />
+            </div>
+            <div className="flex-1">
+              <ChokaoInput
+                label="Celular"
+                icon={<Smartphone size={20} />}
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
+          </div>
+
           <ChokaoInput
             label="Empresa / Organización (Opcional)"
             icon={<Building2 size={20} />}
