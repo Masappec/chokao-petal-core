@@ -40,9 +40,16 @@ const Register = () => {
         <h2 className="font-display font-bold text-[24px] text-white leading-tight">
           ¿Cuál es tu correo?
         </h2>
-        <p className="text-chokao-cream/60 text-[14px] font-body mt-1 mb-6">
+        <p className="text-chokao-cream/60 text-[14px] font-body mt-1 mb-4">
           Te enviaremos un código de verificación
         </p>
+
+        <div className="flex items-start gap-2 bg-chokao-surface/60 rounded-xl px-3.5 py-2.5 mb-5 border border-chokao-border/50">
+          <Lock size={14} className="text-chokao-cream/40 mt-0.5 shrink-0" />
+          <p className="text-chokao-cream/50 text-[12px] font-body leading-relaxed">
+            La contraseña debe tener mínimo 8 caracteres, una mayúscula y un número
+          </p>
+        </div>
 
         <div className="space-y-4">
           <ChokaoInput
@@ -73,10 +80,6 @@ const Register = () => {
             error={errors.confirm}
           />
         </div>
-
-        <p className="text-chokao-cream/50 text-[12px] font-body mt-3">
-          Mínimo 8 caracteres, una mayúscula y un número
-        </p>
 
         <div className="mt-auto pb-8 pt-6">
           <ChokaoButton fullWidth onClick={handleContinue}>
