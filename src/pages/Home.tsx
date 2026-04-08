@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bell, Calendar, Store, Star, Ticket, Map, MessageCircle } from "lucide-react";
+import { Bell, Store, Star, Map, MessageCircle, Users } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
@@ -28,12 +28,11 @@ const Home = () => {
   }, []);
 
   const quickAccess = [
-    { icon: Calendar, label: "Agenda", sub: "Ver programa", color: "#fbba30" },
     { icon: Store, label: "Expositores", sub: "Feria comercial", color: "#aab93e" },
     { icon: Star, label: "Patrocinadores", sub: "Marcas del evento", color: "#fbba30" },
-    { icon: Ticket, label: "Mis Entradas", sub: "Ver mis tickets", color: "#aab93e" },
     { icon: Map, label: "Mapa", sub: "Plano del evento", color: "#f0ecd9" },
     { icon: MessageCircle, label: "Soporte", sub: "Ayuda rápida", color: "#aab93e" },
+    { icon: Users, label: "Networking", sub: "Conectar", color: "#fbba30" },
   ];
 
   const pad = (n: number) => String(n).padStart(2, "0");
@@ -121,7 +120,7 @@ const Home = () => {
             Ver agenda →
           </button>
         </div>
-        <div className="flex gap-3 overflow-x-auto no-scrollbar pl-5 pr-5">
+        <div className="flex gap-3 overflow-x-auto no-scrollbar px-5">
           <div className="min-w-[280px] flex-shrink-0">
             <ActivityCard
               title="Maridaje de Chocolate y Café de Especialidad"
