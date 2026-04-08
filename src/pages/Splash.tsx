@@ -2,6 +2,7 @@ import { useState } from "react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
 import { useNavigate } from "react-router-dom";
+import mascotImg from "@/assets/chokao-mascot.png";
 
 const Splash = () => {
   const [lang, setLang] = useState<"ES" | "EN">("ES");
@@ -42,11 +43,19 @@ const Splash = () => {
         </div>
       </div>
 
-      {/* Main content */}
+      {/* Mascot with wave animation */}
       <div className="relative z-10 flex flex-col items-center px-10">
-        <ChokaoIcon size={120} />
+        <div className="animate-mascot-entrance">
+          <img
+            src={mascotImg}
+            alt="Mascota CHOKAO"
+            width={220}
+            height={280}
+            className="animate-mascot-wave drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
+          />
+        </div>
 
-        <h1 className="font-display font-bold text-[36px] text-foreground mt-6 tracking-tight">
+        <h1 className="font-display font-bold text-[36px] text-foreground mt-4 tracking-tight">
           CHOKAO
         </h1>
         <p className="text-chokao-cream text-[15px] mt-1">
@@ -58,7 +67,7 @@ const Splash = () => {
       </div>
 
       {/* Buttons */}
-      <div className="relative z-10 w-full px-10 mt-16 flex flex-col gap-3">
+      <div className="relative z-10 w-full px-10 mt-12 flex flex-col gap-3">
         <ChokaoButton fullWidth onClick={() => navigate("/agenda")}>
           Registrarse
         </ChokaoButton>
