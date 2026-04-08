@@ -1,4 +1,4 @@
-import { X, Building2, Handshake, Map, Users, ScanLine, ClipboardList, MessageCircle, Star, LogOut } from "lucide-react";
+import { X, Store, Star, Map, Users, ScanLine, ClipboardList, MessageCircle, LogOut } from "lucide-react";
 
 interface MoreDrawerProps {
   open: boolean;
@@ -6,8 +6,8 @@ interface MoreDrawerProps {
 }
 
 const items = [
-  { icon: Building2, label: "Expositores", color: "#aab93e" },
-  { icon: Handshake, label: "Patrocinadores", color: "#fbba30" },
+  { icon: Store, label: "Expositores", color: "#aab93e" },
+  { icon: Star, label: "Patrocinadores", color: "#fbba30" },
   { icon: Map, label: "Mapa del evento", color: "#f0ecd9" },
   { icon: Users, label: "Networking", color: "#fbba30" },
   { icon: ScanLine, label: "Escanear contacto", color: "#aab93e", badge: "Nuevo" },
