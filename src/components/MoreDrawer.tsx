@@ -89,7 +89,7 @@ const MoreDrawer = ({ open, onClose }: MoreDrawerProps) => {
                       {item.badge}
                     </span>
                   )}
-                  {item.rightText ? (
+                  {'rightText' in item && item.rightText ? (
                     <span className="text-[13px]" style={{ color: "rgba(240,236,217,0.5)" }}>{item.rightText}</span>
                   ) : !item.badge ? (
                     <span className="text-[14px]" style={{ color: "rgba(240,236,217,0.3)" }}>›</span>
