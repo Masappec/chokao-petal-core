@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    navigate("/agenda");
+    navigate("/dashboard");
   };
 
   return (

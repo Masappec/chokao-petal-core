@@ -22,7 +22,7 @@ const RegisterRole = () => {
   const handleFinish = () => {
     if (!selected) return;
     setShowSuccess(true);
-    setTimeout(() => navigate("/agenda"), 2500);
+    setTimeout(() => navigate("/dashboard"), 2500);
   };
 
   if (showSuccess) {
