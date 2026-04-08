@@ -1,4 +1,4 @@
-import { X, Building2, Handshake, Map, Users, ScanLine, ClipboardList, Globe, MessageCircle, Star, LogOut } from "lucide-react";
+import { X, Building2, Handshake, Map, Users, ScanLine, ClipboardList, MessageCircle, Star, LogOut } from "lucide-react";
 
 interface MoreDrawerProps {
   open: boolean;
@@ -25,7 +25,6 @@ const sections = [
     label: "INFORMACIÓN",
     items: [
       { icon: ClipboardList, label: "Sobre CHOKAO", color: "#f0ecd9" },
-      { icon: Globe, label: "Idioma", color: "#f0ecd9", rightText: "ES" },
     ],
   },
   {
@@ -41,7 +40,7 @@ const MoreDrawer = ({ open, onClose }: MoreDrawerProps) => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[60]">
+    <div className="fixed inset-0 z-[60] max-w-[390px] mx-auto">
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60" onClick={onClose} />
 
@@ -90,9 +89,7 @@ const MoreDrawer = ({ open, onClose }: MoreDrawerProps) => {
                       {item.badge}
                     </span>
                   )}
-                  {item.rightText ? (
-                    <span className="text-[13px]" style={{ color: "rgba(240,236,217,0.5)" }}>{item.rightText}</span>
-                  ) : !item.badge ? (
+                  {!item.badge ? (
                     <span className="text-[14px]" style={{ color: "rgba(240,236,217,0.3)" }}>›</span>
                   ) : null}
                 </button>
