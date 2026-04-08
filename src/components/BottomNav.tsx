@@ -1,4 +1,4 @@
-import { Home, CalendarDays, Ticket, GripHorizontal } from "lucide-react";
+import { Home, CalendarDays, BadgeCheck, GripHorizontal } from "lucide-react";
 import { useState, useEffect } from "react";
 
 type TabId = "home" | "agenda" | "entradas" | "perfil" | "mas";
