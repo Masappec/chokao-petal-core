@@ -112,7 +112,7 @@ const VerifyOTP = () => {
             Verificar
           </ChokaoButton>
           <p className="text-chokao-cream/40 text-[12px] font-body mt-4 text-center">
-            ¿Código incorrecto? Revisa tu carpeta de spam
+            Si no recibes el código, revisa tu carpeta de spam
           </p>
         </div>
       </div>
