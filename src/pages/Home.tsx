@@ -112,7 +112,7 @@ const Home = () => {
       </div>
 
       {/* Today Activities */}
-      <div className="mt-7">
+      <div className="mt-7 overflow-visible">
         <div className="flex items-center justify-between px-5 mb-4">
           <h2 className="font-semibold text-[18px] text-white">Hoy en CHOKAO</h2>
           <button className="text-[13px] font-medium" style={{ color: "#fbba30" }}
@@ -120,41 +120,43 @@ const Home = () => {
             Ver agenda →
           </button>
         </div>
-        <div className="flex gap-3 overflow-x-auto no-scrollbar px-5">
-          <div className="min-w-[280px] flex-shrink-0">
-            <ActivityCard
-              title="Maridaje de Chocolate y Café de Especialidad"
-              time="9:00 AM"
-              category="Congreso"
-              categoryColor="green"
-              speaker="Chef María Andrade"
-              spots={{ taken: 45, total: 90 }}
-              onClick={() => navigate("/activity")}
-            />
-          </div>
-          <div className="min-w-[280px] flex-shrink-0">
-            <ActivityCard
-              title="Temperado de Chocolate Artesanal"
-              time="11:00 AM"
-              category="Taller"
-              categoryColor="green"
-              speaker="Maestro Carlos Vera"
-              price="$25"
-              spots={{ taken: 18, total: 20 }}
-              urgent
-              onClick={() => navigate("/activity")}
-            />
-          </div>
-          <div className="min-w-[280px] flex-shrink-0">
-            <ActivityCard
-              title="Rueda de Negocios Internacional"
-              time="2:00 PM"
-              category="Negocios"
-              categoryColor="green"
-              speaker="ANECACAO"
-              spots={{ taken: 30, total: 50 }}
-              onClick={() => navigate("/activity")}
-            />
+        <div className="w-full overflow-x-auto no-scrollbar">
+          <div className="flex gap-3 px-5 w-max">
+            <div className="w-[260px] flex-shrink-0">
+              <ActivityCard
+                title="Maridaje de Chocolate y Café de Especialidad"
+                time="9:00 AM"
+                category="Congreso"
+                categoryColor="green"
+                speaker="Chef María Andrade"
+                spots={{ taken: 45, total: 90 }}
+                onClick={() => navigate("/activity")}
+              />
+            </div>
+            <div className="w-[260px] flex-shrink-0">
+              <ActivityCard
+                title="Temperado de Chocolate Artesanal"
+                time="11:00 AM"
+                category="Taller"
+                categoryColor="green"
+                speaker="Maestro Carlos Vera"
+                price="$25"
+                spots={{ taken: 18, total: 20 }}
+                urgent
+                onClick={() => navigate("/activity")}
+              />
+            </div>
+            <div className="w-[260px] flex-shrink-0 mr-5">
+              <ActivityCard
+                title="Rueda de Negocios Internacional"
+                time="2:00 PM"
+                category="Negocios"
+                categoryColor="green"
+                speaker="ANECACAO"
+                spots={{ taken: 30, total: 50 }}
+                onClick={() => navigate("/activity")}
+              />
+            </div>
           </div>
         </div>
       </div>
