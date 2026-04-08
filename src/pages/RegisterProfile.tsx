@@ -32,9 +32,19 @@ const RegisterProfile = () => {
   const [phone, setPhone] = useState("");
   const [phoneCode, setPhoneCode] = useState("+593");
   const [company, setCompany] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validate = () => {
+    const e: Record<string, string> = {};
+    if (!firstName.trim()) e.firstName = "El nombre es obligatorio";
+    if (!lastName.trim()) e.lastName = "El apellido es obligatorio";
+    if (phone && !/^\d{7,15}$/.test(phone)) e.phone = "Número de celular inválido";
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
 
   const handleContinue = () => {
-    if (!firstName.trim() || !lastName.trim()) return;
+    if (!validate()) return;
     navigate("/register/role", { state: { email, firstName, lastName } });
   };
 
@@ -66,13 +76,15 @@ const RegisterProfile = () => {
             label="Nombre"
             icon={<User size={20} />}
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => { setFirstName(e.target.value); setErrors(prev => ({ ...prev, firstName: "" })); }}
+            error={errors.firstName}
           />
           <ChokaoInput
             label="Apellido"
             icon={<User size={20} />}
             value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => { setLastName(e.target.value); setErrors(prev => ({ ...prev, lastName: "" })); }}
+            error={errors.lastName}
           />
 
           {/* Celular con código de país */}
@@ -97,7 +109,8 @@ const RegisterProfile = () => {
                 icon={<Smartphone size={20} />}
                 type="tel"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => { setPhone(e.target.value); setErrors(prev => ({ ...prev, phone: "" })); }}
+                error={errors.phone}
               />
             </div>
           </div>
