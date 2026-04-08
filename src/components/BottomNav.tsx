@@ -47,7 +47,7 @@ const BottomNav = ({ activeTab, onTabChange }: BottomNavProps) => {
                 transform: isAnimating ? "scale(0.95)" : "scale(1)",
               }}
             >
-              <tab.icon size={24} strokeWidth={1.5} fill={isActive ? "currentColor" : "none"} />
+              <tab.icon size={tab.id === "entradas" ? 26 : 24} strokeWidth={1.5} fill={isActive ? "currentColor" : "none"} />
               <span className="text-[11px] font-medium">{tab.label}</span>
             </button>
           );
