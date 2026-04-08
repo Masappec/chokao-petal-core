@@ -30,7 +30,7 @@ const Agenda = () => {
 
   return (
     <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-24">
-      <AppHeader variant="brand" title="Agenda" showNotification />
+      <AppHeader variant="brand" title="Agenda" />
 
       {/* Day selector */}
       <div className="flex border-b border-chokao-border/30">
