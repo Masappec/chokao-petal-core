@@ -129,16 +129,15 @@ const Home = () => {
       </div>
 
       {/* Quick Access */}
-      <div className="px-5 mt-7">
-        <h2 className="font-semibold text-[18px] text-white mb-4">Explorar</h2>
-        <div className="grid grid-cols-3 gap-3">
+      <div className="px-5 mt-6">
+        <h2 className="font-semibold text-[18px] text-white mb-3">Explorar</h2>
+        <div className="grid grid-cols-5 gap-2">
           {quickAccess.map((item) => (
             <button key={item.label}
-              className="flex flex-col items-center justify-center aspect-square rounded-2xl p-4 transition-all active:scale-[0.97] border border-chokao-border/30 hover:border-chokao-yellow/30"
-              style={{ background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)", boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(251,186,48,0.05) inset" }}>
-              <item.icon size={32} strokeWidth={1.5} style={{ color: item.color }} />
-              <span className="text-white font-semibold text-[13px] mt-2.5">{item.label}</span>
-              <span className="text-[11px] mt-0.5" style={{ color: "rgba(240,236,217,0.5)" }}>{item.sub}</span>
+              className="flex flex-col items-center justify-center gap-1.5 rounded-xl py-2.5 px-1 transition-all active:scale-[0.97] border border-chokao-border/30 hover:border-chokao-yellow/30"
+              style={{ background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)", boxShadow: "0 2px 12px rgba(0,0,0,0.3), 0 1px 0 rgba(251,186,48,0.05) inset" }}>
+              <item.icon size={22} strokeWidth={1.5} style={{ color: item.color }} />
+              <span className="text-white font-medium text-[10px] leading-tight text-center">{item.label}</span>
             </button>
           ))}
         </div>
