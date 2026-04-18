@@ -1,4 +1,4 @@
-import { Home, CalendarDays, TicketCheck, GripHorizontal } from "lucide-react";
+import { Home, CalendarDays, TicketCheck, User, GripHorizontal } from "lucide-react";
 import { useState, useEffect } from "react";
 
 type TabId = "home" | "agenda" | "entradas" | "perfil" | "mas";
@@ -11,7 +11,8 @@ interface BottomNavProps {
 const tabs = [
   { id: "home" as const, label: "Home", icon: Home },
   { id: "agenda" as const, label: "Agenda", icon: CalendarDays },
-  { id: "entradas" as const, label: "Mis Entradas", icon: TicketCheck },
+  { id: "entradas" as const, label: "Entradas", icon: TicketCheck },
+  { id: "perfil" as const, label: "Perfil", icon: User },
   { id: "mas" as const, label: "Más", icon: GripHorizontal },
 ];
 
