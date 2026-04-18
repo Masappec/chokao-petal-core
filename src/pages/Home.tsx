@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bell, Store, Star, Map, MessageCircle, Users, LogIn, UserPlus } from "lucide-react";
+import { Bell, Store, Star, Map, MessageCircle, Users, LogIn, UserPlus, User } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import BottomNav from "@/components/BottomNav";
 import MoreDrawer from "@/components/MoreDrawer";
 import NewsFeed from "@/components/NewsFeed";
+import EventBanner from "@/components/EventBanner";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import cacaoPattern from "@/assets/cacao-pattern.png";
 
 const Home = () => {
@@ -54,7 +61,7 @@ const Home = () => {
         <ChokaoIcon size={28} />
         <span className="ml-2 font-display font-bold text-[18px] text-white tracking-tight">CHOKAO</span>
         <div className="ml-auto flex items-center gap-3">
-          {isLoggedIn && (
+          {isLoggedIn ? (
             <>
               <button className="relative" style={{ color: "rgba(240,236,217,0.7)" }}>
                 <Bell size={24} strokeWidth={1.5} />
@@ -65,42 +72,54 @@ const Home = () => {
                 MR
               </div>
             </>
+          ) : (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className="flex items-center gap-1.5 h-9 px-3.5 rounded-full text-[13px] font-bold transition-transform active:scale-[0.97]"
+                  style={{ backgroundColor: "#fbba30", color: "#102132" }}
+                  aria-label="Entrar o crear cuenta"
+                >
+                  <User size={16} strokeWidth={2.2} />
+                  Entrar
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                sideOffset={8}
+                className="w-52 border-chokao-border/40"
+                style={{ background: "linear-gradient(145deg, #1e3a52, #162a3c)", color: "#f0ecd9" }}
+              >
+                <DropdownMenuItem
+                  onClick={() => navigate("/login")}
+                  className="cursor-pointer focus:bg-chokao-yellow/10 focus:text-chokao-cream gap-2 py-2.5"
+                >
+                  <LogIn size={16} />
+                  Iniciar sesión
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => navigate("/register")}
+                  className="cursor-pointer focus:bg-chokao-yellow/10 focus:text-chokao-cream gap-2 py-2.5"
+                >
+                  <UserPlus size={16} />
+                  Crear cuenta
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           )}
         </div>
       </header>
 
-      {/* Greeting / Auth */}
-      {isLoggedIn ? (
-        <div className="px-5 pt-6 pb-2">
+      {/* Greeting (solo si logueado) */}
+      {isLoggedIn && (
+        <div className="px-5 pt-5 pb-1">
           <p className="text-[13px]" style={{ color: "rgba(240,236,217,0.6)" }}>Bienvenido de vuelta</p>
-          <h1 className="font-display font-bold text-[24px] text-white mt-1">Hola, María 👋</h1>
-        </div>
-      ) : (
-        <div className="px-5 pt-6 pb-2">
-          <h1 className="font-display font-bold text-[22px] text-white">Bienvenido a CHOKAO</h1>
-          <p className="text-[13px] mt-1 mb-5" style={{ color: "rgba(240,236,217,0.6)" }}>
-            Inicia sesión o crea tu cuenta para acceder a todo el evento
-          </p>
-          <div className="flex gap-3">
-            <button
-              onClick={() => navigate("/login")}
-              className="flex-1 flex items-center justify-center gap-2 h-[44px] rounded-xl text-[14px] font-semibold transition-all active:scale-[0.97] border border-chokao-border/30 hover:border-chokao-yellow/30"
-              style={{ background: "linear-gradient(145deg, #1e3a52, #1a2f42)", boxShadow: "0 4px 20px rgba(0,0,0,0.35)", color: "#f0ecd9" }}
-            >
-              <LogIn size={18} />
-              Iniciar sesión
-            </button>
-            <button
-              onClick={() => navigate("/register")}
-              className="flex-1 flex items-center justify-center gap-2 h-[44px] rounded-xl text-[14px] font-bold transition-transform active:scale-[0.97]"
-              style={{ backgroundColor: "#fbba30", color: "#102132" }}
-            >
-              <UserPlus size={18} />
-              Crear cuenta
-            </button>
-          </div>
+          <h1 className="font-display font-bold text-[22px] text-white mt-0.5">Hola, María 👋</h1>
         </div>
       )}
+
+      {/* Event Banner Carousel */}
+      <EventBanner />
 
       {/* Countdown Banner */}
       <div className="mx-5 mt-4 rounded-[20px] overflow-hidden relative border border-chokao-border/30"
