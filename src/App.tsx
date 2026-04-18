@@ -17,6 +17,8 @@ import ForgotPassword from "./pages/ForgotPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
 import Profile from "./pages/Profile.tsx";
 import EditProfile from "./pages/EditProfile.tsx";
+import MyQR from "./pages/MyQR.tsx";
+import ScanContact from "./pages/ScanContact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -42,6 +44,8 @@ const App = () => (
           <Route path="/activity" element={<ActivityDetail />} />
           <Route path="/perfil" element={<Profile />} />
           <Route path="/perfil/editar" element={<EditProfile />} />
+          <Route path="/perfil/qr" element={<MyQR />} />
+          <Route path="/escanear" element={<ScanContact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
