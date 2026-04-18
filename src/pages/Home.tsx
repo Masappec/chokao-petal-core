@@ -48,6 +48,7 @@ const Home = () => {
 
   const handleTab = (tab: string) => {
     if (tab === "agenda") navigate("/agenda");
+    if (tab === "perfil") navigate("/perfil");
     if (tab === "mas") setMoreOpen(true);
   };
 
