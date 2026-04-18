@@ -122,25 +122,25 @@ const Home = () => {
       <EventBanner />
 
       {/* Countdown Banner */}
-      <div className="mx-5 mt-4 rounded-[20px] overflow-hidden relative border border-chokao-border/30"
-        style={{ background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)", boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(251,186,48,0.05) inset" }}>
-        <div className="relative p-5">
-          <p className="text-[11px] uppercase text-center mb-3" style={{ color: "rgba(240,236,217,0.5)" }}>
-            El evento comienza en
+      <div className="mx-5 mt-3 rounded-full overflow-hidden relative border border-chokao-border/30"
+        style={{ background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)", boxShadow: "0 2px 12px rgba(0,0,0,0.35), 0 1px 0 rgba(251,186,48,0.05) inset" }}>
+        <div className="flex items-center justify-between px-4 py-2">
+          <p className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: "rgba(240,236,217,0.55)" }}>
+            Comienza en
           </p>
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center gap-1.5">
             {[
-              { val: countdown.days, label: "días" },
-              { val: countdown.hours, label: "horas" },
-              { val: countdown.mins, label: "min" },
-              { val: countdown.secs, label: "seg" },
+              { val: countdown.days, label: "d" },
+              { val: countdown.hours, label: "h" },
+              { val: countdown.mins, label: "m" },
+              { val: countdown.secs, label: "s" },
             ].map((b, i) => (
-              <div key={b.label} className="flex items-center gap-2">
-                <div className="text-center">
-                  <span className="font-display font-bold text-[22px]" style={{ color: "#fbba30" }}>{pad(b.val)}</span>
-                  <p className="text-[10px] uppercase" style={{ color: "rgba(240,236,217,0.5)" }}>{b.label}</p>
-                </div>
-                {i < 3 && <span className="font-bold text-[18px] -mt-4" style={{ color: "#fbba30" }}>:</span>}
+              <div key={b.label} className="flex items-center gap-1.5">
+                <span className="font-display font-bold text-[14px] tabular-nums" style={{ color: "#fbba30" }}>
+                  {pad(b.val)}
+                  <span className="text-[10px] font-medium ml-0.5" style={{ color: "rgba(240,236,217,0.6)" }}>{b.label}</span>
+                </span>
+                {i < 3 && <span className="text-[10px]" style={{ color: "rgba(251,186,48,0.4)" }}>·</span>}
               </div>
             ))}
           </div>
