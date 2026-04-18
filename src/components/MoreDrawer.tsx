@@ -1,4 +1,5 @@
 import { X, Store, Star, Map, Users, ScanLine, ClipboardList, MessageCircle, LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface MoreDrawerProps {
   open: boolean;
@@ -9,14 +10,15 @@ const items = [
   { icon: Store, label: "Expositores", color: "#aab93e" },
   { icon: Star, label: "Patrocinadores", color: "#fbba30" },
   { icon: Map, label: "Mapa del evento", color: "#f0ecd9" },
-  { icon: Users, label: "Networking", color: "#fbba30" },
-  { icon: ScanLine, label: "Escanear contacto", color: "#aab93e", badge: "Nuevo" },
+  { icon: Users, label: "Networking", color: "#fbba30", to: "/networking" },
+  { icon: ScanLine, label: "Escanear contacto", color: "#aab93e", badge: "Nuevo", to: "/escanear" },
   { icon: ClipboardList, label: "Sobre CHOKAO", color: "#f0ecd9" },
   { icon: MessageCircle, label: "Ayuda por WhatsApp", color: "#aab93e" },
   { icon: Star, label: "Calificar la app", color: "#fbba30" },
 ];
 
 const MoreDrawer = ({ open, onClose }: MoreDrawerProps) => {
+  const navigate = useNavigate();
   if (!open) return null;
 
   return (
@@ -40,6 +42,9 @@ const MoreDrawer = ({ open, onClose }: MoreDrawerProps) => {
         <div className="flex-1 py-3">
           {items.map((item) => (
             <button key={item.label}
+              onClick={() => {
+                if ((item as any).to) { onClose(); navigate((item as any).to); }
+              }}
               className="w-full flex items-center h-[48px] px-5 hover:bg-white/5 transition-colors">
               <item.icon size={20} style={{ color: item.color }} />
               <span className="ml-3 flex-1 text-left text-[14px] text-white">{item.label}</span>
