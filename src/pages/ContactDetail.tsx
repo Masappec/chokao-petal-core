@@ -16,7 +16,7 @@ const ContactDetail = () => {
   const [meetingOpen, setMeetingOpen] = useState(false);
 
   return (
-    <div className="min-h-screen pb-10" style={{ backgroundColor: "#102132" }}>
+    <div className="min-h-screen max-w-[390px] mx-auto pb-10" style={{ backgroundColor: "#102132" }}>
       {/* Header */}
       <header
         className="h-14 flex items-center px-5 sticky top-0 z-30"
