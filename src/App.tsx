@@ -19,6 +19,8 @@ import Profile from "./pages/Profile.tsx";
 import EditProfile from "./pages/EditProfile.tsx";
 import MyQR from "./pages/MyQR.tsx";
 import ScanContact from "./pages/ScanContact.tsx";
+import Networking from "./pages/Networking.tsx";
+import ContactDetail from "./pages/ContactDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -46,6 +48,8 @@ const App = () => (
           <Route path="/perfil/editar" element={<EditProfile />} />
           <Route path="/perfil/qr" element={<MyQR />} />
           <Route path="/escanear" element={<ScanContact />} />
+          <Route path="/networking" element={<Networking />} />
+          <Route path="/networking/:id" element={<ContactDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
