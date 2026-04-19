@@ -86,18 +86,18 @@ const Networking = () => {
     <div className="min-h-screen max-w-[390px] mx-auto flex flex-col" style={{ backgroundColor: "#102132" }}>
       {/* Header */}
       <header
-        className="h-14 flex items-center px-5 sticky top-0 z-30"
+        className="h-14 flex items-center px-5 sticky top-0 z-30 gap-3"
         style={{ backgroundColor: "#102132" }}
       >
-        <button onClick={() => navigate(-1)} className="text-white mr-3">
+        <button onClick={() => navigate(-1)} className="text-white shrink-0">
           <ArrowLeft size={24} strokeWidth={1.5} />
         </button>
-        <h1 className="font-display font-semibold text-[18px] text-white flex-1 text-center pr-6">
+        <h1 className="font-display font-semibold text-[18px] text-white flex-1 truncate">
           Networking
         </h1>
         <button
           onClick={() => navigate("/escanear")}
-          className="absolute right-5 flex items-center gap-1.5 h-9 px-3 rounded-full"
+          className="shrink-0 flex items-center gap-1.5 h-9 px-3 rounded-full"
           style={{ backgroundColor: "rgba(251,186,48,0.15)", border: "1px solid #fbba30", color: "#fbba30" }}
           aria-label="Escanear QR de otro asistente"
         >
