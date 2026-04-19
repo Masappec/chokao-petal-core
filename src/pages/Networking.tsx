@@ -83,7 +83,7 @@ const Networking = () => {
   const isEmpty = contacts.length === 0;
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#102132" }}>
+    <div className="min-h-screen max-w-[390px] mx-auto flex flex-col" style={{ backgroundColor: "#102132" }}>
       {/* Header */}
       <header
         className="h-14 flex items-center px-5 sticky top-0 z-30"
