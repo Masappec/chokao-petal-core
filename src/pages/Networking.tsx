@@ -97,11 +97,12 @@ const Networking = () => {
         </h1>
         <button
           onClick={() => navigate("/escanear")}
-          className="absolute right-5"
-          style={{ color: "#fbba30" }}
-          aria-label="Escanear contacto"
+          className="absolute right-5 flex items-center gap-1.5 h-9 px-3 rounded-full"
+          style={{ backgroundColor: "rgba(251,186,48,0.15)", border: "1px solid #fbba30", color: "#fbba30" }}
+          aria-label="Escanear QR de otro asistente"
         >
-          <QrCode size={22} strokeWidth={1.5} />
+          <QrCode size={16} strokeWidth={2} />
+          <span className="text-[12px] font-semibold uppercase tracking-[0.4px]">Escanear</span>
         </button>
       </header>
 
