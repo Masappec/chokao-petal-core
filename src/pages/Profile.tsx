@@ -26,35 +26,51 @@ const user = {
   tickets: 3,
 };
 
-const groups = [
-  {
-    label: "Mi información",
-    items: [
-      { icon: Pencil, label: "Editar perfil", color: "#fbba30", to: "/perfil/editar" },
-      { icon: Lock, label: "Cambiar contraseña", color: "#f0ecd9" },
-      { icon: Globe, label: "Idioma", color: "#f0ecd9", value: "ES" },
-    ],
-  },
-  {
-    label: "Evento",
-    items: [
-      { icon: Ticket, label: "Mis entradas", color: "#aab93e" },
-      { icon: Users, label: "Mis contactos", color: "#aab93e", to: "/networking" },
-      { icon: Bell, label: "Notificaciones", color: "#fbba30", toggle: true },
-    ],
-  },
-  {
-    label: "Soporte",
-    items: [
-      { icon: MessageCircle, label: "Ayuda por WhatsApp", color: "#aab93e" },
-      { icon: Star, label: "Calificar la app", color: "#fbba30" },
-      { icon: FileText, label: "Términos y privacidad", color: "#f0ecd9" },
-    ],
-  },
-];
-
 const Profile = () => {
   const navigate = useNavigate();
+  const [lang, setLang] = useState<LangCode>(() => {
+    const saved = (typeof window !== "undefined" && localStorage.getItem("chokao_lang")) as LangCode | null;
+    return saved && LANGS.some((l) => l.code === saved) ? saved : "ES";
+  });
+  const [langOpen, setLangOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("chokao_lang", lang);
+  }, [lang]);
+
+  const selectLang = (code: LangCode) => {
+    setLang(code);
+    setLangOpen(false);
+    const name = LANGS.find((l) => l.code === code)?.label;
+    toast.success(`Idioma cambiado a ${name}`);
+  };
+
+  const groups = [
+    {
+      label: "Mi información",
+      items: [
+        { icon: Pencil, label: "Editar perfil", color: "#fbba30", to: "/perfil/editar" },
+        { icon: Lock, label: "Cambiar contraseña", color: "#f0ecd9" },
+        { icon: Globe, label: "Idioma", color: "#f0ecd9", value: lang, onClick: () => setLangOpen(true) },
+      ],
+    },
+    {
+      label: "Evento",
+      items: [
+        { icon: Ticket, label: "Mis entradas", color: "#aab93e" },
+        { icon: Users, label: "Mis contactos", color: "#aab93e", to: "/networking" },
+        { icon: Bell, label: "Notificaciones", color: "#fbba30", toggle: true },
+      ],
+    },
+    {
+      label: "Soporte",
+      items: [
+        { icon: MessageCircle, label: "Ayuda por WhatsApp", color: "#aab93e" },
+        { icon: Star, label: "Calificar la app", color: "#fbba30" },
+        { icon: FileText, label: "Términos y privacidad", color: "#f0ecd9" },
+      ],
+    },
+  ];
 
   const handleTab = (tab: string) => {
     if (tab === "home") navigate("/home");
