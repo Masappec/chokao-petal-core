@@ -154,6 +154,11 @@ const Home = () => {
         <div className="grid grid-cols-3 gap-2.5">
           {quickAccess.map((item) => (
             <button key={item.label}
+              onClick={() => {
+                if (item.label === "Expositores") navigate("/expositores");
+                else if (item.label === "Patrocinadores") navigate("/patrocinadores");
+                else if (item.label === "Networking") navigate("/networking");
+              }}
               className="flex flex-col items-center justify-center gap-1.5 rounded-xl py-3 px-2 transition-all active:scale-[0.97] border border-chokao-border/30 hover:border-chokao-yellow/30"
               style={{ background: "linear-gradient(145deg, #1e3a52 0%, #1a2f42 50%, #162a3c 100%)", boxShadow: "0 2px 12px rgba(0,0,0,0.3), 0 1px 0 rgba(251,186,48,0.05) inset" }}>
               <item.icon size={24} strokeWidth={1.5} style={{ color: item.color }} />
