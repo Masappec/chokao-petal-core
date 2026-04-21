@@ -1,10 +1,19 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Settings, Camera, Building2, QrCode, ChevronRight, Pencil, Lock, Globe,
-  Ticket, Users, Bell, MessageCircle, Star, FileText, LogOut, ArrowLeft,
+  Camera, Building2, QrCode, ChevronRight, Pencil, Lock, Globe,
+  Ticket, Users, Bell, MessageCircle, Star, FileText, LogOut, ArrowLeft, Check,
 } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 import { Switch } from "@/components/ui/switch";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { toast } from "sonner";
+
+const LANGS = [
+  { code: "ES", label: "Español", flag: "🇪🇸" },
+  { code: "EN", label: "English", flag: "🇬🇧" },
+] as const;
+type LangCode = typeof LANGS[number]["code"];
 
 const user = {
   name: "María Rodríguez",
@@ -17,35 +26,51 @@ const user = {
   tickets: 3,
 };
 
-const groups = [
-  {
-    label: "Mi información",
-    items: [
-      { icon: Pencil, label: "Editar perfil", color: "#fbba30", to: "/perfil/editar" },
-      { icon: Lock, label: "Cambiar contraseña", color: "#f0ecd9" },
-      { icon: Globe, label: "Idioma", color: "#f0ecd9", value: "ES" },
-    ],
-  },
-  {
-    label: "Evento",
-    items: [
-      { icon: Ticket, label: "Mis entradas", color: "#aab93e" },
-      { icon: Users, label: "Mis contactos", color: "#aab93e", to: "/networking" },
-      { icon: Bell, label: "Notificaciones", color: "#fbba30", toggle: true },
-    ],
-  },
-  {
-    label: "Soporte",
-    items: [
-      { icon: MessageCircle, label: "Ayuda por WhatsApp", color: "#aab93e" },
-      { icon: Star, label: "Calificar la app", color: "#fbba30" },
-      { icon: FileText, label: "Términos y privacidad", color: "#f0ecd9" },
-    ],
-  },
-];
-
 const Profile = () => {
   const navigate = useNavigate();
+  const [lang, setLang] = useState<LangCode>(() => {
+    const saved = (typeof window !== "undefined" && localStorage.getItem("chokao_lang")) as LangCode | null;
+    return saved && LANGS.some((l) => l.code === saved) ? saved : "ES";
+  });
+  const [langOpen, setLangOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("chokao_lang", lang);
+  }, [lang]);
+
+  const selectLang = (code: LangCode) => {
+    setLang(code);
+    setLangOpen(false);
+    const name = LANGS.find((l) => l.code === code)?.label;
+    toast.success(`Idioma cambiado a ${name}`);
+  };
+
+  const groups = [
+    {
+      label: "Mi información",
+      items: [
+        { icon: Pencil, label: "Editar perfil", color: "#fbba30", to: "/perfil/editar" },
+        { icon: Lock, label: "Cambiar contraseña", color: "#f0ecd9" },
+        { icon: Globe, label: "Idioma", color: "#f0ecd9", value: lang, onClick: () => setLangOpen(true) },
+      ],
+    },
+    {
+      label: "Evento",
+      items: [
+        { icon: Ticket, label: "Mis entradas", color: "#aab93e" },
+        { icon: Users, label: "Mis contactos", color: "#aab93e", to: "/networking" },
+        { icon: Bell, label: "Notificaciones", color: "#fbba30", toggle: true },
+      ],
+    },
+    {
+      label: "Soporte",
+      items: [
+        { icon: MessageCircle, label: "Ayuda por WhatsApp", color: "#aab93e" },
+        { icon: Star, label: "Calificar la app", color: "#fbba30" },
+        { icon: FileText, label: "Términos y privacidad", color: "#f0ecd9" },
+      ],
+    },
+  ];
 
   const handleTab = (tab: string) => {
     if (tab === "home") navigate("/home");
@@ -140,11 +165,14 @@ const Profile = () => {
             <div className="bg-chokao-surface/40">
               {g.items.map((it, idx) => {
                 const Icon = it.icon;
-                const Comp: any = it.to ? "button" : "button";
+                const Comp: any = "button";
                 return (
                   <Comp
                     key={it.label}
-                    onClick={() => it.to && navigate(it.to)}
+                    onClick={() => {
+                      if ((it as any).onClick) (it as any).onClick();
+                      else if ((it as any).to) navigate((it as any).to);
+                    }}
                     className={`w-full flex items-center gap-3 px-5 h-[52px] hover:bg-white/5 transition-colors ${
                       idx !== g.items.length - 1 ? "border-b border-chokao-border/30" : ""
                     }`}
@@ -177,6 +205,36 @@ const Profile = () => {
       </div>
 
       <BottomNav activeTab="perfil" onTabChange={handleTab} />
+
+      <Dialog open={langOpen} onOpenChange={setLangOpen}>
+        <DialogContent className="max-w-[340px] bg-chokao-surface border-chokao-border rounded-2xl">
+          <DialogHeader>
+            <DialogTitle className="font-display text-foreground text-[18px]">Selecciona idioma</DialogTitle>
+          </DialogHeader>
+          <div className="mt-2 flex flex-col gap-1">
+            {LANGS.map((l) => {
+              const active = lang === l.code;
+              return (
+                <button
+                  key={l.code}
+                  onClick={() => selectLang(l.code)}
+                  className={`flex items-center gap-3 px-4 h-12 rounded-xl border transition-colors ${
+                    active
+                      ? "bg-chokao-yellow/15 border-chokao-yellow"
+                      : "bg-chokao-primary border-chokao-border hover:border-chokao-cream/30"
+                  }`}
+                >
+                  <span className="text-[20px]">{l.flag}</span>
+                  <span className={`flex-1 text-left text-[14px] ${active ? "text-chokao-yellow font-semibold" : "text-foreground"}`}>
+                    {l.label}
+                  </span>
+                  {active && <Check size={18} className="text-chokao-yellow" />}
+                </button>
+              );
+            })}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
