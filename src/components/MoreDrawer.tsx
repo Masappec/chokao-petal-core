@@ -1,4 +1,4 @@
-import { X, Store, Star, Map, Users, ScanLine, ClipboardList, MessageCircle, LogOut } from "lucide-react";
+import { X, Store, Star, Map, Users, ScanLine, ClipboardList, MessageCircle, FileText, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface MoreDrawerProps {
@@ -15,6 +15,7 @@ const items = [
   { icon: ClipboardList, label: "Sobre CHOKAO", color: "#f0ecd9" },
   { icon: MessageCircle, label: "Ayuda por WhatsApp", color: "#aab93e" },
   { icon: Star, label: "Calificar la app", color: "#fbba30" },
+  { icon: FileText, label: "Términos y privacidad", color: "#f0ecd9" },
 ];
 
 const MoreDrawer = ({ open, onClose }: MoreDrawerProps) => {
