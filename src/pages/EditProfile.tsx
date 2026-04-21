@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Camera, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
+import ChokaoButton from "@/components/ChokaoButton";
 
 const profileTypes = ["Productor", "Comprador", "Chocolatero", "Visitante", "Expositor"];
 
@@ -12,7 +13,6 @@ const EditProfile = () => {
     nombre: "María",
     apellido: "Rodríguez",
     telefono: "+593 99 123 4567",
-    pais: "Ecuador",
     empresa: "Chocolates El Árbol",
   });
   const [tipo, setTipo] = useState("Chocolatero");
@@ -31,12 +31,9 @@ const EditProfile = () => {
         <button onClick={() => navigate(-1)} className="text-foreground hover:text-chokao-yellow">
           <ArrowLeft size={22} strokeWidth={1.5} />
         </button>
-        <h1 className="flex-1 text-center font-display font-semibold text-[18px] text-foreground pr-2">
+        <h1 className="flex-1 text-center font-display font-semibold text-[18px] text-foreground pr-6">
           Editar perfil
         </h1>
-        <button onClick={handleSave} className="text-chokao-yellow font-semibold text-[14px]">
-          Guardar
-        </button>
       </header>
 
       {/* Avatar */}
@@ -73,10 +70,10 @@ const EditProfile = () => {
           />
         </Field>
 
-        <Field label="Teléfono / WhatsApp">
+        <Field label="Celular / WhatsApp">
           <div className="flex gap-2">
             <button className="h-12 px-3 rounded-xl bg-chokao-surface border border-chokao-border flex items-center gap-1.5 text-foreground text-[14px]">
-              🇪🇨 <ChevronDown size={14} className="text-chokao-cream/50" />
+              🇪🇨 +593 <ChevronDown size={14} className="text-chokao-cream/50" />
             </button>
             <Input
               value={form.telefono}
@@ -84,13 +81,6 @@ const EditProfile = () => {
               className="bg-chokao-surface border-chokao-border text-foreground h-12 rounded-xl flex-1"
             />
           </div>
-        </Field>
-
-        <Field label="País de origen">
-          <button className="w-full h-12 px-3 rounded-xl bg-chokao-surface border border-chokao-border flex items-center text-foreground text-[14px]">
-            <span className="flex-1 text-left">🇪🇨 {form.pais}</span>
-            <ChevronDown size={16} className="text-chokao-cream/50" />
-          </button>
         </Field>
 
         <Field label="Empresa / Organización" optional>
@@ -121,6 +111,15 @@ const EditProfile = () => {
             })}
           </div>
         </Field>
+
+        <div className="pt-4 flex flex-col gap-3">
+          <ChokaoButton variant="primary" fullWidth onClick={handleSave}>
+            Guardar cambios
+          </ChokaoButton>
+          <ChokaoButton variant="ghost" fullWidth onClick={() => navigate(-1)}>
+            Cancelar
+          </ChokaoButton>
+        </div>
       </div>
     </div>
   );
