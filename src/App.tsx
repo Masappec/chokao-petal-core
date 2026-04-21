@@ -22,6 +22,10 @@ import MyQR from "./pages/MyQR.tsx";
 import ScanContact from "./pages/ScanContact.tsx";
 import Networking from "./pages/Networking.tsx";
 import ContactDetail from "./pages/ContactDetail.tsx";
+import Exhibitors from "./pages/Exhibitors.tsx";
+import ExhibitorDetail from "./pages/ExhibitorDetail.tsx";
+import Sponsors from "./pages/Sponsors.tsx";
+import SponsorDetail from "./pages/SponsorDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -52,6 +56,10 @@ const App = () => (
           <Route path="/escanear" element={<ScanContact />} />
           <Route path="/networking" element={<Networking />} />
           <Route path="/networking/:id" element={<ContactDetail />} />
+          <Route path="/expositores" element={<Exhibitors />} />
+          <Route path="/expositores/:id" element={<ExhibitorDetail />} />
+          <Route path="/patrocinadores" element={<Sponsors />} />
+          <Route path="/patrocinadores/:id" element={<SponsorDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

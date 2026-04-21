@@ -7,8 +7,8 @@ interface MoreDrawerProps {
 }
 
 const items = [
-  { icon: Store, label: "Expositores", color: "#aab93e" },
-  { icon: Star, label: "Patrocinadores", color: "#fbba30" },
+  { icon: Store, label: "Expositores", color: "#aab93e", to: "/expositores" },
+  { icon: Star, label: "Patrocinadores", color: "#fbba30", to: "/patrocinadores" },
   { icon: Map, label: "Mapa del evento", color: "#f0ecd9" },
   { icon: Users, label: "Networking", color: "#fbba30", to: "/networking" },
   { icon: ScanLine, label: "Escanear contacto", color: "#aab93e", badge: "Nuevo", to: "/escanear" },
