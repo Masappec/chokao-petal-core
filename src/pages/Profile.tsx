@@ -206,7 +206,7 @@ const Profile = () => {
           <LogOut size={18} strokeWidth={1.5} />
           <span className="text-[14px] font-medium">Cerrar sesión</span>
         </button>
-        <p className="text-center text-[11px] text-chokao-cream/25 mt-2">CHOKAO v1.0.0</p>
+        
       </div>
 
       <BottomNav activeTab="perfil" onTabChange={handleTab} />
