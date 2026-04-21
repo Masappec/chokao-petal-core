@@ -1,0 +1,58 @@
+import { createContext, useContext, useState, ReactNode } from "react";
+
+export interface CheckoutData {
+  activityName: string;
+  category: string;
+  categoryColor: string;
+  date: string;
+  time: string;
+  room: string;
+  pricePerTicket: number;
+  serviceFee: number;
+  quantity: number;
+  buyerName: string;
+  buyerEmail: string;
+  buyerPhone: string;
+  paymentMethod: "payphone" | "kushki" | "nuvei" | null;
+}
+
+const defaultData: CheckoutData = {
+  activityName: "Taller: Temperado de Chocolate Artesanal",
+  category: "Taller",
+  categoryColor: "#aab93e",
+  date: "Vie 15 Jun",
+  time: "11:00 AM",
+  room: "Sala Cacao",
+  pricePerTicket: 25,
+  serviceFee: 1.5,
+  quantity: 1,
+  buyerName: "María Andrade",
+  buyerEmail: "maria@chokao.ec",
+  buyerPhone: "+593 99 123 4567",
+  paymentMethod: null,
+};
+
+interface Ctx {
+  data: CheckoutData;
+  update: (patch: Partial<CheckoutData>) => void;
+  reset: () => void;
+}
+
+const CheckoutContext = createContext<Ctx | null>(null);
+
+export const CheckoutProvider = ({ children }: { children: ReactNode }) => {
+  const [data, setData] = useState<CheckoutData>(defaultData);
+  const update = (patch: Partial<CheckoutData>) => setData((d) => ({ ...d, ...patch }));
+  const reset = () => setData(defaultData);
+  return (
+    <CheckoutContext.Provider value={{ data, update, reset }}>{children}</CheckoutContext.Provider>
+  );
+};
+
+export const useCheckout = () => {
+  const ctx = useContext(CheckoutContext);
+  if (!ctx) throw new Error("useCheckout must be used inside CheckoutProvider");
+  return ctx;
+};
+
+export const calcTotal = (d: CheckoutData) => d.pricePerTicket * d.quantity + d.serviceFee;
