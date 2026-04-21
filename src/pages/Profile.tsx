@@ -50,7 +50,7 @@ const Profile = () => {
       label: "Mi información",
       items: [
         { icon: Pencil, label: "Editar perfil", color: "#fbba30", to: "/perfil/editar" },
-        { icon: Lock, label: "Cambiar contraseña", color: "#f0ecd9" },
+        { icon: Lock, label: "Cambiar contraseña", color: "#f0ecd9", to: "/perfil/contrasena" },
       ],
     },
     {

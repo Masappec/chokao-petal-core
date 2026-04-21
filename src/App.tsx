@@ -17,6 +17,7 @@ import ForgotPassword from "./pages/ForgotPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
 import Profile from "./pages/Profile.tsx";
 import EditProfile from "./pages/EditProfile.tsx";
+import ChangePassword from "./pages/ChangePassword.tsx";
 import MyQR from "./pages/MyQR.tsx";
 import ScanContact from "./pages/ScanContact.tsx";
 import Networking from "./pages/Networking.tsx";
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/activity" element={<ActivityDetail />} />
           <Route path="/perfil" element={<Profile />} />
           <Route path="/perfil/editar" element={<EditProfile />} />
+          <Route path="/perfil/contrasena" element={<ChangePassword />} />
           <Route path="/perfil/qr" element={<MyQR />} />
           <Route path="/escanear" element={<ScanContact />} />
           <Route path="/networking" element={<Networking />} />
