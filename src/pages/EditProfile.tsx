@@ -116,9 +116,12 @@ const EditProfile = () => {
           <ChokaoButton variant="primary" fullWidth onClick={handleSave}>
             Guardar cambios
           </ChokaoButton>
-          <ChokaoButton variant="ghost" fullWidth onClick={() => navigate(-1)}>
+          <button
+            onClick={() => navigate(-1)}
+            className="w-full h-[52px] rounded-2xl border border-chokao-border text-chokao-cream/70 font-body text-[15px] font-semibold hover:bg-chokao-surface transition-colors"
+          >
             Cancelar
-          </ChokaoButton>
+          </button>
         </div>
       </div>
     </div>
