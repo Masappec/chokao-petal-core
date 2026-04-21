@@ -105,6 +105,7 @@ const Agenda = () => {
 
       <BottomNav activeTab="agenda" onTabChange={(tab) => {
         if (tab === "home") navigate("/home");
+        if (tab === "entradas") navigate("/entradas");
         if (tab === "mas") setMoreOpen(true);
       }} />
       <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />

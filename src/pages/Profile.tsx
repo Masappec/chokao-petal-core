@@ -73,6 +73,7 @@ const Profile = () => {
   const handleTab = (tab: string) => {
     if (tab === "home") navigate("/home");
     if (tab === "agenda") navigate("/agenda");
+    if (tab === "entradas") navigate("/entradas");
     if (tab === "perfil") return;
   };
 
