@@ -1,10 +1,19 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Settings, Camera, Building2, QrCode, ChevronRight, Pencil, Lock, Globe,
-  Ticket, Users, Bell, MessageCircle, Star, FileText, LogOut, ArrowLeft,
+  Camera, Building2, QrCode, ChevronRight, Pencil, Lock, Globe,
+  Ticket, Users, Bell, MessageCircle, Star, FileText, LogOut, ArrowLeft, Check,
 } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 import { Switch } from "@/components/ui/switch";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { toast } from "sonner";
+
+const LANGS = [
+  { code: "ES", label: "Español", flag: "🇪🇸" },
+  { code: "EN", label: "English", flag: "🇬🇧" },
+] as const;
+type LangCode = typeof LANGS[number]["code"];
 
 const user = {
   name: "María Rodríguez",
