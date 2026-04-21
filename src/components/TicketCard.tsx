@@ -65,16 +65,6 @@ const TicketCard = ({ ticket, onClick, compact = false }: TicketCardProps) => {
             </div>
           </div>
 
-          <span
-            className="inline-block mt-3 px-2.5 py-1 rounded-full text-[12px] font-semibold"
-            style={{
-              backgroundColor: badgeStyle.bg,
-              border: `1px solid ${badgeStyle.border}`,
-              color: badgeStyle.text,
-            }}
-          >
-            {badgeStyle.label}
-          </span>
         </div>
 
         {/* Dotted divider with notches */}
