@@ -106,21 +106,6 @@ const ExhibitorDetail = () => {
         </p>
       </div>
 
-      {/* Products */}
-      <h3 className="px-5 mt-6 text-white font-semibold text-[16px]">Productos y servicios</h3>
-      <div className="mt-2 pl-5 flex gap-2 overflow-x-auto no-scrollbar pb-1">
-        {e.products.map((p) => (
-          <span
-            key={p.label}
-            className="flex-shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-[13px]"
-            style={{ backgroundColor: "#1a2f42", border: "1px solid #2a4a62", color: "rgba(240,236,217,0.7)" }}
-          >
-            <span>{p.icon}</span>
-            {p.label}
-          </span>
-        ))}
-        <div className="w-3 flex-shrink-0" />
-      </div>
 
       {/* Contact */}
       <h3 className="px-5 mt-6 text-white font-semibold text-[16px]">Contacto</h3>
