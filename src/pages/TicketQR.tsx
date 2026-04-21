@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Wallet, Share2, Info } from "lucide-react";
+import { ArrowLeft, Info } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
-import ChokaoButton from "@/components/ChokaoButton";
 import { getTicketById } from "@/lib/ticketsMock";
 
 const PETAL_COLORS = ["#fbba30", "#aab93e", "#e73e40", "#f0ecd9"];
@@ -100,19 +99,6 @@ const TicketQR = () => {
         </p>
       </div>
 
-      <div className="mx-5 mt-5">
-        <ChokaoButton variant="secondary" fullWidth>
-          <Wallet size={18} strokeWidth={1.5} />
-          Agregar a Apple Wallet / Google Pay
-        </ChokaoButton>
-      </div>
-
-      <div className="mt-4 flex justify-center">
-        <button className="flex items-center gap-2 text-[14px] font-medium" style={{ color: "rgba(240,236,217,0.7)" }}>
-          <Share2 size={16} strokeWidth={1.5} />
-          Compartir entrada
-        </button>
-      </div>
     </div>
   );
 };
