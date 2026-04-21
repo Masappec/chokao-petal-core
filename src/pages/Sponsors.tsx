@@ -52,8 +52,9 @@ const Sponsors = () => {
         >
           ✦ PLATINUM
         </p>
-        <div
-          className="relative p-6 rounded-[20px] overflow-hidden"
+        <button
+          onClick={() => navigate("/patrocinadores/banco-pichincha")}
+          className="w-full text-left relative p-6 rounded-[20px] overflow-hidden transition-transform active:scale-[0.99]"
           style={{
             backgroundColor: "#1a2f42",
             border: "1px solid rgba(251,186,48,0.35)",
@@ -79,23 +80,7 @@ const Sponsors = () => {
           <p className="text-center text-[13px]" style={{ color: "rgba(240,236,217,0.7)" }}>
             Apoyamos a productores y emprendedores del sector cacaotero con financiamiento y servicios especializados.
           </p>
-          <div className="mt-4 flex gap-2.5 items-center">
-            <ChokaoButton
-              fullWidth
-              className="flex-1"
-              onClick={() => navigate("/patrocinadores/banco-pichincha")}
-            >
-              Ver perfil completo
-            </ChokaoButton>
-            <button
-              className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: "#102132", border: "1px solid #2a4a62", color: "rgba(240,236,217,0.6)" }}
-              aria-label="Sitio web"
-            >
-              <Globe size={18} strokeWidth={1.5} />
-            </button>
-          </div>
-        </div>
+        </button>
       </div>
 
       {/* GOLD */}
