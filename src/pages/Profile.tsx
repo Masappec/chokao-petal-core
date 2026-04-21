@@ -51,7 +51,6 @@ const Profile = () => {
       items: [
         { icon: Pencil, label: "Editar perfil", color: "#fbba30", to: "/perfil/editar" },
         { icon: Lock, label: "Cambiar contraseña", color: "#f0ecd9" },
-        { icon: Globe, label: "Idioma", color: "#f0ecd9", value: lang, onClick: () => setLangOpen(true) },
       ],
     },
     {
@@ -59,6 +58,12 @@ const Profile = () => {
       items: [
         { icon: Ticket, label: "Mis entradas", color: "#aab93e" },
         { icon: Users, label: "Mis contactos", color: "#aab93e", to: "/networking" },
+      ],
+    },
+    {
+      label: "Ajustes",
+      items: [
+        { icon: Globe, label: "Idioma", color: "#f0ecd9", value: lang, onClick: () => setLangOpen(true) },
         { icon: Bell, label: "Notificaciones", color: "#fbba30", toggle: true },
       ],
     },
