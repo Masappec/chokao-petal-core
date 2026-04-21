@@ -54,12 +54,6 @@ const Profile = () => {
       ],
     },
     {
-      label: "Evento",
-      items: [
-        { icon: Ticket, label: "Mis entradas", color: "#aab93e" },
-      ],
-    },
-    {
       label: "Ajustes",
       items: [
         { icon: Globe, label: "Idioma", color: "#f0ecd9", value: lang, onClick: () => setLangOpen(true) },
