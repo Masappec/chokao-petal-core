@@ -61,9 +61,7 @@ const Profile = () => {
           <ArrowLeft size={22} strokeWidth={1.5} />
         </button>
         <h1 className="flex-1 text-center font-display font-semibold text-[18px] text-foreground">Mi Perfil</h1>
-        <button className="text-chokao-cream/70 hover:text-chokao-yellow transition-colors" aria-label="Ajustes">
-          <Settings size={22} strokeWidth={1.5} />
-        </button>
+        <div className="w-[22px]" />
       </header>
 
       {/* Hero */}
