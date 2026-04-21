@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Share2, Download, Info } from "lucide-react";
-import { toast } from "sonner";
+import { ArrowLeft, Info } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import QrPlaceholder from "@/components/QrPlaceholder";
 
@@ -25,24 +24,7 @@ const Petal = ({ color, position }: { color: string; position: string }) => {
 const MyQR = () => {
   const navigate = useNavigate();
 
-  const handleShare = async () => {
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: "Mi contacto CHOKAO",
-          text: "Agrégame en CHOKAO 2025 — María Rodríguez",
-        });
-      } else {
-        toast.success("QR copiado para compartir");
-      }
-    } catch {
-      // user cancelled
-    }
-  };
 
-  const handleDownload = () => {
-    toast.success("Imagen descargada");
-  };
 
   return (
     <div className="min-h-screen max-w-[390px] mx-auto bg-chokao-primary flex flex-col">
@@ -88,23 +70,7 @@ const MyQR = () => {
           </p>
         </div>
 
-        {/* Action buttons */}
-        <div className="mt-6 flex flex-col gap-3">
-          <button
-            onClick={handleShare}
-            className="h-12 rounded-full bg-chokao-yellow text-chokao-primary font-semibold text-[15px] flex items-center justify-center gap-2 hover:brightness-110 transition"
-          >
-            <Share2 size={18} strokeWidth={2} />
-            Compartir QR
-          </button>
-          <button
-            onClick={handleDownload}
-            className="h-12 rounded-full border-2 border-chokao-yellow text-chokao-yellow font-semibold text-[15px] flex items-center justify-center gap-2 hover:bg-chokao-yellow/10 transition"
-          >
-            <Download size={18} strokeWidth={2} />
-            Descargar imagen
-          </button>
-        </div>
+
 
         {/* Info note */}
         <div className="mt-5 flex items-start gap-2 p-3 rounded-xl bg-chokao-yellow/10 border border-chokao-yellow/30">
