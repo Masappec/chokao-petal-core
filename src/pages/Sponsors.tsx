@@ -99,19 +99,19 @@ const Sponsors = () => {
       </div>
 
       {/* GOLD */}
-      <div className="px-5 mt-7">
+      <div className="mt-7">
         <p
-          className="text-[12px] font-bold uppercase mb-3"
+          className="px-5 text-[12px] font-bold uppercase mb-3"
           style={{ color: "#fbba30", letterSpacing: "2px" }}
         >
           ◆ GOLD
         </p>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="pl-5 flex gap-3 overflow-x-auto no-scrollbar pb-2">
           {goldSponsors.map((s) => (
             <button
               key={s.id}
               onClick={() => navigate(`/patrocinadores/${s.id}`)}
-              className="relative p-[18px] rounded-2xl text-center"
+              className="relative p-[18px] rounded-2xl text-center flex-shrink-0 w-[160px]"
               style={{ backgroundColor: "#1a2f42", border: "1px solid rgba(251,186,48,0.2)" }}
             >
               <span
@@ -131,23 +131,24 @@ const Sponsors = () => {
               <Globe size={18} strokeWidth={1.5} className="mx-auto mt-2" style={{ color: "rgba(240,236,217,0.4)" }} />
             </button>
           ))}
+          <div className="w-3 flex-shrink-0" />
         </div>
       </div>
 
       {/* SILVER */}
-      <div className="px-5 mt-7">
+      <div className="mt-7">
         <p
-          className="text-[12px] font-bold uppercase mb-3"
+          className="px-5 text-[12px] font-bold uppercase mb-3"
           style={{ color: "#f0ecd9", letterSpacing: "2px" }}
         >
           ● SILVER
         </p>
-        <div className="grid grid-cols-3 gap-2.5">
+        <div className="pl-5 flex gap-2.5 overflow-x-auto no-scrollbar pb-2">
           {silverSponsors.map((s) => (
             <button
               key={s.id}
               onClick={() => navigate(`/patrocinadores/${s.id}`)}
-              className="relative p-[14px] rounded-[14px] text-center"
+              className="relative p-[14px] rounded-[14px] text-center flex-shrink-0 w-[110px]"
               style={{ backgroundColor: "#1a2f42", border: "1px solid #2a4a62" }}
             >
               <span
@@ -166,6 +167,7 @@ const Sponsors = () => {
               <p className="text-[10px] mt-0.5" style={{ color: "rgba(240,236,217,0.5)" }}>{s.sector}</p>
             </button>
           ))}
+          <div className="w-3 flex-shrink-0" />
         </div>
       </div>
 
@@ -178,7 +180,7 @@ const Sponsors = () => {
           <ChokaoIcon size={32} />
         </div>
         <p className="mt-3 italic text-[13px]" style={{ color: "rgba(240,236,217,0.5)" }}>
-          Gracias a nuestros patrocinadores por hacer posible la 5ta edición de CHOKAO
+          Gracias a nuestros patrocinadores por hacer posible CHOKAO
         </p>
       </div>
 
