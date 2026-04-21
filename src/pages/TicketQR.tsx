@@ -90,18 +90,6 @@ const TicketQR = () => {
             {t.ticketNumber}
           </p>
 
-          <div className="mt-3 flex justify-center">
-            <span
-              className="px-3 py-1 rounded-full text-[12px] font-semibold"
-              style={{
-                backgroundColor: "rgba(170,185,62,0.15)",
-                border: "1px solid #aab93e",
-                color: "#aab93e",
-              }}
-            >
-              Válido
-            </span>
-          </div>
         </div>
       </div>
 
