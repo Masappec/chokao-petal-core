@@ -96,7 +96,7 @@ const Sponsors = () => {
         >
           ◆ GOLD
         </p>
-        <div className="pl-5 flex gap-3 overflow-x-auto no-scrollbar pb-2">
+        <div className="pl-5 flex gap-3 overflow-x-auto pb-3 chokao-scroll">
           {goldSponsors.map((s) => (
             <button
               key={s.id}
@@ -133,7 +133,7 @@ const Sponsors = () => {
         >
           ● SILVER
         </p>
-        <div className="pl-5 flex gap-2.5 overflow-x-auto no-scrollbar pb-2">
+        <div className="pl-5 flex gap-2.5 overflow-x-auto pb-3 chokao-scroll">
           {silverSponsors.map((s) => (
             <button
               key={s.id}
