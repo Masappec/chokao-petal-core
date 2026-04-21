@@ -69,7 +69,7 @@ const Dashboard = () => {
         {/* Greeting */}
         <div className="px-5 pt-3 pb-0 flex items-baseline gap-1.5">
           <h1 className="font-display font-bold text-[16px] text-white">Hola, María 👋</h1>
-          <span className="text-[12px]" style={{ color: "rgba(240,236,217,0.55)" }}>· qué bueno verte de nuevo</span>
+          <span className="text-[12px]" style={{ color: "rgba(240,236,217,0.55)" }}>· listos para CHOKAO</span>
         </div>
 
         {/* Event Banner Carousel */}
