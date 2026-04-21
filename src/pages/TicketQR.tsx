@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Info } from "lucide-react";
+import { ArrowLeft, Info, MapPin } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
+import ChokaoButton from "@/components/ChokaoButton";
 import { getTicketById } from "@/lib/ticketsMock";
 
 const PETAL_COLORS = ["#fbba30", "#aab93e", "#e73e40", "#f0ecd9"];
@@ -97,6 +98,23 @@ const TicketQR = () => {
         <p className="text-[12px]" style={{ color: "rgba(240,236,217,0.6)" }}>
           Presenta este QR al personal del evento para acceder a la actividad. Válido para un solo uso.
         </p>
+      </div>
+
+      <h3 className="px-5 mt-6 text-white font-semibold text-[16px]">Ubicación</h3>
+      <div className="mx-5 mt-2 p-4 rounded-2xl" style={{ backgroundColor: "#1a2f42" }}>
+        <div className="flex items-start gap-3">
+          <MapPin size={20} strokeWidth={1.5} style={{ color: "#e73e40" }} />
+          <div className="flex-1">
+            <p className="text-white font-semibold text-[15px]">{t.room}</p>
+            <p className="text-[13px]" style={{ color: "rgba(240,236,217,0.6)" }}>Pabellón Principal</p>
+          </div>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <ChokaoButton>
+            <MapPin size={18} strokeWidth={1.5} />
+            Ver en mapa del evento
+          </ChokaoButton>
+        </div>
       </div>
 
     </div>
