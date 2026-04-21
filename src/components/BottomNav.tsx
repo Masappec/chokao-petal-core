@@ -12,7 +12,6 @@ const tabs = [
   { id: "home" as const, label: "Home", icon: Home },
   { id: "agenda" as const, label: "Agenda", icon: CalendarDays },
   { id: "entradas" as const, label: "Entradas", icon: TicketCheck },
-  { id: "perfil" as const, label: "Perfil", icon: User },
   { id: "mas" as const, label: "Más", icon: GripHorizontal },
 ];
 

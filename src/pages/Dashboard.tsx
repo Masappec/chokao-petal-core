@@ -59,10 +59,13 @@ const Dashboard = () => {
               <Bell size={24} strokeWidth={1.5} />
               <span className="absolute -top-1 -right-1 w-[18px] h-[18px] rounded-full text-[10px] font-bold flex items-center justify-center text-white" style={{ backgroundColor: "#e73e40" }}>3</span>
             </button>
-            <div className="w-9 h-9 rounded-full flex items-center justify-center text-[12px] font-bold"
+            <button
+              onClick={() => navigate("/perfil")}
+              aria-label="Ir a mi perfil"
+              className="w-9 h-9 rounded-full flex items-center justify-center text-[12px] font-bold transition-transform active:scale-95"
               style={{ border: "2px solid #fbba30", backgroundColor: "#1a2f42", color: "#f0ecd9" }}>
               MR
-            </div>
+            </button>
           </div>
         </header>
 
