@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {
   Settings, Camera, Building2, QrCode, ChevronRight, Pencil, Lock, Globe,
-  Ticket, Users, Bell, MessageCircle, Star, FileText, LogOut,
+  Ticket, Users, Bell, MessageCircle, Star, FileText, LogOut, ArrowLeft,
 } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 import { Switch } from "@/components/ui/switch";
@@ -57,9 +57,11 @@ const Profile = () => {
     <div className="min-h-screen max-w-[390px] mx-auto pb-[100px] bg-chokao-primary">
       {/* Header */}
       <header className="sticky top-0 z-40 flex items-center h-[56px] px-5 bg-chokao-primary">
-        <div className="w-6" />
+        <button onClick={() => navigate(-1)} className="text-foreground hover:text-chokao-yellow transition-colors" aria-label="Atrás">
+          <ArrowLeft size={22} strokeWidth={1.5} />
+        </button>
         <h1 className="flex-1 text-center font-display font-semibold text-[18px] text-foreground">Mi Perfil</h1>
-        <button className="text-chokao-cream/70 hover:text-chokao-yellow transition-colors">
+        <button className="text-chokao-cream/70 hover:text-chokao-yellow transition-colors" aria-label="Ajustes">
           <Settings size={22} strokeWidth={1.5} />
         </button>
       </header>
