@@ -98,18 +98,6 @@ const ExhibitorDetail = () => {
         </div>
       </div>
 
-      {/* Action buttons */}
-      <div className="px-5 mt-5 flex gap-3">
-        <ChokaoButton fullWidth className="flex-1">
-          <MapPin size={18} strokeWidth={1.5} />
-          Ver en mapa
-        </ChokaoButton>
-        <ChokaoButton variant="secondary" fullWidth className="flex-1">
-          <Mail size={18} strokeWidth={1.5} />
-          Contactar
-        </ChokaoButton>
-      </div>
-
       {/* About */}
       <h3 className="px-5 mt-6 text-white font-semibold text-[16px]">Sobre la empresa</h3>
       <div className="mx-5 mt-2 p-4 rounded-2xl" style={{ backgroundColor: "#1a2f42" }}>
@@ -177,9 +165,12 @@ const ExhibitorDetail = () => {
             <p className="text-[13px]" style={{ color: "rgba(240,236,217,0.6)" }}>{e.pavilion}</p>
           </div>
         </div>
-        <button className="mt-3 text-[14px] font-medium" style={{ color: "#fbba30" }}>
-          Ver en mapa del evento →
-        </button>
+        <div className="mt-4 flex justify-center">
+          <ChokaoButton>
+            <MapPin size={18} strokeWidth={1.5} />
+            Ver en mapa del evento
+          </ChokaoButton>
+        </div>
       </div>
     </div>
   );
