@@ -9,12 +9,17 @@ import ChokaoButton from "@/components/ChokaoButton";
 const goldSponsors = [
   { id: "nestle", name: "Nestlé Ecuador", sector: "Chocolatería Industrial" },
   { id: "agrocalidad", name: "Agrocalidad", sector: "Certificación y Calidad" },
+  { id: "pronaca", name: "Pronaca", sector: "Agroindustria" },
+  { id: "supermaxi", name: "Supermaxi", sector: "Retail" },
 ];
 
 const silverSponsors = [
   { id: "procacao", name: "ProCacao", sector: "Asociación" },
   { id: "iniap", name: "INIAP", sector: "Investigación" },
   { id: "flor-de-mayo", name: "Flor de Mayo", sector: "Exportación" },
+  { id: "fedexpor", name: "Fedexpor", sector: "Gremio" },
+  { id: "anecacao", name: "Anecacao", sector: "Asociación" },
+  { id: "mag", name: "MAG", sector: "Gobierno" },
 ];
 
 const Sponsors = () => {
