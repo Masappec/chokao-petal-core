@@ -24,7 +24,7 @@ const defaultData: CheckoutData = {
   time: "11:00 AM",
   room: "Sala Cacao",
   pricePerTicket: 25,
-  serviceFee: 1.5,
+  serviceFee: 0,
   quantity: 1,
   buyerName: "María Andrade",
   buyerEmail: "maria@chokao.ec",

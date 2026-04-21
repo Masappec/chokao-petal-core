@@ -15,7 +15,7 @@ const CheckoutSummary = () => {
 
   const onContinue = () => {
     update({ quantity: qty });
-    navigate("/comprar/datos");
+    navigate("/comprar/pago");
   };
 
   return (
@@ -92,10 +92,6 @@ const CheckoutSummary = () => {
           <div className="flex justify-between text-[14px]" style={{ color: "rgba(240,236,217,0.7)" }}>
             <span>Entrada × {qty}</span>
             <span>${subtotal.toFixed(2)}</span>
-          </div>
-          <div className="mt-2 flex justify-between text-[13px]" style={{ color: "rgba(240,236,217,0.5)" }}>
-            <span>Cargo por servicio</span>
-            <span>${data.serviceFee.toFixed(2)}</span>
           </div>
           <div className="my-3 h-px" style={{ backgroundColor: "#102132" }} />
           <div className="flex justify-between items-center">
