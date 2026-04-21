@@ -36,13 +36,13 @@ const MyQR = () => {
         <h1 className="flex-1 text-center font-display font-semibold text-[18px] text-foreground pr-6">Mi QR</h1>
       </header>
 
-      <div className="flex-1 flex flex-col justify-center px-6 pb-6">
+      <div className="flex-1 flex flex-col px-6 pt-2 pb-6">
         {/* QR Card */}
-        <div className="bg-chokao-surface rounded-3xl p-7 animate-fade-in">
+        <div className="bg-chokao-surface rounded-3xl p-7 animate-fade-in border border-chokao-yellow/30 shadow-[0_8px_32px_-8px_rgba(251,186,48,0.25)]">
           {/* Brand header */}
-          <div className="flex items-center justify-center gap-2 pb-4 border-b border-chokao-border">
+          <div className="flex items-center justify-center gap-2 pb-4 border-b border-chokao-yellow/30">
             <ChokaoIcon size={24} />
-            <span className="font-display font-bold text-[14px] text-foreground tracking-wide">CHOKAO</span>
+            <span className="font-display font-bold text-[14px] text-chokao-yellow tracking-wide">CHOKAO</span>
           </div>
 
           {/* Avatar + identity */}
@@ -51,21 +51,23 @@ const MyQR = () => {
               <span className="font-display font-bold text-[20px] text-chokao-yellow">M</span>
             </div>
             <h2 className="mt-3 font-display font-bold text-[18px] text-foreground">María Rodríguez</h2>
-            <div className="mt-1.5 inline-flex items-center px-3 py-0.5 rounded-full bg-chokao-green/15 border border-chokao-green">
-              <span className="text-[12px] text-chokao-green font-medium">Chocolatera / Chef</span>
+            <div className="mt-1.5 inline-flex items-center px-3 py-0.5 rounded-full bg-chokao-yellow/15 border border-chokao-yellow">
+              <span className="text-[12px] text-chokao-yellow font-medium">Chocolatera / Chef</span>
             </div>
             <p className="mt-1.5 text-[13px] text-chokao-cream/60">Chocolates El Árbol</p>
           </div>
 
-          {/* QR with petal corners */}
-          <div className="mt-5 mx-auto relative bg-white rounded-xl p-3 w-[200px] h-[200px] flex items-center justify-center">
-            <QrPlaceholder size={176} />
-            {petals.map((p) => (
-              <Petal key={p.pos} color={p.color} position={p.pos} />
-            ))}
+          {/* QR with yellow frame + petal corners */}
+          <div className="mt-5 mx-auto p-1.5 rounded-2xl bg-gradient-to-br from-chokao-yellow to-chokao-yellow/60 w-fit">
+            <div className="relative bg-white rounded-xl p-3 w-[200px] h-[200px] flex items-center justify-center">
+              <QrPlaceholder size={176} />
+              {petals.map((p) => (
+                <Petal key={p.pos} color={p.color} position={p.pos} />
+              ))}
+            </div>
           </div>
 
-          <p className="mt-4 text-center text-[12px] text-chokao-cream/50">
+          <p className="mt-4 text-center text-[12px] text-chokao-yellow/80">
             Escanea para agregar mi contacto
           </p>
         </div>
