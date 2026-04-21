@@ -9,12 +9,17 @@ import ChokaoButton from "@/components/ChokaoButton";
 const goldSponsors = [
   { id: "nestle", name: "Nestlé Ecuador", sector: "Chocolatería Industrial" },
   { id: "agrocalidad", name: "Agrocalidad", sector: "Certificación y Calidad" },
+  { id: "pronaca", name: "Pronaca", sector: "Agroindustria" },
+  { id: "supermaxi", name: "Supermaxi", sector: "Retail" },
 ];
 
 const silverSponsors = [
   { id: "procacao", name: "ProCacao", sector: "Asociación" },
   { id: "iniap", name: "INIAP", sector: "Investigación" },
   { id: "flor-de-mayo", name: "Flor de Mayo", sector: "Exportación" },
+  { id: "fedexpor", name: "Fedexpor", sector: "Gremio" },
+  { id: "anecacao", name: "Anecacao", sector: "Asociación" },
+  { id: "mag", name: "MAG", sector: "Gobierno" },
 ];
 
 const Sponsors = () => {
@@ -52,8 +57,9 @@ const Sponsors = () => {
         >
           ✦ PLATINUM
         </p>
-        <div
-          className="relative p-6 rounded-[20px] overflow-hidden"
+        <button
+          onClick={() => navigate("/patrocinadores/banco-pichincha")}
+          className="w-full text-left relative p-6 rounded-[20px] overflow-hidden transition-transform active:scale-[0.99]"
           style={{
             backgroundColor: "#1a2f42",
             border: "1px solid rgba(251,186,48,0.35)",
@@ -79,23 +85,7 @@ const Sponsors = () => {
           <p className="text-center text-[13px]" style={{ color: "rgba(240,236,217,0.7)" }}>
             Apoyamos a productores y emprendedores del sector cacaotero con financiamiento y servicios especializados.
           </p>
-          <div className="mt-4 flex gap-2.5 items-center">
-            <ChokaoButton
-              fullWidth
-              className="flex-1"
-              onClick={() => navigate("/patrocinadores/banco-pichincha")}
-            >
-              Ver perfil completo
-            </ChokaoButton>
-            <button
-              className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: "#102132", border: "1px solid #2a4a62", color: "rgba(240,236,217,0.6)" }}
-              aria-label="Sitio web"
-            >
-              <Globe size={18} strokeWidth={1.5} />
-            </button>
-          </div>
-        </div>
+        </button>
       </div>
 
       {/* GOLD */}
@@ -106,7 +96,7 @@ const Sponsors = () => {
         >
           ◆ GOLD
         </p>
-        <div className="pl-5 flex gap-3 overflow-x-auto no-scrollbar pb-2">
+        <div className="pl-5 flex gap-3 overflow-x-auto pb-3 chokao-scroll">
           {goldSponsors.map((s) => (
             <button
               key={s.id}
@@ -143,7 +133,7 @@ const Sponsors = () => {
         >
           ● SILVER
         </p>
-        <div className="pl-5 flex gap-2.5 overflow-x-auto no-scrollbar pb-2">
+        <div className="pl-5 flex gap-2.5 overflow-x-auto pb-3 chokao-scroll">
           {silverSponsors.map((s) => (
             <button
               key={s.id}
