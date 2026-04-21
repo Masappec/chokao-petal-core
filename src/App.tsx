@@ -28,6 +28,7 @@ import Sponsors from "./pages/Sponsors.tsx";
 import SponsorDetail from "./pages/SponsorDetail.tsx";
 import MyTickets from "./pages/MyTickets.tsx";
 import TicketQR from "./pages/TicketQR.tsx";
+import CheckoutSummary from "./pages/CheckoutSummary.tsx";
 import CheckoutBuyer from "./pages/CheckoutBuyer.tsx";
 import CheckoutPayment from "./pages/CheckoutPayment.tsx";
 import CheckoutProcessing from "./pages/CheckoutProcessing.tsx";
@@ -71,6 +72,7 @@ const App = () => (
             <Route path="/patrocinadores/:id" element={<SponsorDetail />} />
             <Route path="/entradas" element={<MyTickets />} />
             <Route path="/entradas/:id" element={<TicketQR />} />
+            <Route path="/comprar" element={<CheckoutSummary />} />
             <Route path="/comprar/datos" element={<CheckoutBuyer />} />
             <Route path="/comprar/pago" element={<CheckoutPayment />} />
             <Route path="/comprar/procesando" element={<CheckoutProcessing />} />
