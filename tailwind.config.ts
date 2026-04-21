@@ -106,6 +106,24 @@ export default {
           "0%": { opacity: "0", transform: "scale(0.5)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "progress-indeterminate": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(250%)" },
+        },
+        "scale-in": {
+          "0%": { transform: "scale(0)", opacity: "0" },
+          "60%": { transform: "scale(1.1)", opacity: "1" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        shake: {
+          "0%, 100%": { transform: "translateX(0)" },
+          "25%": { transform: "translateX(-6px)" },
+          "75%": { transform: "translateX(6px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -113,6 +131,10 @@ export default {
         "chokao-pulse": "chokao-pulse 2s ease-in-out infinite",
         "mascot-wave": "mascot-wave 2.5s ease-in-out infinite 1s",
         "mascot-entrance": "mascot-entrance 0.8s ease-out forwards",
+        "spin-slow": "spin-slow 3s ease-in-out infinite",
+        "progress-indeterminate": "progress-indeterminate 1.5s ease-in-out infinite",
+        "scale-in": "scale-in 0.5s ease-out",
+        shake: "shake 0.5s ease-in-out",
       },
     },
   },

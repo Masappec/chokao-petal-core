@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppHeader from "@/components/AppHeader";
 import CategoryChip from "@/components/CategoryChip";
 import ChokaoButton from "@/components/ChokaoButton";
 import ChokaoSeparator from "@/components/ChokaoSeparator";
+import CheckoutSummarySheet from "@/components/CheckoutSummarySheet";
 import { Clock, MapPin, Users } from "lucide-react";
 import tallerImg from "@/assets/taller-temperado.png";
 import talleresLogo from "@/assets/talleres-logo.png";
 
 const ActivityDetail = () => {
   const navigate = useNavigate();
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-28">
@@ -81,8 +84,10 @@ const ActivityDetail = () => {
           <p className="text-chokao-cream/50 text-[11px] uppercase tracking-wide">Precio</p>
           <p className="text-chokao-yellow font-display font-bold text-[22px]">$25.00</p>
         </div>
-        <ChokaoButton>Comprar Entrada</ChokaoButton>
+        <ChokaoButton onClick={() => setSheetOpen(true)}>Comprar Entrada</ChokaoButton>
       </div>
+
+      <CheckoutSummarySheet open={sheetOpen} onClose={() => setSheetOpen(false)} />
     </div>
   );
 };
