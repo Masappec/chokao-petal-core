@@ -165,11 +165,14 @@ const Profile = () => {
             <div className="bg-chokao-surface/40">
               {g.items.map((it, idx) => {
                 const Icon = it.icon;
-                const Comp: any = it.to ? "button" : "button";
+                const Comp: any = "button";
                 return (
                   <Comp
                     key={it.label}
-                    onClick={() => it.to && navigate(it.to)}
+                    onClick={() => {
+                      if ((it as any).onClick) (it as any).onClick();
+                      else if ((it as any).to) navigate((it as any).to);
+                    }}
                     className={`w-full flex items-center gap-3 px-5 h-[52px] hover:bg-white/5 transition-colors ${
                       idx !== g.items.length - 1 ? "border-b border-chokao-border/30" : ""
                     }`}
