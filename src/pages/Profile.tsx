@@ -205,6 +205,36 @@ const Profile = () => {
       </div>
 
       <BottomNav activeTab="perfil" onTabChange={handleTab} />
+
+      <Dialog open={langOpen} onOpenChange={setLangOpen}>
+        <DialogContent className="max-w-[340px] bg-chokao-surface border-chokao-border rounded-2xl">
+          <DialogHeader>
+            <DialogTitle className="font-display text-foreground text-[18px]">Selecciona idioma</DialogTitle>
+          </DialogHeader>
+          <div className="mt-2 flex flex-col gap-1">
+            {LANGS.map((l) => {
+              const active = lang === l.code;
+              return (
+                <button
+                  key={l.code}
+                  onClick={() => selectLang(l.code)}
+                  className={`flex items-center gap-3 px-4 h-12 rounded-xl border transition-colors ${
+                    active
+                      ? "bg-chokao-yellow/15 border-chokao-yellow"
+                      : "bg-chokao-primary border-chokao-border hover:border-chokao-cream/30"
+                  }`}
+                >
+                  <span className="text-[20px]">{l.flag}</span>
+                  <span className={`flex-1 text-left text-[14px] ${active ? "text-chokao-yellow font-semibold" : "text-foreground"}`}>
+                    {l.label}
+                  </span>
+                  {active && <Check size={18} className="text-chokao-yellow" />}
+                </button>
+              );
+            })}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
