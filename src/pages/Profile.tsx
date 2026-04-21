@@ -57,7 +57,6 @@ const Profile = () => {
       label: "Evento",
       items: [
         { icon: Ticket, label: "Mis entradas", color: "#aab93e" },
-        { icon: Users, label: "Mis contactos", color: "#aab93e", to: "/networking" },
       ],
     },
     {
