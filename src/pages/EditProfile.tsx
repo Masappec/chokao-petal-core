@@ -114,7 +114,7 @@ const EditProfile = () => {
 
         <div className="pt-4 flex flex-col gap-3">
           <ChokaoButton variant="primary" fullWidth onClick={handleSave}>
-            Guardar cambios
+            Guardar
           </ChokaoButton>
           <button
             onClick={() => navigate(-1)}
