@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
-import { MapPin, Clock, Ticket } from "lucide-react";
+import { Bell, MapPin, Clock, Ticket } from "lucide-react";
 import MoreDrawer from "@/components/MoreDrawer";
-import AppHeader from "@/components/AppHeader";
 import BottomNav from "@/components/BottomNav";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import { useNavigate } from "react-router-dom";
