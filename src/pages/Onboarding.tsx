@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
-import mascot from "@/assets/chokao-mascot.png";
+import mascot from "@/assets/chokao-mascot-explorer.png";
 
 const TOTAL = 4;
 
