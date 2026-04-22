@@ -73,7 +73,7 @@ const activities: Activity[] = [
   { id: "d1-3", day: 1, time: "11:00 AM", slot: "morning", category: "Talleres", title: "Taller: Temperado de Chocolate Artesanal", room: "Sala Taller A", duration: "90 min", speaker: "Maestro Carlos Vera", price: "$25", spots: { taken: 18, total: 20 } },
   { id: "d1-4", day: 1, time: "2:00 PM", slot: "afternoon", category: "Rueda de Negocios", title: "Rueda de Negocios Internacional", room: "Sala Negocios", duration: "120 min", speaker: "ANECACAO" },
   { id: "d1-5", day: 1, time: "3:30 PM", slot: "afternoon", category: "Encuentros", title: "Encuentro de Productores Costa y Sierra", room: "Patio Central", duration: "90 min" },
-  { id: "d1-6", day: 1, time: "5:00 PM", slot: "afternoon", category: "Seminarios", title: "Seminario: Certificaciones de Calidad para Exportación", room: "Sala B", duration: "60 min", speaker: "Ing. Roberto Palma" },
+  { id: "d1-6", day: 1, time: "5:00 PM", slot: "afternoon", category: "Seminarios", title: "Seminario: Certificaciones de Calidad para Exportación", room: "Sala B", duration: "60 min", speaker: "Ing. Roberto Palma", price: "$15" },
   { id: "d1-7", day: 1, time: "7:00 PM", slot: "evening", category: "Eventos Especiales", title: "Coctel de Bienvenida CHOKAO", room: "Terraza Principal", duration: "120 min" },
 
   // ===== DÍA 2 =====
