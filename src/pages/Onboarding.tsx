@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, TouchEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
-  X,
   MapPin,
   Calendar,
   Plane,
@@ -13,6 +12,11 @@ import {
   Users,
   Store,
   Bell,
+  Leaf,
+  Briefcase,
+  ChefHat,
+  FlaskConical,
+  Sparkles,
 } from "lucide-react";
 import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
@@ -35,7 +39,7 @@ const Dots = ({ active }: { active: number }) => (
         key={i}
         className={`transition-all duration-300 rounded-full ${
           i === active
-            ? "w-7 h-2 bg-chokao-yellow"
+            ? "w-6 h-2 bg-chokao-yellow"
             : "w-2 h-2 bg-chokao-border"
         }`}
       />
@@ -46,11 +50,12 @@ const Dots = ({ active }: { active: number }) => (
 const CacaoBackdrop = () => (
   <div className="absolute inset-0 pointer-events-none overflow-hidden">
     {[
-      { top: "-40px", left: "-30px", size: 180, rot: 20 },
-      { top: "20%", right: "-50px", size: 140, rot: -15 },
-      { bottom: "10%", left: "-40px", size: 160, rot: 35 },
-      { bottom: "-30px", right: "-20px", size: 200, rot: -25 },
-      { top: "45%", left: "10%", size: 90, rot: 10 },
+      { top: "8%", left: "-40px", size: 160, rot: 25 },
+      { top: "30%", right: "-50px", size: 180, rot: -20 },
+      { bottom: "20%", left: "-30px", size: 140, rot: 40 },
+      { bottom: "-20px", right: "-30px", size: 170, rot: -30 },
+      { top: "55%", left: "12%", size: 80, rot: 15 },
+      { top: "18%", right: "20%", size: 70, rot: -10 },
     ].map((p, i) => (
       <div
         key={i}
@@ -69,9 +74,18 @@ const CacaoBackdrop = () => (
   </div>
 );
 
+const BrandHeader = () => (
+  <div className="flex items-center justify-center gap-2 pt-2 pb-1">
+    <ChokaoIcon size={28} />
+    <span className="font-display font-bold text-chokao-cream text-[20px] tracking-wide">
+      CHOKAO
+    </span>
+  </div>
+);
+
 const Mascot = ({
   transform,
-  height = 240,
+  height = 220,
 }: {
   transform: string;
   height?: number;
@@ -85,73 +99,97 @@ const Mascot = ({
   />
 );
 
+/* ---------------- SLIDE 1 ---------------- */
 const Slide1 = () => (
   <div className="h-full w-full flex flex-col">
-    {/* Top 58% */}
-    <div className="relative" style={{ height: "58%" }}>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div
-          className="rounded-full bg-chokao-surface"
-          style={{ width: 300, height: 300, opacity: 0.5 }}
-        />
-      </div>
-      {/* Badge */}
-      <div className="absolute top-12 right-10 z-10 animate-fade-in">
-        <div
-          className="rounded-full px-3 py-1 border text-[12px] font-bold"
-          style={{
-            backgroundColor: "hsl(var(--chokao-yellow) / 0.15)",
-            borderColor: "hsl(var(--chokao-yellow))",
-            color: "hsl(var(--chokao-yellow))",
-          }}
-        >
-          5ta Edición 🎉
-        </div>
-      </div>
-      <div className="relative h-full flex items-end justify-center pb-2">
-        <div className="flex flex-col items-center">
-          <Mascot transform="none" height={260} />
+    <BrandHeader />
+
+    {/* Mascot stage */}
+    <div className="relative flex-1 flex items-center justify-center px-6">
+      {/* Cacao beans cluster left */}
+      <div className="absolute left-4 top-6 flex flex-col gap-1.5 opacity-90">
+        {[0, 1, 2, 3].map((i) => (
           <div
-            className="rounded-[50%]"
+            key={i}
             style={{
-              width: 120,
-              height: 20,
-              background: "rgba(0,0,0,0.3)",
-              filter: "blur(6px)",
-              marginTop: -8,
+              width: 22,
+              height: 28,
+              borderRadius: "60% 60% 50% 50% / 70% 70% 40% 40%",
+              background:
+                "linear-gradient(135deg, #6b3a1a 0%, #4a2410 100%)",
+              transform: `rotate(${-15 + i * 8}deg) translateX(${i * 6}px)`,
+              boxShadow: "inset -2px -3px 4px rgba(0,0,0,0.4)",
             }}
           />
+        ))}
+      </div>
+
+      {/* Confetti / party cluster right */}
+      <div className="absolute right-4 top-8 flex items-start gap-1">
+        <span style={{ fontSize: 28 }}>🎉</span>
+        <div className="flex flex-col gap-1 mt-1">
+          {[
+            "hsl(var(--chokao-yellow))",
+            "hsl(var(--chokao-red))",
+            "hsl(var(--chokao-green))",
+            "hsl(var(--chokao-cream))",
+          ].map((c, i) => (
+            <span
+              key={i}
+              style={{
+                width: 8,
+                height: 8,
+                background: c,
+                borderRadius: i % 2 === 0 ? "50%" : "2px",
+                transform: i % 2 === 0 ? "none" : "rotate(45deg)",
+              }}
+            />
+          ))}
         </div>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <Mascot transform="none" height={230} />
+        <div
+          className="rounded-[50%]"
+          style={{
+            width: 110,
+            height: 18,
+            background: "rgba(0,0,0,0.3)",
+            filter: "blur(6px)",
+            marginTop: -6,
+          }}
+        />
       </div>
     </div>
 
-    {/* Bottom 42% */}
-    <div className="flex-1 px-7 flex flex-col items-center text-center">
-      <ChokaoIcon size={24} className="mb-2.5" />
-      <h1 className="font-display font-bold text-[28px] text-chokao-cream leading-tight">
-        Bienvenido a <span className="text-chokao-yellow">CHOKAO</span>
+    {/* Copy */}
+    <div className="px-7 text-center pb-2">
+      <h1 className="font-display font-bold text-[26px] text-chokao-cream leading-tight">
+        Bienvenido a<br />
+        <span className="text-chokao-yellow">CHOKAO</span>
       </h1>
       <p
-        className="font-body text-[15px] mt-3 leading-relaxed"
-        style={{ color: "hsl(var(--chokao-cream) / 0.6)", maxWidth: 280 }}
+        className="font-body text-[14px] mt-3 leading-relaxed mx-auto"
+        style={{ color: "hsl(var(--chokao-cream) / 0.65)", maxWidth: 290 }}
       >
         La feria internacional del cacao y chocolate más importante del Ecuador
       </p>
-      <div className="flex items-center justify-center gap-4 mt-3 flex-wrap">
+      <div className="flex flex-col items-center gap-1.5 mt-4">
         <div className="flex items-center gap-1.5">
-          <MapPin size={14} style={{ color: "hsl(var(--chokao-cream) / 0.4)" }} />
+          <MapPin size={14} style={{ color: "hsl(var(--chokao-yellow))" }} />
           <span
             className="text-[13px]"
-            style={{ color: "hsl(var(--chokao-cream) / 0.6)" }}
+            style={{ color: "hsl(var(--chokao-cream) / 0.75)" }}
           >
             Guayaquil, Ecuador
           </span>
         </div>
         <div className="flex items-center gap-1.5">
-          <Calendar size={14} style={{ color: "hsl(var(--chokao-cream) / 0.4)" }} />
+          <Calendar size={14} style={{ color: "hsl(var(--chokao-yellow))" }} />
           <span
             className="text-[13px]"
-            style={{ color: "hsl(var(--chokao-cream) / 0.6)" }}
+            style={{ color: "hsl(var(--chokao-cream) / 0.75)" }}
           >
             14 · 15 · 16 Jun 2025
           </span>
@@ -161,179 +199,76 @@ const Slide1 = () => (
   </div>
 );
 
+/* ---------------- SLIDE 2 ---------------- */
 const Slide2 = () => {
-  const chips = [
-    { icon: "🌿", label: "Productores" },
-    { icon: "✈️", label: "Exportadores" },
-    { icon: "🍫", label: "Chocolateros" },
-    { icon: "👨‍🍳", label: "Chefs" },
-    { icon: "🔬", label: "Científicos" },
-    { icon: "💼", label: "Compradores" },
+  const participants = [
+    { Icon: Leaf, label: "Productores" },
+    { Icon: Plane, label: "Exportadores" },
+    { Icon: Sparkles, label: "Chocolateros" },
+    { Icon: ChefHat, label: "Chefs" },
+    { Icon: FlaskConical, label: "Científicos" },
+    { Icon: Briefcase, label: "Compradores" },
+  ];
+  const tags = [
+    { Icon: Plane, label: "Internacional", color: "hsl(var(--chokao-yellow))" },
+    { Icon: Building2, label: "Empresarial", color: "hsl(var(--chokao-green))" },
+    { Icon: GraduationCap, label: "Académico", color: "hsl(var(--chokao-cream))" },
   ];
   return (
     <div className="h-full w-full flex flex-col">
-      {/* Top 45% */}
-      <div className="relative" style={{ height: "45%" }}>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className="rounded-[50%] bg-chokao-surface"
-            style={{ width: 320, height: 200, opacity: 0.45 }}
-          />
-        </div>
-        {/* Floating chips */}
-        <div
-          className="absolute top-10 left-6 z-10 animate-fade-in"
-          style={{ animationDelay: "100ms", animationFillMode: "both" }}
-        >
-          <div
-            className="flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-[11px] bg-chokao-surface"
-            style={{
-              borderColor: "hsl(var(--chokao-yellow))",
-              color: "hsl(var(--chokao-yellow))",
-            }}
-          >
-            <Plane size={12} /> Internacional
-          </div>
-        </div>
-        <div
-          className="absolute top-8 right-5 z-10 animate-fade-in"
-          style={{ animationDelay: "250ms", animationFillMode: "both" }}
-        >
-          <div
-            className="flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-[11px] bg-chokao-surface"
-            style={{
-              borderColor: "hsl(var(--chokao-cream))",
-              color: "hsl(var(--chokao-cream))",
-            }}
-          >
-            <GraduationCap size={12} /> Académico
-          </div>
-        </div>
-        <div
-          className="absolute bottom-6 right-8 z-10 animate-fade-in"
-          style={{ animationDelay: "400ms", animationFillMode: "both" }}
-        >
-          <div
-            className="flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-[11px] bg-chokao-surface"
-            style={{
-              borderColor: "hsl(var(--chokao-green))",
-              color: "hsl(var(--chokao-green))",
-            }}
-          >
-            <Building2 size={12} /> Empresarial
-          </div>
-        </div>
-        <div className="relative h-full flex items-end justify-center pl-8 pb-1">
-          <Mascot transform="rotate(-8deg)" height={210} />
-        </div>
-      </div>
+      <BrandHeader />
 
-      {/* Bottom 55% */}
-      <div className="flex-1 px-6 flex flex-col items-center text-center">
-        <h1 className="font-display font-bold text-[24px] text-chokao-cream leading-tight">
-          Un punto de encuentro <span className="text-chokao-yellow">único</span>
-        </h1>
-        <p
-          className="font-body text-[14px] mt-3 leading-relaxed"
-          style={{ color: "hsl(var(--chokao-cream) / 0.6)", maxWidth: 300 }}
-        >
-          Exportadores, productores, chocolateros, chefs, científicos y
-          compradores internacionales, todos en un mismo lugar.
-        </p>
-        <div className="w-full mt-4 overflow-x-auto no-scrollbar">
-          <div className="flex gap-2 px-2 pb-2 w-max">
-            {chips.map((c) => (
-              <div
-                key={c.label}
-                className="flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-[13px] bg-chokao-surface whitespace-nowrap"
-                style={{
-                  borderColor: "hsl(var(--chokao-border))",
-                  color: "hsl(var(--chokao-cream) / 0.7)",
-                }}
-              >
-                <span>{c.icon}</span>
-                {c.label}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Slide3 = () => {
-  const features = [
-    { Icon: Calendar, color: "hsl(var(--chokao-yellow))", title: "Agenda completa", desc: "Programa de los 3 días" },
-    { Icon: Ticket, color: "hsl(var(--chokao-yellow))", title: "Compra entradas", desc: "Talleres y masterclass" },
-    { Icon: QrCode, color: "hsl(var(--chokao-green))", title: "Acceso digital", desc: "Tu QR siempre listo" },
-    { Icon: Users, color: "hsl(var(--chokao-green))", title: "Networking", desc: "Conecta con asistentes" },
-    { Icon: Store, color: "hsl(var(--chokao-cream))", title: "Expositores", desc: "Descubre las marcas" },
-    { Icon: Bell, color: "hsl(var(--chokao-cream))", title: "Notificaciones", desc: "Sin perderte nada" },
-  ];
-  return (
-    <div className="h-full w-full flex flex-col">
-      {/* Top 32% */}
-      <div className="relative" style={{ height: "32%" }}>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative">
-            <Mascot transform="rotate(5deg) scaleX(-1)" height={180} />
-            {/* Phone */}
+      {/* Mascot + side tags */}
+      <div className="relative flex-1 flex items-center justify-center px-6">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-2.5">
+          {tags.map((t, i) => (
             <div
-              className="absolute"
+              key={t.label}
+              className="flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[12px] bg-chokao-surface animate-fade-in"
               style={{
-                width: 50,
-                height: 90,
-                bottom: 30,
-                right: -10,
-                borderRadius: 10,
-                backgroundColor: "hsl(var(--chokao-surface))",
-                border: "2px solid hsl(var(--chokao-yellow))",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transform: "rotate(-12deg)",
+                borderColor: t.color,
+                color: t.color,
+                animationDelay: `${i * 120}ms`,
+                animationFillMode: "both",
               }}
             >
-              <ChokaoIcon size={26} />
+              <t.Icon size={13} />
+              {t.label}
             </div>
-          </div>
+          ))}
+        </div>
+        <div className="ml-16">
+          <Mascot transform="rotate(-6deg)" height={210} />
         </div>
       </div>
 
-      <div className="px-5 text-center">
-        <h1 className="font-display font-bold text-[22px] text-chokao-cream leading-tight">
-          Todo el evento en{" "}
-          <span className="text-chokao-yellow">tu bolsillo</span>
+      {/* Copy */}
+      <div className="px-6 text-center">
+        <h1 className="font-display font-bold text-[24px] text-chokao-cream leading-tight">
+          Un punto de<br />
+          encuentro <span className="text-chokao-yellow">único</span>
         </h1>
-      </div>
-
-      {/* Bottom */}
-      <div className="flex-1 px-5 mt-3 flex flex-col">
         <p
-          className="text-center text-[13px] mb-4"
-          style={{ color: "hsl(var(--chokao-cream) / 0.5)" }}
+          className="font-body text-[13px] mt-2.5 leading-relaxed mx-auto"
+          style={{ color: "hsl(var(--chokao-cream) / 0.65)", maxWidth: 320 }}
         >
-          Tu app oficial para vivir CHOKAO al máximo
+          Exportadores, productores, chocolateros, chefs, científicos y
+          compradores internacionales, todos en un mismo lugar
         </p>
-        <div className="grid grid-cols-2 gap-2.5">
-          {features.map((f) => (
+
+        {/* Participant chips grid */}
+        <div className="grid grid-cols-3 gap-1.5 mt-4 px-2">
+          {participants.map((p) => (
             <div
-              key={f.title}
-              className="rounded-[14px] bg-chokao-surface p-3.5 flex items-start gap-2.5"
+              key={p.label}
+              className="flex items-center justify-center gap-1 rounded-full border px-2 py-1.5 text-[11px] bg-chokao-surface"
+              style={{
+                borderColor: "hsl(var(--chokao-border))",
+                color: "hsl(var(--chokao-cream) / 0.8)",
+              }}
             >
-              <f.Icon size={26} style={{ color: f.color, flexShrink: 0 }} />
-              <div className="flex flex-col min-w-0">
-                <span className="text-chokao-cream font-semibold text-[13px] leading-tight">
-                  {f.title}
-                </span>
-                <span
-                  className="text-[11px] leading-snug mt-0.5"
-                  style={{ color: "hsl(var(--chokao-cream) / 0.55)" }}
-                >
-                  {f.desc}
-                </span>
-              </div>
+              <p.Icon size={11} style={{ color: "hsl(var(--chokao-yellow))" }} />
+              <span className="truncate">{p.label}</span>
             </div>
           ))}
         </div>
@@ -342,29 +277,101 @@ const Slide3 = () => {
   );
 };
 
-const Petal = ({ color }: { color: string }) => (
-  <span
-    style={{
-      display: "inline-block",
-      width: 10,
-      height: 10,
-      borderRadius: "60% 40% 60% 40%",
-      backgroundColor: color,
-      flexShrink: 0,
-    }}
-  />
-);
+/* ---------------- SLIDE 3 ---------------- */
+const Slide3 = () => {
+  const features = [
+    { Icon: Calendar, label: "Calendario" },
+    { Icon: Ticket, label: "Ticket" },
+    { Icon: QrCode, label: "QR" },
+    { Icon: Users, label: "Personas" },
+    { Icon: Store, label: "Tienda" },
+    { Icon: Bell, label: "Campana" },
+  ];
+  return (
+    <div className="h-full w-full flex flex-col">
+      <BrandHeader />
 
+      {/* Mascot with phone */}
+      <div className="relative flex-1 flex items-center justify-center">
+        <div className="relative">
+          <Mascot transform="rotate(4deg)" height={200} />
+          <div
+            className="absolute"
+            style={{
+              width: 54,
+              height: 92,
+              bottom: 40,
+              right: -14,
+              borderRadius: 10,
+              backgroundColor: "hsl(var(--chokao-cream))",
+              border: "2px solid hsl(var(--chokao-yellow))",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              transform: "rotate(-10deg)",
+              boxShadow: "0 6px 12px rgba(0,0,0,0.4)",
+            }}
+          >
+            <div
+              className="text-[8px] font-bold mb-0.5"
+              style={{ color: "hsl(var(--chokao-primary))" }}
+            >
+              Ticket!
+            </div>
+            <ChokaoIcon size={22} />
+          </div>
+        </div>
+      </div>
+
+      {/* Copy */}
+      <div className="px-6 text-center">
+        <h1 className="font-display font-bold text-[24px] text-chokao-cream leading-tight">
+          Todo el evento<br />
+          en <span className="text-chokao-yellow">tu bolsillo</span>
+        </h1>
+        <p
+          className="text-[13px] mt-2"
+          style={{ color: "hsl(var(--chokao-cream) / 0.6)" }}
+        >
+          Tu app oficial para vivir CHOKAO al máximo
+        </p>
+
+        {/* Feature grid */}
+        <div className="grid grid-cols-3 gap-2.5 mt-4 px-2">
+          {features.map((f) => (
+            <div
+              key={f.label}
+              className="rounded-[14px] bg-chokao-surface flex flex-col items-center justify-center gap-1.5 py-3"
+            >
+              <f.Icon size={26} style={{ color: "hsl(var(--chokao-yellow))" }} />
+              <span
+                className="text-[11px] font-medium"
+                style={{ color: "hsl(var(--chokao-cream) / 0.85)" }}
+              >
+                {f.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ---------------- SLIDE 4 ---------------- */
 const Slide4 = ({ onStart, onLogin }: { onStart: () => void; onLogin: () => void }) => {
   const benefits = [
-    { color: "hsl(var(--chokao-yellow))", text: "Visibilidad y posicionamiento de marca" },
-    { color: "hsl(var(--chokao-green))", text: "Acceso a medios y difusión digital (Free press)" },
-    { color: "hsl(var(--chokao-red))", text: "Generación de oportunidades comerciales" },
-    { color: "hsl(var(--chokao-cream))", text: "Promoción gastronómica y cultural" },
-    { color: "hsl(var(--chokao-yellow))", text: "Networking estratégico con líderes del sector" },
-    { color: "hsl(var(--chokao-green))", text: "Fortalecimiento de la cadena de valor del cacao" },
+    { color: "hsl(var(--chokao-yellow))", label: "Visibilidad" },
+    { color: "hsl(var(--chokao-yellow))", label: "Oportunidades" },
+    { color: "hsl(var(--chokao-green))", label: "Medios" },
+    { color: "hsl(var(--chokao-green))", label: "Gastronomía" },
+    { color: "hsl(var(--chokao-red))", label: "Oportunidades" },
+    { color: "hsl(var(--chokao-red))", label: "Networking" },
+    { color: "hsl(var(--chokao-cream))", label: "Gastronomía" },
+    { color: "hsl(var(--chokao-cream))", label: "Cadena de valor" },
   ];
-  const confetti = Array.from({ length: 14 }).map((_, i) => {
+  const confetti = Array.from({ length: 18 }).map((_, i) => {
     const colors = [
       "hsl(var(--chokao-yellow))",
       "hsl(var(--chokao-green))",
@@ -372,8 +379,8 @@ const Slide4 = ({ onStart, onLogin }: { onStart: () => void; onLogin: () => void
       "hsl(var(--chokao-cream))",
     ];
     return {
-      left: `${(i * 7 + 5) % 95}%`,
-      top: `${(i * 13) % 35}%`,
+      left: `${(i * 6 + 4) % 95}%`,
+      top: `${(i * 11) % 30}%`,
       size: 6 + (i % 3) * 2,
       color: colors[i % 4],
       delay: `${(i % 6) * 0.3}s`,
@@ -383,12 +390,14 @@ const Slide4 = ({ onStart, onLogin }: { onStart: () => void; onLogin: () => void
 
   return (
     <div className="h-full w-full flex flex-col">
-      {/* Top 40% */}
-      <div className="relative overflow-hidden" style={{ height: "40%" }}>
+      <BrandHeader />
+
+      {/* Mascot celebration */}
+      <div className="relative flex-1 flex items-center justify-center overflow-hidden">
         {confetti.map((c, i) => (
           <span
             key={i}
-            className="absolute animate-fade-in"
+            className="absolute"
             style={{
               left: c.left,
               top: c.top,
@@ -402,70 +411,77 @@ const Slide4 = ({ onStart, onLogin }: { onStart: () => void; onLogin: () => void
             }}
           />
         ))}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            style={{
-              width: 200,
-              height: 200,
-              background:
-                "radial-gradient(circle, hsl(var(--chokao-yellow) / 0.15), transparent 70%)",
-            }}
-          />
-        </div>
-        <div className="relative h-full flex items-center justify-center">
-          <Mascot transform="scale(1.1) translateY(-8px)" height={230} />
-        </div>
+        <div
+          className="absolute"
+          style={{
+            width: 220,
+            height: 220,
+            background:
+              "radial-gradient(circle, hsl(var(--chokao-yellow) / 0.18), transparent 70%)",
+          }}
+        />
+        <Mascot transform="scale(1.05) translateY(-4px)" height={220} />
       </div>
 
-      {/* Bottom 60% */}
-      <div className="flex-1 px-6 flex flex-col">
+      {/* Copy + benefits */}
+      <div className="px-6">
         <h1 className="font-display font-bold text-[22px] text-chokao-cream leading-tight text-center">
-          Potencia tu experiencia en{" "}
-          <span className="text-chokao-yellow">CHOKAO</span>
+          Potencia tu experiencia<br />
+          en <span className="text-chokao-yellow">CHOKAO</span>
         </h1>
         <p
-          className="text-[13px] text-center mt-2 mb-4 mx-auto leading-relaxed"
-          style={{ color: "hsl(var(--chokao-cream) / 0.6)", maxWidth: 290 }}
+          className="text-[13px] text-center mt-2 mb-3 mx-auto leading-relaxed"
+          style={{ color: "hsl(var(--chokao-cream) / 0.65)", maxWidth: 300 }}
         >
-          Únete a la comunidad más importante del cacao y chocolate de América
-          Latina
+          Únete a la comunidad más importante del cacao y chocolate de América Latina
         </p>
 
-        <div className="flex flex-col gap-2.5">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-2 px-2">
           {benefits.map((b, i) => (
             <div
               key={i}
-              className="flex items-center gap-2.5 rounded-[10px] px-3.5 py-2.5"
+              className="flex items-center gap-2"
               style={{
-                backgroundColor: "hsl(var(--chokao-surface) / 0.6)",
-                animation: `slide-up 400ms ease-out ${i * 80}ms both`,
+                animation: `slide-up 400ms ease-out ${i * 70}ms both`,
               }}
             >
-              <Petal color={b.color} />
               <span
-                className="text-[13px] leading-snug"
-                style={{ color: "hsl(var(--chokao-cream) / 0.8)" }}
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: "50%",
+                  backgroundColor: b.color,
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                className="text-[13px]"
+                style={{ color: "hsl(var(--chokao-cream) / 0.85)" }}
               >
-                {b.text}
+                {b.label}
               </span>
             </div>
           ))}
         </div>
 
-        <div className="mt-5 flex flex-col gap-2.5">
+        <div className="mt-5 flex flex-col gap-1.5">
           <ChokaoButton fullWidth onClick={onStart}>
-            <ChokaoIcon size={18} />
             ¡Comenzar ahora!
           </ChokaoButton>
-          <ChokaoButton variant="ghost" fullWidth onClick={onLogin}>
-            Ya tengo cuenta · Iniciar sesión
-          </ChokaoButton>
+          <button
+            onClick={onLogin}
+            className="text-center text-[13px] py-2"
+            style={{ color: "hsl(var(--chokao-cream) / 0.7)" }}
+          >
+            Ya tengo cuenta · <span className="text-chokao-yellow">Iniciar sesión</span>
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
+/* ---------------- MAIN ---------------- */
 const Onboarding = () => {
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
@@ -509,7 +525,7 @@ const Onboarding = () => {
           100% { transform: translateY(180px) rotate(360deg); opacity: 0; }
         }
         @keyframes slide-up {
-          from { opacity: 0; transform: translateY(16px); }
+          from { opacity: 0; transform: translateY(12px); }
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
@@ -521,7 +537,7 @@ const Onboarding = () => {
         <button
           onClick={() => finish("/")}
           className="absolute top-4 right-5 z-30 text-[13px]"
-          style={{ color: "hsl(var(--chokao-cream) / 0.5)" }}
+          style={{ color: "hsl(var(--chokao-cream) / 0.6)" }}
         >
           Omitir
         </button>
@@ -540,16 +556,16 @@ const Onboarding = () => {
             transform: `translateX(-${index * (100 / TOTAL)}%)`,
           }}
         >
-          <div style={{ width: `${100 / TOTAL}%` }} className="h-full pt-12 pb-32">
+          <div style={{ width: `${100 / TOTAL}%` }} className="h-full pt-3 pb-32">
             <Slide1 />
           </div>
-          <div style={{ width: `${100 / TOTAL}%` }} className="h-full pt-12 pb-32">
+          <div style={{ width: `${100 / TOTAL}%` }} className="h-full pt-3 pb-32">
             <Slide2 />
           </div>
-          <div style={{ width: `${100 / TOTAL}%` }} className="h-full pt-12 pb-32">
+          <div style={{ width: `${100 / TOTAL}%` }} className="h-full pt-3 pb-32">
             <Slide3 />
           </div>
-          <div style={{ width: `${100 / TOTAL}%` }} className="h-full pt-12 pb-4">
+          <div style={{ width: `${100 / TOTAL}%` }} className="h-full pt-3 pb-6">
             <Slide4
               onStart={() => finish("/register")}
               onLogin={() => finish("/login")}
@@ -558,20 +574,15 @@ const Onboarding = () => {
         </div>
       </div>
 
-      {/* Bottom controls (slides 1-3) */}
+      {/* Bottom controls (slides 1-3) — dots above full-width Siguiente button */}
       {index < TOTAL - 1 && (
         <div className="absolute bottom-0 left-0 right-0 z-30 px-6 pb-6 pt-3 bg-gradient-to-t from-chokao-primary via-chokao-primary to-transparent">
-          <div className="flex items-center justify-between">
+          <div className="flex justify-center mb-3">
             <Dots active={index} />
-            <ChokaoButton onClick={goNext} className="!h-[48px] !px-6">
-              Siguiente <ArrowRight size={18} />
-            </ChokaoButton>
           </div>
-        </div>
-      )}
-      {index === TOTAL - 1 && (
-        <div className="absolute bottom-3 left-0 right-0 z-30 flex justify-center">
-          <Dots active={index} />
+          <ChokaoButton fullWidth onClick={goNext}>
+            Siguiente <ArrowRight size={18} />
+          </ChokaoButton>
         </div>
       )}
     </div>
