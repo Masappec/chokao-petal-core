@@ -259,7 +259,30 @@ const Agenda = () => {
 
   return (
     <div className="min-h-screen bg-chokao-primary max-w-[390px] mx-auto pb-24">
-      <AppHeader variant="brand" title="Agenda" showNotification />
+      {/* Header — mismo estilo que /dashboard */}
+      <header className="sticky top-0 z-40 flex items-center h-[64px] px-5" style={{ backgroundColor: "#102132" }}>
+        <ChokaoIcon size={28} />
+        <span className="ml-2 font-display font-bold text-[18px] text-white tracking-tight">CHOKAO</span>
+        <div className="ml-auto flex items-center gap-3">
+          <button className="relative" style={{ color: "rgba(240,236,217,0.7)" }} aria-label="Notificaciones">
+            <Bell size={24} strokeWidth={1.5} />
+            <span
+              className="absolute -top-1 -right-1 w-[18px] h-[18px] rounded-full text-[10px] font-bold flex items-center justify-center text-white"
+              style={{ backgroundColor: "#e73e40" }}
+            >
+              3
+            </span>
+          </button>
+          <button
+            onClick={() => navigate("/perfil")}
+            aria-label="Ir a mi perfil"
+            className="w-9 h-9 rounded-full flex items-center justify-center text-[12px] font-bold transition-transform active:scale-95"
+            style={{ border: "2px solid #fbba30", backgroundColor: "#1a2f42", color: "#f0ecd9" }}
+          >
+            MR
+          </button>
+        </div>
+      </header>
 
       {/* Day selector */}
       <div className="flex border-b border-chokao-border/30 px-5 mt-2 gap-1">
