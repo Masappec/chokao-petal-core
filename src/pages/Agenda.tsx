@@ -88,7 +88,7 @@ const activities: Activity[] = [
   // ===== DÍA 3 =====
   { id: "d3-1", day: 3, time: "9:00 AM", slot: "morning", category: "Premiaciones", title: "Competencia Internacional de Chocolatería", room: "Escenario Principal", duration: "180 min", speaker: "Jurado Internacional" },
   { id: "d3-2", day: 3, time: "9:00 AM", slot: "morning", category: "Talleres", title: "Taller: Chocolate con Ingredientes Amazónicos", room: "Sala Taller A", duration: "90 min", speaker: "Chef Rodrigo Arias", price: "$25", spots: { taken: 20, total: 20 } },
-  { id: "d3-3", day: 3, time: "11:30 AM", slot: "morning", category: "Seminarios", title: "Seminario: Tendencias del Mercado Mundial del Cacao 2025", room: "Sala B", duration: "60 min", speaker: "Carla Vega" },
+  { id: "d3-3", day: 3, time: "11:30 AM", slot: "morning", category: "Seminarios", title: "Seminario: Tendencias del Mercado Mundial del Cacao 2025", room: "Sala B", duration: "60 min", speaker: "Carla Vega", price: "$20" },
   { id: "d3-4", day: 3, time: "2:00 PM", slot: "afternoon", category: "Congreso", title: "Foro de Cierre: El Futuro del Cacao Ecuatoriano", room: "Sala Cacao", duration: "90 min", speaker: "Panel ANECACAO" },
   { id: "d3-5", day: 3, time: "3:30 PM", slot: "afternoon", category: "Encuentros", title: "Encuentro Final de Productores y Exportadores", room: "Patio Central", duration: "60 min" },
   { id: "d3-6", day: 3, time: "5:00 PM", slot: "afternoon", category: "Premiaciones", title: "Ceremonia de Premiación al Mejor Cacao de Ecuador", room: "Escenario Principal", duration: "90 min", speaker: "Autoridades ANECACAO" },
