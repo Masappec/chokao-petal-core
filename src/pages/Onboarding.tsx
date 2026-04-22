@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, TouchEvent } from "react";
+import { useRef, useState, TouchEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -487,15 +487,7 @@ const Onboarding = () => {
   const [index, setIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
-  useEffect(() => {
-    try {
-      if (localStorage.getItem("chokao_onboarding_completed") === "true") {
-        navigate("/", { replace: true });
-      }
-    } catch {
-      /* ignore */
-    }
-  }, [navigate]);
+
 
   const goNext = () => setIndex((i) => Math.min(TOTAL - 1, i + 1));
   const goPrev = () => setIndex((i) => Math.max(0, i - 1));
