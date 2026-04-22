@@ -21,6 +21,7 @@ import {
 import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
 import mascot from "@/assets/chokao-mascot-explorer.png";
+import cacaoPattern from "@/assets/cacao-pattern.png";
 
 const TOTAL = 4;
 
@@ -48,30 +49,17 @@ const Dots = ({ active }: { active: number }) => (
 );
 
 const CacaoBackdrop = () => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden">
-    {[
-      { top: "8%", left: "-40px", size: 160, rot: 25 },
-      { top: "30%", right: "-50px", size: 180, rot: -20 },
-      { bottom: "20%", left: "-30px", size: 140, rot: 40 },
-      { bottom: "-20px", right: "-30px", size: 170, rot: -30 },
-      { top: "55%", left: "12%", size: 80, rot: 15 },
-      { top: "18%", right: "20%", size: 70, rot: -10 },
-    ].map((p, i) => (
-      <div
-        key={i}
-        className="absolute"
-        style={{
-          ...p,
-          width: p.size,
-          height: p.size,
-          opacity: 0.06,
-          transform: `rotate(${p.rot}deg)`,
-        }}
-      >
-        <ChokaoIcon size={p.size} opacity={1} />
-      </div>
-    ))}
-  </div>
+  <>
+    <div
+      className="absolute inset-0 pointer-events-none z-0"
+      style={{
+        backgroundImage: `url(${cacaoPattern})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    />
+    <div className="absolute inset-0 bg-chokao-primary/70 pointer-events-none z-0" />
+  </>
 );
 
 const BrandHeader = () => (
