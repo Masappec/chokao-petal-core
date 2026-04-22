@@ -388,9 +388,18 @@ const Agenda = () => {
                 </div>
 
                 <div className="space-y-3 px-5">
-                  {items.map((a) => (
-                    <ActivityRow key={a.id} a={a} onClick={() => navigate("/activity")} />
-                  ))}
+                  {items.map((a) => {
+                    // Mapear actividades de la agenda al catálogo (act-taller-1, act-rueda-1, act-master-1, act-amazon-1)
+                    const catalogId =
+                      a.id === "d1-3" ? "act-taller-1" :
+                      a.id === "d1-4" ? "act-rueda-1" :
+                      a.id === "d2-3" ? "act-master-1" :
+                      a.id === "d3-2" ? "act-amazon-1" :
+                      a.price ? "act-taller-1" : "act-rueda-1";
+                    return (
+                      <ActivityRow key={a.id} a={a} onClick={() => navigate(`/activity/${catalogId}`)} />
+                    );
+                  })}
                 </div>
               </div>
             );
