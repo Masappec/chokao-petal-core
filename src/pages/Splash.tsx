@@ -2,22 +2,22 @@ import ChokaoIcon from "@/components/ChokaoIcon";
 import ChokaoButton from "@/components/ChokaoButton";
 import { useNavigate } from "react-router-dom";
 import mascotImg from "@/assets/chokao-mascot.png";
+import cacaoPattern from "@/assets/cacao-pattern.png";
 
 const Splash = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-screen bg-chokao-primary flex flex-col items-center justify-center overflow-hidden max-w-[390px] mx-auto">
-      {/* Decorative background petals */}
-      <div className="absolute -top-20 -left-20 pointer-events-none">
-        <ChokaoIcon size={360} opacity={0.05} className="rotate-[25deg]" />
-      </div>
-      <div className="absolute -bottom-32 -right-16 pointer-events-none">
-        <ChokaoIcon size={400} opacity={0.04} className="rotate-[-15deg]" />
-      </div>
-      <div className="absolute top-1/3 right-[-100px] pointer-events-none">
-        <ChokaoIcon size={280} opacity={0.06} className="rotate-[45deg]" />
-      </div>
+    <div
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden max-w-[390px] mx-auto"
+      style={{
+        backgroundColor: "#102132",
+        backgroundImage: `url(${cacaoPattern})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute inset-0 bg-chokao-primary/70 pointer-events-none z-0" />
 
       {/* Mascot with wave animation */}
       <div className="relative z-10 flex flex-col items-center px-10">
