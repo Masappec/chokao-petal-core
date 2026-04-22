@@ -202,30 +202,49 @@ const ActivityRow = ({ a, onClick }: CardProps) => {
             </span>
           </div>
 
-          <div className="shrink-0">
-            {soldOut ? null : a.owned ? (
+          <div className="shrink-0 flex items-center gap-1.5">
+            {a.owned ? (
               <span
                 className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[12px] font-semibold"
-                style={{ backgroundColor: "rgba(170,185,62,0.18)", color: "#aab93e", border: "1px solid rgba(170,185,62,0.5)" }}
+                style={{ backgroundColor: "rgba(170,185,62,0.15)", color: "#aab93e", border: "1px solid #aab93e" }}
               >
                 <Ticket size={12} strokeWidth={2} />
                 Ya tienes entrada
               </span>
-            ) : lastSpots ? (
+            ) : soldOut ? (
               <span
-                className="rounded-full px-2.5 py-1 text-[12px] font-semibold uppercase tracking-wide"
-                style={{ backgroundColor: "rgba(231,62,64,0.18)", color: "#e73e40", border: "1px solid rgba(231,62,64,0.5)" }}
+                className="rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide"
+                style={{ backgroundColor: "#2a4a62", color: "rgba(240,236,217,0.6)", border: "1px solid #2a4a62" }}
               >
-                Últimos cupos
+                Agotado
               </span>
-            ) : a.price ? (
-              <span
-                className="rounded-full px-3 py-1 text-[13px] font-bold"
-                style={{ backgroundColor: "#fbba30", color: "#102132" }}
-              >
-                {a.price}
-              </span>
-            ) : null}
+            ) : (
+              <>
+                {lastSpots && (
+                  <span
+                    className="rounded-full px-2.5 py-1 text-[12px] font-semibold uppercase tracking-wide"
+                    style={{ backgroundColor: "rgba(231,62,64,0.15)", color: "#e73e40", border: "1px solid #e73e40" }}
+                  >
+                    Últimos cupos
+                  </span>
+                )}
+                {a.price ? (
+                  <span
+                    className="rounded-full px-2.5 py-1 text-[13px] font-bold"
+                    style={{ backgroundColor: "rgba(251,186,48,0.15)", color: "#fbba30", border: "1px solid #fbba30" }}
+                  >
+                    {a.price}
+                  </span>
+                ) : (
+                  <span
+                    className="rounded-full px-2.5 py-1 text-[12px] font-bold"
+                    style={{ backgroundColor: "rgba(170,185,62,0.15)", color: "#aab93e", border: "1px solid #aab93e" }}
+                  >
+                    Gratis
+                  </span>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>
