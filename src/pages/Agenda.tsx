@@ -73,7 +73,7 @@ const activities: Activity[] = [
   { id: "d1-3", day: 1, time: "11:00 AM", slot: "morning", category: "Talleres", title: "Taller: Temperado de Chocolate Artesanal", room: "Sala Taller A", duration: "90 min", speaker: "Maestro Carlos Vera", price: "$25", spots: { taken: 18, total: 20 } },
   { id: "d1-4", day: 1, time: "2:00 PM", slot: "afternoon", category: "Rueda de Negocios", title: "Rueda de Negocios Internacional", room: "Sala Negocios", duration: "120 min", speaker: "ANECACAO" },
   { id: "d1-5", day: 1, time: "3:30 PM", slot: "afternoon", category: "Encuentros", title: "Encuentro de Productores Costa y Sierra", room: "Patio Central", duration: "90 min" },
-  { id: "d1-6", day: 1, time: "5:00 PM", slot: "afternoon", category: "Seminarios", title: "Seminario: Certificaciones de Calidad para Exportación", room: "Sala B", duration: "60 min", speaker: "Ing. Roberto Palma" },
+  { id: "d1-6", day: 1, time: "5:00 PM", slot: "afternoon", category: "Seminarios", title: "Seminario: Certificaciones de Calidad para Exportación", room: "Sala B", duration: "60 min", speaker: "Ing. Roberto Palma", price: "$15" },
   { id: "d1-7", day: 1, time: "7:00 PM", slot: "evening", category: "Eventos Especiales", title: "Coctel de Bienvenida CHOKAO", room: "Terraza Principal", duration: "120 min" },
 
   // ===== DÍA 2 =====
@@ -88,7 +88,7 @@ const activities: Activity[] = [
   // ===== DÍA 3 =====
   { id: "d3-1", day: 3, time: "9:00 AM", slot: "morning", category: "Premiaciones", title: "Competencia Internacional de Chocolatería", room: "Escenario Principal", duration: "180 min", speaker: "Jurado Internacional" },
   { id: "d3-2", day: 3, time: "9:00 AM", slot: "morning", category: "Talleres", title: "Taller: Chocolate con Ingredientes Amazónicos", room: "Sala Taller A", duration: "90 min", speaker: "Chef Rodrigo Arias", price: "$25", spots: { taken: 20, total: 20 } },
-  { id: "d3-3", day: 3, time: "11:30 AM", slot: "morning", category: "Seminarios", title: "Seminario: Tendencias del Mercado Mundial del Cacao 2025", room: "Sala B", duration: "60 min", speaker: "Carla Vega" },
+  { id: "d3-3", day: 3, time: "11:30 AM", slot: "morning", category: "Seminarios", title: "Seminario: Tendencias del Mercado Mundial del Cacao 2025", room: "Sala B", duration: "60 min", speaker: "Carla Vega", price: "$20" },
   { id: "d3-4", day: 3, time: "2:00 PM", slot: "afternoon", category: "Congreso", title: "Foro de Cierre: El Futuro del Cacao Ecuatoriano", room: "Sala Cacao", duration: "90 min", speaker: "Panel ANECACAO" },
   { id: "d3-5", day: 3, time: "3:30 PM", slot: "afternoon", category: "Encuentros", title: "Encuentro Final de Productores y Exportadores", room: "Patio Central", duration: "60 min" },
   { id: "d3-6", day: 3, time: "5:00 PM", slot: "afternoon", category: "Premiaciones", title: "Ceremonia de Premiación al Mejor Cacao de Ecuador", room: "Escenario Principal", duration: "90 min", speaker: "Autoridades ANECACAO" },
@@ -202,30 +202,49 @@ const ActivityRow = ({ a, onClick }: CardProps) => {
             </span>
           </div>
 
-          <div className="shrink-0">
-            {soldOut ? null : a.owned ? (
+          <div className="shrink-0 flex items-center gap-1.5">
+            {a.owned ? (
               <span
                 className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[12px] font-semibold"
-                style={{ backgroundColor: "rgba(170,185,62,0.18)", color: "#aab93e", border: "1px solid rgba(170,185,62,0.5)" }}
+                style={{ backgroundColor: "rgba(170,185,62,0.15)", color: "#aab93e", border: "1px solid #aab93e" }}
               >
                 <Ticket size={12} strokeWidth={2} />
                 Ya tienes entrada
               </span>
-            ) : lastSpots ? (
+            ) : soldOut ? (
               <span
-                className="rounded-full px-2.5 py-1 text-[12px] font-semibold uppercase tracking-wide"
-                style={{ backgroundColor: "rgba(231,62,64,0.18)", color: "#e73e40", border: "1px solid rgba(231,62,64,0.5)" }}
+                className="rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide"
+                style={{ backgroundColor: "#2a4a62", color: "rgba(240,236,217,0.6)", border: "1px solid #2a4a62" }}
               >
-                Últimos cupos
+                Agotado
               </span>
-            ) : a.price ? (
-              <span
-                className="rounded-full px-3 py-1 text-[13px] font-bold"
-                style={{ backgroundColor: "#fbba30", color: "#102132" }}
-              >
-                {a.price}
-              </span>
-            ) : null}
+            ) : (
+              <>
+                {lastSpots && (
+                  <span
+                    className="rounded-full px-2.5 py-1 text-[12px] font-semibold uppercase tracking-wide"
+                    style={{ backgroundColor: "rgba(231,62,64,0.15)", color: "#e73e40", border: "1px solid #e73e40" }}
+                  >
+                    Últimos cupos
+                  </span>
+                )}
+                {a.price ? (
+                  <span
+                    className="rounded-full px-2.5 py-1 text-[13px] font-bold"
+                    style={{ backgroundColor: "rgba(251,186,48,0.15)", color: "#fbba30", border: "1px solid #fbba30" }}
+                  >
+                    {a.price}
+                  </span>
+                ) : (
+                  <span
+                    className="rounded-full px-2.5 py-1 text-[12px] font-bold"
+                    style={{ backgroundColor: "rgba(170,185,62,0.15)", color: "#aab93e", border: "1px solid #aab93e" }}
+                  >
+                    Gratis
+                  </span>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>
