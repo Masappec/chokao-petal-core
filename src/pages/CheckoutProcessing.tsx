@@ -1,14 +1,29 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChokaoIcon from "@/components/ChokaoIcon";
+import { useCheckout } from "@/lib/checkoutContext";
 
 const CheckoutProcessing = () => {
   const navigate = useNavigate();
-  const [seconds, setSeconds] = useState(272); // 04:32
+  const { update } = useCheckout();
+  const [seconds, setSeconds] = useState(272);
 
   useEffect(() => {
-    const t = setTimeout(() => navigate("/comprar/exito"), 2800);
+    const t = setTimeout(() => {
+      // 80% éxito, 20% error
+      if (Math.random() < 0.8) {
+        const num = Math.floor(10000 + Math.random() * 90000);
+        update({
+          generatedTicketId: `tkt-${num}`,
+          generatedTicketNumber: `#TKT-2025-${num}`,
+        });
+        navigate("/comprar/exito");
+      } else {
+        navigate("/comprar/error");
+      }
+    }, 2800);
     return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   useEffect(() => {
