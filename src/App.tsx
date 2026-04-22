@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Splash from "./pages/Splash.tsx";
+import Onboarding from "./pages/Onboarding.tsx";
 import Home from "./pages/Home.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import Agenda from "./pages/Agenda.tsx";
@@ -51,6 +52,7 @@ const App = () => (
         <GuestProvider>
           <CheckoutProvider>
             <Routes>
+              <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/" element={<Splash />} />
               <Route path="/home" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
