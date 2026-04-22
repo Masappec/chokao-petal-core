@@ -34,7 +34,10 @@ import CheckoutPayment from "./pages/CheckoutPayment.tsx";
 import CheckoutProcessing from "./pages/CheckoutProcessing.tsx";
 import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
 import CheckoutError from "./pages/CheckoutError.tsx";
+import ReserveSummary from "./pages/ReserveSummary.tsx";
+import ReserveSuccess from "./pages/ReserveSuccess.tsx";
 import { CheckoutProvider } from "./lib/checkoutContext";
+import { GuestProvider } from "./lib/guestContext";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -45,42 +48,48 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <CheckoutProvider>
-          <Routes>
-            <Route path="/" element={<Splash />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/register/verify" element={<VerifyOTP />} />
-            <Route path="/register/profile" element={<RegisterProfile />} />
-            <Route path="/register/role" element={<RegisterRole />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
-            <Route path="/agenda" element={<Agenda />} />
-            <Route path="/activity" element={<ActivityDetail />} />
-            <Route path="/perfil" element={<Profile />} />
-            <Route path="/perfil/editar" element={<EditProfile />} />
-            <Route path="/perfil/contrasena" element={<ChangePassword />} />
-            <Route path="/perfil/qr" element={<MyQR />} />
-            <Route path="/escanear" element={<ScanContact />} />
-            <Route path="/networking" element={<Networking />} />
-            <Route path="/networking/:id" element={<ContactDetail />} />
-            <Route path="/expositores" element={<Exhibitors />} />
-            <Route path="/expositores/:id" element={<ExhibitorDetail />} />
-            <Route path="/patrocinadores" element={<Sponsors />} />
-            <Route path="/patrocinadores/:id" element={<SponsorDetail />} />
-            <Route path="/entradas" element={<MyTickets />} />
-            <Route path="/entradas/:id" element={<TicketQR />} />
-            <Route path="/comprar" element={<CheckoutSummary />} />
-            <Route path="/comprar/datos" element={<CheckoutBuyer />} />
-            <Route path="/comprar/pago" element={<CheckoutPayment />} />
-            <Route path="/comprar/procesando" element={<CheckoutProcessing />} />
-            <Route path="/comprar/exito" element={<CheckoutSuccess />} />
-            <Route path="/comprar/error" element={<CheckoutError />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </CheckoutProvider>
+        <GuestProvider>
+          <CheckoutProvider>
+            <Routes>
+              <Route path="/" element={<Splash />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/register/verify" element={<VerifyOTP />} />
+              <Route path="/register/profile" element={<RegisterProfile />} />
+              <Route path="/register/role" element={<RegisterRole />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="/agenda" element={<Agenda />} />
+              <Route path="/activity" element={<ActivityDetail />} />
+              <Route path="/activity/:id" element={<ActivityDetail />} />
+              <Route path="/perfil" element={<Profile />} />
+              <Route path="/perfil/editar" element={<EditProfile />} />
+              <Route path="/perfil/contrasena" element={<ChangePassword />} />
+              <Route path="/perfil/qr" element={<MyQR />} />
+              <Route path="/escanear" element={<ScanContact />} />
+              <Route path="/networking" element={<Networking />} />
+              <Route path="/networking/:id" element={<ContactDetail />} />
+              <Route path="/expositores" element={<Exhibitors />} />
+              <Route path="/expositores/:id" element={<ExhibitorDetail />} />
+              <Route path="/patrocinadores" element={<Sponsors />} />
+              <Route path="/patrocinadores/:id" element={<SponsorDetail />} />
+              <Route path="/entradas" element={<MyTickets />} />
+              <Route path="/entradas/:id" element={<TicketQR />} />
+              <Route path="/comprar" element={<CheckoutSummary />} />
+              <Route path="/comprar/:id" element={<CheckoutSummary />} />
+              <Route path="/comprar/datos" element={<CheckoutBuyer />} />
+              <Route path="/comprar/pago" element={<CheckoutPayment />} />
+              <Route path="/comprar/procesando" element={<CheckoutProcessing />} />
+              <Route path="/comprar/exito" element={<CheckoutSuccess />} />
+              <Route path="/comprar/error" element={<CheckoutError />} />
+              <Route path="/reservar/:id" element={<ReserveSummary />} />
+              <Route path="/reservar/exito" element={<ReserveSuccess />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </CheckoutProvider>
+        </GuestProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
