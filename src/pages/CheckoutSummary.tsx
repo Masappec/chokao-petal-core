@@ -1,17 +1,42 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock, MapPin, Users, Minus, Plus, Clock3 } from "lucide-react";
 import ChokaoButton from "@/components/ChokaoButton";
 import { useCheckout } from "@/lib/checkoutContext";
+import { getActivityById, getActivityState } from "@/lib/activitiesCatalog";
 
 const CheckoutSummary = () => {
   const navigate = useNavigate();
+  const params = useParams<{ id: string }>();
+  const activity = getActivityById(params.id);
+  const { remaining } = getActivityState(activity);
   const { data, update } = useCheckout();
-  const [qty, setQty] = useState(data.quantity);
-  const MAX = 2;
 
-  const subtotal = data.pricePerTicket * qty;
+  // Sincronizar contexto si llegamos con otro id
+  useEffect(() => {
+    if (data.activityId !== activity.id) {
+      update({
+        activityId: activity.id,
+        activityName: activity.title,
+        category: activity.category,
+        categoryColor: activity.categoryColor,
+        date: activity.dateShort,
+        time: activity.time,
+        room: activity.room,
+        pricePerTicket: activity.price,
+        spotsRemaining: remaining,
+        quantity: 1,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activity.id]);
+
+  const MAX = Math.min(2, remaining);
+  const [qty, setQty] = useState(Math.min(data.quantity || 1, Math.max(1, MAX)));
+
+  const subtotal = activity.price * qty;
   const total = subtotal + data.serviceFee;
+  const onlyOne = MAX === 1;
 
   const onContinue = () => {
     update({ quantity: qty });
@@ -30,39 +55,39 @@ const CheckoutSummary = () => {
       </header>
 
       <div className="px-5 mt-3">
-        {/* Activity card */}
         <div className="rounded-2xl p-4" style={{ backgroundColor: "#1a2f42" }}>
           <span
             className="inline-block px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wide"
             style={{
-              backgroundColor: `${data.categoryColor}26`,
-              border: `1px solid ${data.categoryColor}`,
-              color: data.categoryColor,
+              backgroundColor: `${activity.categoryColor}26`,
+              border: `1px solid ${activity.categoryColor}`,
+              color: activity.categoryColor,
             }}
           >
-            {data.category}
+            {activity.category}
           </span>
-          <h3 className="mt-2 text-white font-semibold text-[16px]">{data.activityName}</h3>
+          <h3 className="mt-2 text-white font-semibold text-[16px]">{activity.title}</h3>
           <div className="mt-3 space-y-1.5">
             <div className="flex items-center gap-2 text-[13px]" style={{ color: "rgba(240,236,217,0.7)" }}>
-              <Calendar size={14} strokeWidth={1.5} /> {data.date}
+              <Calendar size={14} strokeWidth={1.5} /> {activity.dateLong}
             </div>
             <div className="flex items-center gap-2 text-[13px]" style={{ color: "rgba(240,236,217,0.7)" }}>
-              <Clock size={14} strokeWidth={1.5} /> {data.time}
+              <Clock size={14} strokeWidth={1.5} /> {activity.time} · {activity.duration}
             </div>
             <div className="flex items-center gap-2 text-[13px]" style={{ color: "rgba(240,236,217,0.7)" }}>
-              <MapPin size={14} strokeWidth={1.5} /> {data.room}
+              <MapPin size={14} strokeWidth={1.5} /> {activity.room}
             </div>
           </div>
           <div className="my-3 h-px" style={{ backgroundColor: "#102132" }} />
           <div className="flex items-center gap-2 text-[13px]">
             <Users size={14} strokeWidth={1.5} style={{ color: "rgba(240,236,217,0.5)" }} />
             <span style={{ color: "rgba(240,236,217,0.5)" }}>Cupos disponibles:</span>
-            <span style={{ color: "#e73e40", fontWeight: 600 }}>2 cupos restantes</span>
+            <span style={{ color: remaining < 3 ? "#e73e40" : "#aab93e", fontWeight: 600 }}>
+              {remaining} {remaining === 1 ? "cupo restante" : "cupos restantes"}
+            </span>
           </div>
         </div>
 
-        {/* Quantity */}
         <div className="mt-5">
           <p className="text-white text-[14px] font-medium">Cantidad de entradas</p>
           <div className="mt-2 flex items-center gap-4">
@@ -76,18 +101,28 @@ const CheckoutSummary = () => {
             <span className="text-white font-bold text-[18px] w-12 text-center">{qty}</span>
             <button
               onClick={() => setQty((q) => Math.min(MAX, q + 1))}
-              className="w-9 h-9 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: "#fbba30", color: "#102132" }}
+              disabled={qty >= MAX}
+              className="w-9 h-9 rounded-full flex items-center justify-center transition-opacity"
+              style={{
+                backgroundColor: "#fbba30",
+                color: "#102132",
+                opacity: qty >= MAX ? 0.4 : 1,
+              }}
             >
               <Plus size={16} strokeWidth={2} />
             </button>
           </div>
-          <p className="mt-2 text-[12px]" style={{ color: "rgba(240,236,217,0.4)" }}>
-            Máximo {MAX} entradas por persona
-          </p>
+          {onlyOne ? (
+            <p className="mt-2 text-[12px]" style={{ color: "#e73e40" }}>
+              Solo queda 1 cupo disponible
+            </p>
+          ) : (
+            <p className="mt-2 text-[12px]" style={{ color: "rgba(240,236,217,0.4)" }}>
+              Máximo {MAX} entradas por persona
+            </p>
+          )}
         </div>
 
-        {/* Price breakdown */}
         <div className="mt-5 rounded-xl p-4" style={{ backgroundColor: "#1a2f42" }}>
           <div className="flex justify-between text-[14px]" style={{ color: "rgba(240,236,217,0.7)" }}>
             <span>Entrada × {qty}</span>
@@ -105,7 +140,7 @@ const CheckoutSummary = () => {
         <div className="mt-4 flex items-start gap-2">
           <Clock3 size={14} strokeWidth={1.5} style={{ color: "#fbba30", flexShrink: 0, marginTop: 2 }} />
           <p className="text-[12px]" style={{ color: "rgba(240,236,217,0.6)" }}>
-            Al continuar, se reservará tu cupo por 5 minutos mientras completas el pago
+            Tu cupo será reservado por 5 minutos al continuar
           </p>
         </div>
       </div>

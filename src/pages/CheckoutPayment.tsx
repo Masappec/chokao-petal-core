@@ -1,15 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, CreditCard, Eye, Lock } from "lucide-react";
+import { ArrowLeft, CreditCard, Eye, Lock, Mail, Check } from "lucide-react";
 import ChokaoButton from "@/components/ChokaoButton";
 import { useCheckout, calcTotal } from "@/lib/checkoutContext";
+import { toast } from "@/hooks/use-toast";
 
 const CheckoutPayment = () => {
   const navigate = useNavigate();
   const { data, update } = useCheckout();
   const total = calcTotal(data);
 
+  const [seconds, setSeconds] = useState(5 * 60); // 5 min reserva
+
+  useEffect(() => {
+    const i = setInterval(() => {
+      setSeconds((s) => {
+        if (s <= 1) {
+          clearInterval(i);
+          toast({ title: "Reserva expirada", description: "Tu cupo fue liberado. Inténtalo de nuevo." });
+          navigate(`/activity/${data.activityId}`);
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
+    return () => clearInterval(i);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const ss = String(seconds % 60).padStart(2, "0");
+
   const onPay = () => {
+    if (!data.acceptedTerms) return;
     update({ paymentMethod: "payphone" });
     navigate("/comprar/procesando");
   };
@@ -21,17 +44,17 @@ const CheckoutPayment = () => {
   } as React.CSSProperties;
 
   return (
-    <div className="min-h-screen max-w-[390px] mx-auto pb-32" style={{ backgroundColor: "#102132" }}>
+    <div className="min-h-screen max-w-[390px] mx-auto pb-40" style={{ backgroundColor: "#102132" }}>
       <header className="sticky top-0 z-40 flex items-center h-[56px] px-5" style={{ backgroundColor: "#102132" }}>
         <button onClick={() => navigate(-1)} className="text-white" aria-label="Atrás">
           <ArrowLeft size={22} strokeWidth={1.5} />
         </button>
         <h1 className="flex-1 text-center font-display font-semibold text-[18px] text-white pr-6">
-          Método de pago
+          Datos y pago
         </h1>
       </header>
 
-      {/* Compact summary */}
+      {/* Resumen compacto */}
       <div className="mx-5 mt-4 rounded-xl px-4 py-3 flex items-center justify-between" style={{ backgroundColor: "#1a2f42" }}>
         <div className="flex-1 min-w-0 pr-3">
           <p className="text-[13px] truncate" style={{ color: "rgba(240,236,217,0.7)" }}>
@@ -41,6 +64,28 @@ const CheckoutPayment = () => {
         <span className="font-bold text-[14px]" style={{ color: "#fbba30" }}>
           ${total.toFixed(2)}
         </span>
+      </div>
+
+      {/* Datos de contacto */}
+      <h2 className="px-5 mt-5 text-white font-semibold text-[16px]">¿Dónde enviamos tu entrada?</h2>
+      <div className="px-5 mt-3">
+        <div className="relative">
+          <Mail size={16} strokeWidth={1.5} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: "rgba(240,236,217,0.5)" }} />
+          <input
+            type="email"
+            value={data.buyerEmail}
+            onChange={(e) => update({ buyerEmail: e.target.value })}
+            placeholder="Correo electrónico"
+            className="w-full h-11 rounded-lg pl-10 pr-3 text-[14px]"
+            style={inputBase}
+          />
+        </div>
+        <div className="mt-2 flex items-start gap-2">
+          <Mail size={12} strokeWidth={1.5} style={{ color: "rgba(240,236,217,0.5)", marginTop: 3, flexShrink: 0 }} />
+          <p className="text-[12px]" style={{ color: "rgba(240,236,217,0.5)" }}>
+            Te enviaremos la confirmación y tu entrada a este correo
+          </p>
+        </div>
       </div>
 
       <h2 className="px-5 mt-5 text-white font-semibold text-[16px]">Método de pago</h2>
@@ -97,11 +142,36 @@ const CheckoutPayment = () => {
         </p>
       </div>
 
+      {/* Términos */}
+      <div className="mx-5 mt-4 flex items-start gap-3">
+        <button
+          onClick={() => update({ acceptedTerms: !data.acceptedTerms })}
+          aria-pressed={data.acceptedTerms}
+          className="shrink-0 flex items-center justify-center rounded transition-colors"
+          style={{
+            width: 18,
+            height: 18,
+            border: "1.5px solid #2a4a62",
+            backgroundColor: data.acceptedTerms ? "rgba(251,186,48,0.15)" : "transparent",
+          }}
+        >
+          {data.acceptedTerms && <Check size={12} strokeWidth={3} style={{ color: "#fbba30" }} />}
+        </button>
+        <p className="text-[13px]" style={{ color: "rgba(240,236,217,0.7)" }}>
+          Acepto los{" "}
+          <span style={{ color: "#fbba30" }}>términos y condiciones</span> y la política de privacidad de CHOKAO
+        </p>
+      </div>
+
+      {/* Bottom sticky */}
       <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] p-5" style={{ backgroundColor: "#102132", borderTop: "1px solid #1e3448" }}>
-        <ChokaoButton fullWidth onClick={onPay}>
+        <ChokaoButton fullWidth onClick={onPay} disabled={!data.acceptedTerms}>
           <Lock size={16} strokeWidth={2} />
           Pagar ${total.toFixed(2)}
         </ChokaoButton>
+        <p className="mt-2 text-center text-[12px]" style={{ color: "rgba(240,236,217,0.4)" }}>
+          Cupo reservado · expira en {mm}:{ss}
+        </p>
       </div>
     </div>
   );

@@ -7,10 +7,12 @@ import { useCheckout } from "@/lib/checkoutContext";
 const CheckoutSuccess = () => {
   const navigate = useNavigate();
   const { data } = useCheckout();
+  const ticketId = data.generatedTicketId ?? "tkt-1";
+  const ticketNumber = data.generatedTicketNumber ?? "#TKT-2025-00850";
 
   const ticket = {
-    id: "tkt-new",
-    ticketNumber: "#TKT-2025-00850",
+    id: ticketId,
+    ticketNumber,
     activityName: data.activityName,
     category: data.category,
     categoryColor: data.categoryColor,
@@ -43,7 +45,7 @@ const CheckoutSuccess = () => {
         <div className="flex items-center gap-3">
           <Mail size={16} strokeWidth={1.5} style={{ color: "#fbba30" }} />
           <span className="text-[13px]" style={{ color: "rgba(240,236,217,0.7)" }}>
-            Confirmación enviada a tu correo
+            Confirmación enviada a {data.buyerEmail}
           </span>
         </div>
         <div className="my-3 h-px" style={{ backgroundColor: "#2a4a62" }} />
@@ -57,13 +59,13 @@ const CheckoutSuccess = () => {
         <div className="flex items-center gap-3">
           <Ticket size={16} strokeWidth={1.5} style={{ color: "#f0ecd9" }} />
           <span className="font-mono text-[12px]" style={{ color: "rgba(240,236,217,0.5)" }}>
-            Número de orden: #ORD-2025-00391
+            Número de orden: {ticketNumber}
           </span>
         </div>
       </div>
 
       <div className="mx-6 mt-7">
-        <ChokaoButton fullWidth onClick={() => navigate("/entradas/tkt-1")}>Ver mi entrada</ChokaoButton>
+        <ChokaoButton fullWidth onClick={() => navigate(`/entradas/${ticketId}`)}>Ver mi entrada</ChokaoButton>
       </div>
       <div className="mt-3 flex justify-center">
         <button onClick={() => navigate("/home")} className="text-[14px] font-medium" style={{ color: "rgba(240,236,217,0.7)" }}>
