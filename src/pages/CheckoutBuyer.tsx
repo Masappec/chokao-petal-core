@@ -22,7 +22,7 @@ const CheckoutBuyer = () => {
   const { data, update } = useCheckout();
 
   // Comprador
-  const [useProfile, setUseProfile] = useState(true);
+  
   const [name, setName] = useState(data.buyerName);
   const [email, setEmail] = useState(data.buyerEmail);
   const [phone, setPhone] = useState(data.buyerPhone);
@@ -128,23 +128,6 @@ const CheckoutBuyer = () => {
           />
         </div>
 
-        <button
-          onClick={() => setUseProfile((v) => !v)}
-          className="flex items-center gap-2 mt-3"
-        >
-          <span
-            className="w-[18px] h-[18px] rounded flex items-center justify-center"
-            style={{
-              backgroundColor: useProfile ? "#fbba30" : "transparent",
-              border: useProfile ? "1px solid #fbba30" : "1px solid #2a4a62",
-            }}
-          >
-            {useProfile && <Check size={12} strokeWidth={3} style={{ color: "#102132" }} />}
-          </span>
-          <span className="text-[14px]" style={{ color: "rgba(240,236,217,0.7)" }}>
-            Usar mis datos de perfil guardados
-          </span>
-        </button>
       </div>
 
       {/* === Datos de facturación === */}
