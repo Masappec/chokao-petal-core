@@ -40,7 +40,7 @@ const CheckoutSummary = () => {
 
   const onContinue = () => {
     update({ quantity: qty });
-    navigate("/comprar/pago");
+    navigate("/comprar/datos");
   };
 
   return (
