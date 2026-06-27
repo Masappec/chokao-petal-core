@@ -19,6 +19,13 @@ export interface CheckoutData {
   paymentMethod: "payphone" | "kushki" | "nuvei" | null;
   generatedTicketId?: string;
   generatedTicketNumber?: string;
+  // Datos de facturación
+  billingSameAsBuyer: boolean;
+  billingIdType: "cedula" | "ruc";
+  billingIdNumber: string;
+  billingName: string;
+  billingEmail: string;
+  billingPhone: string;
 }
 
 const defaultData: CheckoutData = {
@@ -38,6 +45,12 @@ const defaultData: CheckoutData = {
   buyerPhone: "+593 99 123 4567",
   acceptedTerms: false,
   paymentMethod: null,
+  billingSameAsBuyer: true,
+  billingIdType: "cedula",
+  billingIdNumber: "",
+  billingName: "",
+  billingEmail: "",
+  billingPhone: "",
 };
 
 interface Ctx {
