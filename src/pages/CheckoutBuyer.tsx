@@ -199,7 +199,7 @@ const CheckoutBuyer = () => {
             value={billingIdNumber}
             maxLength={idMaxLen}
             onChange={(e) => setBillingIdNumber(onlyDigits(e.target.value).slice(0, idMaxLen))}
-            placeholder={billingIdType === "cedula" ? "Cédula (10 dígitos)" : "RUC (13 dígitos)"}
+            placeholder={billingIdType === "cedula" ? "Cédula" : "RUC"}
             className="w-full h-12 rounded-xl pl-10 pr-4 text-[14px]"
             style={{
               ...inputBase,
