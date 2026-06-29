@@ -141,7 +141,7 @@ const CheckoutBuyer = () => {
         </p>
 
         {/* Toggle mismo / otra persona */}
-        <div className="mt-4 grid grid-cols-2 gap-2 p-1 rounded-xl" style={{ backgroundColor: "#1a2f42", border: "1px solid #2a4a62" }}>
+        <div className="mt-4 grid grid-cols-2 gap-2">
           {[
             { v: true, label: "Mismos del comprador" },
             { v: false, label: "Otra persona" },
@@ -151,10 +151,11 @@ const CheckoutBuyer = () => {
               <button
                 key={String(opt.v)}
                 onClick={() => setBillingSame(opt.v)}
-                className="h-10 rounded-lg text-[12.5px] font-medium transition-colors"
+                className="h-11 rounded-lg text-[13px] font-medium transition-colors"
                 style={{
-                  backgroundColor: active ? "#fbba30" : "transparent",
-                  color: active ? "#102132" : "rgba(240,236,217,0.7)",
+                  backgroundColor: active ? "rgba(251,186,48,0.12)" : "#1a2f42",
+                  border: active ? "1.5px solid #fbba30" : "1px solid #2a4a62",
+                  color: active ? "#fbba30" : "rgba(240,236,217,0.7)",
                 }}
               >
                 {opt.label}
