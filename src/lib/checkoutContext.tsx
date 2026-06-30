@@ -21,7 +21,7 @@ export interface CheckoutData {
   generatedTicketNumber?: string;
   // Datos de facturación
   billingSameAsBuyer: boolean;
-  billingIdType: "cedula" | "ruc";
+  billingIdType: "cedula" | "ruc" | "pasaporte";
   billingIdNumber: string;
   billingName: string;
   billingEmail: string;

@@ -1,7 +1,7 @@
 // Simple per-user billing profile persistence (one per user) via localStorage.
 // Replace with backend call when Cloud is enabled.
 
-export type IdType = "cedula" | "ruc";
+export type IdType = "cedula" | "ruc" | "pasaporte";
 
 export interface BillingProfile {
   idType: IdType;

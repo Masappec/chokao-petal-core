@@ -14,8 +14,10 @@ import {
 const onlyDigits = (s: string) => s.replace(/\D+/g, "");
 const isValidEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
 const isValidId = (type: IdType, value: string) => {
-  const v = onlyDigits(value);
-  return type === "cedula" ? v.length === 10 : v.length === 13;
+  const v = value.trim();
+  if (type === "pasaporte") return v.length >= 6 && v.length <= 20;
+  const digits = onlyDigits(v);
+  return type === "cedula" ? digits.length === 10 : digits.length === 13;
 };
 
 const CheckoutBuyer = () => {
@@ -87,7 +89,7 @@ const CheckoutBuyer = () => {
     color: "#f0ecd9",
   } as React.CSSProperties;
 
-  const idMaxLen = billingIdType === "cedula" ? 10 : 13;
+  const idMaxLen = billingIdType === "cedula" ? 10 : billingIdType === "ruc" ? 13 : 20;
   const idValid = isValidId(billingIdType, billingIdNumber) || billingIdNumber.length === 0;
 
   const buyerValid =
@@ -270,7 +272,7 @@ const CheckoutBuyer = () => {
             <div className="mt-4">
               <p className="text-[12px] mb-2" style={{ color: "rgba(240,236,217,0.6)" }}>Tipo de documento</p>
               <div className="grid grid-cols-2 gap-2">
-                {(["cedula", "ruc"] as IdType[]).map((t) => {
+                {(["cedula", "ruc", "pasaporte"] as IdType[]).map((t) => {
                   const active = billingIdType === t;
                   return (
                     <button
@@ -286,7 +288,7 @@ const CheckoutBuyer = () => {
                         color: active ? "#fbba30" : "rgba(240,236,217,0.7)",
                       }}
                     >
-                      {t === "cedula" ? "Cédula" : "RUC"}
+                      {t === "cedula" ? "Cédula" : t === "ruc" ? "RUC" : "Pasaporte"}
                     </button>
                   );
                 })}
@@ -297,17 +299,24 @@ const CheckoutBuyer = () => {
             <div className="mt-3 relative">
               <IdCard size={16} strokeWidth={1.5} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: "rgba(240,236,217,0.5)" }} />
               <input
-                inputMode="numeric"
+                inputMode={billingIdType === "pasaporte" ? undefined : "numeric"}
                 value={billingIdNumber}
                 maxLength={idMaxLen}
-                onChange={(e) => setBillingIdNumber(onlyDigits(e.target.value).slice(0, idMaxLen))}
-                placeholder={billingIdType === "cedula" ? "Cédula" : "RUC"}
+                onChange={(e) => {
+                  const val = billingIdType === "pasaporte" ? e.target.value : onlyDigits(e.target.value);
+                  setBillingIdNumber(val.slice(0, idMaxLen));
+                }}
+                placeholder={billingIdType === "cedula" ? "Cédula" : billingIdType === "ruc" ? "RUC" : "Pasaporte"}
                 className="w-full h-12 rounded-xl pl-10 pr-4 text-[14px]"
                 style={{ ...inputBase, borderColor: idValid ? "#2a4a62" : "#e73e40" }}
               />
               {!idValid && (
                 <p className="mt-1 text-[11px]" style={{ color: "#e73e40" }}>
-                  {billingIdType === "cedula" ? "La cédula debe tener 10 dígitos" : "El RUC debe tener 13 dígitos"}
+                  {billingIdType === "cedula"
+                    ? "La cédula debe tener 10 dígitos"
+                    : billingIdType === "ruc"
+                    ? "El RUC debe tener 13 dígitos"
+                    : "El pasaporte debe tener entre 6 y 20 caracteres"}
                 </p>
               )}
             </div>
