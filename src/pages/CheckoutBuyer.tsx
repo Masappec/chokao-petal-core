@@ -14,8 +14,10 @@ import {
 const onlyDigits = (s: string) => s.replace(/\D+/g, "");
 const isValidEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
 const isValidId = (type: IdType, value: string) => {
-  const v = onlyDigits(value);
-  return type === "cedula" ? v.length === 10 : v.length === 13;
+  const v = value.trim();
+  if (type === "pasaporte") return v.length >= 6 && v.length <= 20;
+  const digits = onlyDigits(v);
+  return type === "cedula" ? digits.length === 10 : digits.length === 13;
 };
 
 const CheckoutBuyer = () => {
