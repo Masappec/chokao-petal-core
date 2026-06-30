@@ -299,17 +299,24 @@ const CheckoutBuyer = () => {
             <div className="mt-3 relative">
               <IdCard size={16} strokeWidth={1.5} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: "rgba(240,236,217,0.5)" }} />
               <input
-                inputMode="numeric"
+                inputMode={billingIdType === "pasaporte" ? undefined : "numeric"}
                 value={billingIdNumber}
                 maxLength={idMaxLen}
-                onChange={(e) => setBillingIdNumber(onlyDigits(e.target.value).slice(0, idMaxLen))}
-                placeholder={billingIdType === "cedula" ? "Cédula" : "RUC"}
+                onChange={(e) => {
+                  const val = billingIdType === "pasaporte" ? e.target.value : onlyDigits(e.target.value);
+                  setBillingIdNumber(val.slice(0, idMaxLen));
+                }}
+                placeholder={billingIdType === "cedula" ? "Cédula" : billingIdType === "ruc" ? "RUC" : "Pasaporte"}
                 className="w-full h-12 rounded-xl pl-10 pr-4 text-[14px]"
                 style={{ ...inputBase, borderColor: idValid ? "#2a4a62" : "#e73e40" }}
               />
               {!idValid && (
                 <p className="mt-1 text-[11px]" style={{ color: "#e73e40" }}>
-                  {billingIdType === "cedula" ? "La cédula debe tener 10 dígitos" : "El RUC debe tener 13 dígitos"}
+                  {billingIdType === "cedula"
+                    ? "La cédula debe tener 10 dígitos"
+                    : billingIdType === "ruc"
+                    ? "El RUC debe tener 13 dígitos"
+                    : "El pasaporte debe tener entre 6 y 20 caracteres"}
                 </p>
               )}
             </div>
