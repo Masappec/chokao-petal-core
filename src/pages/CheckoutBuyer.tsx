@@ -89,7 +89,7 @@ const CheckoutBuyer = () => {
     color: "#f0ecd9",
   } as React.CSSProperties;
 
-  const idMaxLen = billingIdType === "cedula" ? 10 : 13;
+  const idMaxLen = billingIdType === "cedula" ? 10 : billingIdType === "ruc" ? 13 : 20;
   const idValid = isValidId(billingIdType, billingIdNumber) || billingIdNumber.length === 0;
 
   const buyerValid =
@@ -272,7 +272,7 @@ const CheckoutBuyer = () => {
             <div className="mt-4">
               <p className="text-[12px] mb-2" style={{ color: "rgba(240,236,217,0.6)" }}>Tipo de documento</p>
               <div className="grid grid-cols-2 gap-2">
-                {(["cedula", "ruc"] as IdType[]).map((t) => {
+                {(["cedula", "ruc", "pasaporte"] as IdType[]).map((t) => {
                   const active = billingIdType === t;
                   return (
                     <button
@@ -288,7 +288,7 @@ const CheckoutBuyer = () => {
                         color: active ? "#fbba30" : "rgba(240,236,217,0.7)",
                       }}
                     >
-                      {t === "cedula" ? "Cédula" : "RUC"}
+                      {t === "cedula" ? "Cédula" : t === "ruc" ? "RUC" : "Pasaporte"}
                     </button>
                   );
                 })}
