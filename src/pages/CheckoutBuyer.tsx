@@ -271,7 +271,7 @@ const CheckoutBuyer = () => {
             {/* Tipo de documento */}
             <div className="mt-4">
               <p className="text-[12px] mb-2" style={{ color: "rgba(240,236,217,0.6)" }}>Tipo de documento</p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-3 gap-2">
                 {(["cedula", "ruc", "pasaporte"] as IdType[]).map((t) => {
                   const active = billingIdType === t;
                   return (
